@@ -3,6 +3,7 @@ import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
+import 'package:woodiex/core/widgets/app_form_field.dart'; // Corrected Import
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
   bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,18 +26,36 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LoginAppBar(),
+                const LoginAppBar(),
                 verticalSpace(45),
                 Text('Hello !', style: Fonts.merriweather30regular),
                 verticalSpace(10),
-                Text(
-                  'Welcome Back',
-                  style: Fonts.merriweather24bold,
+                Text('Welcome Back', style: Fonts.merriweather24bold),
+                verticalSpace(80),
+                AppTextFormField(
+                  hintText: 'Email',
                 ),
-                verticalSpace(40),
-                Text(
-                  'Email',
-                  style: Fonts.nunitoSansRegular18,
+                verticalSpace(18),
+                AppTextFormField(
+                  hintText: 'Password',
+                  isObscureText: isObscureText,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isObscureText = !isObscureText;
+                      });
+                    },
+                    child: Icon(
+                      isObscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
+                ),
+                verticalSpace(35),
+                Center(
+                  child: Text(
+                    'Forget Password',
+                    style: Fonts.nunitoSansSemiBold18,
+                  ),
                 )
               ],
             ),

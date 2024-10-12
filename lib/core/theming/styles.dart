@@ -49,4 +49,10 @@ class Fonts {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
+
+  static TextStyle nunitoSansSemiBold18 = GoogleFonts.nunitoSans(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.regular, // Regular
+    color: ColorsManager.mainBlack,
+  );
 }
