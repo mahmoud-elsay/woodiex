@@ -18,7 +18,7 @@ class OnboardingButton extends StatelessWidget {
         backgroundColor: WidgetStateProperty.all(ColorsManager.mainBlack),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         minimumSize: WidgetStateProperty.all(
-          Size(159.w, 54.h), // Match the dimensions from XML
+          Size(159.w, 54.h),
         ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
