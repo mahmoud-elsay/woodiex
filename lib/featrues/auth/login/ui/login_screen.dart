@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
@@ -58,12 +60,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {}),
                 verticalSpace(35),
                 GestureDetector(
+                    onTap: () {
+                      context.pushNamed(Routes.signUpScreen);
+                    },
                     child: Center(
-                  child: Text(
-                    'SIGN UP ',
-                    style: Fonts.darkNnitoSansSemiBold18,
-                  ),
-                ))
+                      child: Text(
+                        'SIGN UP ',
+                        style: Fonts.darkNnitoSansSemiBold18,
+                      ),
+                    ))
               ],
             ),
           ),
