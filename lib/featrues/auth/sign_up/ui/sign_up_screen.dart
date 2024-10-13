@@ -5,6 +5,7 @@ import 'package:woodiex/core/widgets/app_form_field.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
+import 'package:woodiex/featrues/auth/sign_up/ui/widgets/already_have_account_text.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -76,7 +77,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   buttonText: 'sign up  ',
                   textStyle: Fonts.whiteNunitoSansSemiBold18,
                   onPressed: () {}),
-                  
+              verticalSpace(30),
+              Center(child: AlreadyHaveAccountText())
             ],
           ),
         ),

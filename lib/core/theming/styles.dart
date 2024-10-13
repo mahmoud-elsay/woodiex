@@ -72,9 +72,9 @@ class Fonts {
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle darkGreyNunitoSansSemiBold14 = GoogleFonts.nunitoSans(
-    fontSize: 18.sp,
-    fontWeight: FontWeightHelper.semiBold,
+  static TextStyle darkGreyNunitoSansBold14 = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
   );
 }
