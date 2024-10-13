@@ -6,7 +6,7 @@ import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingButton extends StatelessWidget {
-  const OnboardingButton({Key? key}) : super(key: key);
+  const OnboardingButton({super.key});
 
   @override
   Widget build(BuildContext context) {
