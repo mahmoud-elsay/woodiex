@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/widgets/app_form_field.dart';
+import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
 
@@ -30,7 +32,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Text(
                 'Welcome',
                 style: Fonts.merriweather24bold,
-              )
+              ),
+              verticalSpace(50),
+              AppTextFormField(
+                hintText: 'Name',
+              ),
+              verticalSpace(18),
+              AppTextFormField(
+                hintText: 'Email',
+              ),
+              verticalSpace(18),
+              AppTextFormField(
+                hintText: 'Password',
+                isObscureText: isObscureText,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isObscureText = !isObscureText;
+                    });
+                  },
+                  child: Icon(
+                    isObscureText ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
+              ),
+              verticalSpace(18),
+              AppTextFormField(
+                hintText: 'Confirm password',
+                isObscureText: isObscureText,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isObscureText = !isObscureText;
+                    });
+                  },
+                  child: Icon(
+                    isObscureText ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
+              ),
+              verticalSpace(25),
+              AppTextButton(
+                  buttonText: 'sign up  ',
+                  textStyle: Fonts.whiteNunitoSansSemiBold18,
+                  onPressed: () {}),
+                  
             ],
           ),
         ),

@@ -61,9 +61,20 @@ class Fonts {
     fontWeight: FontWeightHelper.regular, // Regular
     color: ColorsManager.mainBlack,
   );
-  static TextStyle whiteNunitoSansSemiBold18 = GoogleFonts.gelasio(
+  static TextStyle whiteNunitoSansSemiBold18 = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.white,
+  );
+  static TextStyle secondaryGreyNunitoSansSemiBold18 = GoogleFonts.nunitoSans(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle darkGreyNunitoSansSemiBold14 = GoogleFonts.nunitoSans(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.darkGrey,
   );
 }
