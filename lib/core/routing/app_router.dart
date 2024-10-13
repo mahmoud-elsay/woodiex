@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/featrues/splash/splash_screen.dart';
-import 'package:woodiex/featrues/auth/login/login_screen.dart';
+import 'package:woodiex/featrues/auth/login/ui/login_screen.dart';
 import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 
 class AppRouter {
