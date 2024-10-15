@@ -4,15 +4,9 @@ import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
-
-
-
-
 class Woodiex extends StatelessWidget {
   final AppRouter appRouter;
-  
+
   const Woodiex({super.key, required this.appRouter});
 
   @override
@@ -23,11 +17,11 @@ class Woodiex extends StatelessWidget {
       child: MaterialApp(
         title: 'Furnix',
         theme: ThemeData(
-          primaryColor: ColorsManager.mainBlack, 
+          primaryColor: ColorsManager.mainBlack,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.splashScreen, 
+        initialRoute: Routes.appLayout,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
