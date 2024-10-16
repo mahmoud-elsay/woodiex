@@ -21,7 +21,7 @@ class Woodiex extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.appLayout,
+        initialRoute: Routes.splashScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
