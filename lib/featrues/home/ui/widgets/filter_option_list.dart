@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/data/models/fillter_option_model.dart';
 
 class FilterOptionsList extends StatefulWidget {
-  const FilterOptionsList({Key? key}) : super(key: key);
+  const FilterOptionsList({super.key});
 
   @override
   State<FilterOptionsList> createState() => _FilterOptionsListState();
