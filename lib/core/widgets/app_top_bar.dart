@@ -4,7 +4,7 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTopBar extends StatelessWidget {
-  final Widget title; // Allows flexibility to pass any widget as the title
+  final Widget title;
 
   const AppTopBar({
     super.key,
@@ -14,13 +14,22 @@ class AppTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w), // Adjusted padding
       child: Row(
         children: [
-          SvgPicture.asset('assets/svgs/search.svg'),
-          horizontalSpace(60),
-          Expanded(child: title), // Center the title widget
-          SvgPicture.asset('assets/svgs/cartsvg.svg'),
+          SvgPicture.asset(
+            'assets/svgs/search.svg',
+            height: 24.h,
+            width: 24.h,
+          ),
+          Spacer(), // Pushes the title to the center
+          title,
+          Spacer(), // Pushes the cart icon to the right
+          SvgPicture.asset(
+            'assets/svgs/cartsvg.svg',
+            height: 24.h,
+            width: 24.h,
+          ),
         ],
       ),
     );

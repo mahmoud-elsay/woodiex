@@ -25,6 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               AppTopBar(
                 title: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.center, // Center-align the text
                   children: [
                     Text(
                       'Make Home',
@@ -34,14 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'BEAUTIFUL',
                       style: Fonts.mainBlackGelasio18Bold,
-                    )
+                    ),
                   ],
                 ),
               ),
               verticalSpace(20),
               const FilterOptionsList(),
               verticalSpace(20),
-              // Wrap the GridView with Expanded to allow it to scroll properly
               Expanded(
                 child: FurnitureGridView(),
               ),
