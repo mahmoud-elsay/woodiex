@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/widgets/app_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/home/ui/widgets/home_top_bar.dart';
 import 'package:woodiex/featrues/home/ui/widgets/furnitrue_grid.dart';
 import 'package:woodiex/featrues/home/ui/widgets/filter_option_list.dart';
 
@@ -22,7 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HomeTopBar(),
+              AppTopBar(
+                title: Column(
+                  children: [
+                    Text(
+                      'Make Home',
+                      style: Fonts.gelasio18Regular,
+                    ),
+                    verticalSpace(2),
+                    Text(
+                      'BEAUTIFUL',
+                      style: Fonts.mainBlackGelasio18Bold,
+                    )
+                  ],
+                ),
+              ),
               verticalSpace(20),
               const FilterOptionsList(),
               verticalSpace(20),

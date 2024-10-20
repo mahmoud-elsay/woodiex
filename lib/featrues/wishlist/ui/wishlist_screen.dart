@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/widgets/app_top_bar.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -6,9 +7,10 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('HOme'),
-      ),
-    );
+        body: SafeArea(
+            child: AppTopBar(
+                title: Text(
+      'Wishlist',
+    ))));
   }
 }
