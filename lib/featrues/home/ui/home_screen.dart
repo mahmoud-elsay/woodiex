@@ -26,8 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
               AppTopBar(
                 title: Column(
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.center, // Center-align the text
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Make Home',

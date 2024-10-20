@@ -122,12 +122,12 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.all(16),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      padding: const EdgeInsets.all(12), // Adjust padding if needed
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        childAspectRatio: 0.75,
+        mainAxisSpacing: 12, // Adjust spacing for aesthetics
+        crossAxisSpacing: 12,
+        childAspectRatio: 0.7, // Try tweaking this for better item proportions
       ),
       itemCount: furnitureItems.length,
       itemBuilder: (context, index) {
