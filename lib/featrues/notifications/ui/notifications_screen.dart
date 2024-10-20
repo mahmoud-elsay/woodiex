@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/notifications/ui/widgets/notifications_top_bar.dart';
+import 'package:woodiex/featrues/notifications/ui/widgets/notificatins_list_view.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -15,6 +17,8 @@ class NotificationsScreen extends StatelessWidget {
           child: Column(
             children: [
               NotificationsTopBar(),
+              verticalSpace(20),
+              Expanded(child: NotificatinsListView())
             ],
           ),
         )),
