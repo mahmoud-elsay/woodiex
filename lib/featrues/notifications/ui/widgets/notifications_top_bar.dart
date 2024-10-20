@@ -22,7 +22,7 @@ class NotificationsTopBar extends StatelessWidget {
           Text(
             'Notification',
             style: Fonts.blackMerriweather16bold,
-          )
+          ),
         ],
       ),
     );

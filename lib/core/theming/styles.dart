@@ -75,7 +75,7 @@ class Fonts {
 
   static TextStyle darkNnitoSansSemiBold18 = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.regular, // Regular
+    fontWeight: FontWeightHelper.semiBold, // Regular
     color: ColorsManager.mainBlack,
   );
   static TextStyle whiteNunitoSansSemiBold18 = GoogleFonts.nunitoSans(
@@ -93,5 +93,11 @@ class Fonts {
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
+  );
+
+  static TextStyle darkNnitoSansBold12 = GoogleFonts.nunitoSans(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.bold, // Regular
+    color: ColorsManager.mainBlack,
   );
 }
