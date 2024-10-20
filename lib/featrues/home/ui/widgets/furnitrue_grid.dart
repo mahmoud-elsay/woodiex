@@ -31,6 +31,86 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
       name: 'Bed',
       price: 450.0,
     ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Modern Chair',
+      price: 120.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Wooden Table',
+      price: 230.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Sofa',
+      price: 340.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Bed',
+      price: 450.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Modern Chair',
+      price: 120.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Wooden Table',
+      price: 230.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Sofa',
+      price: 340.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Bed',
+      price: 450.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Modern Chair',
+      price: 120.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Wooden Table',
+      price: 230.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Sofa',
+      price: 340.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Bed',
+      price: 450.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Modern Chair',
+      price: 120.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Wooden Table',
+      price: 230.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Sofa',
+      price: 340.0,
+    ),
+    FurnitureItemModel(
+      productPath: 'assets/images/prod.png',
+      name: 'Bed',
+      price: 450.0,
+    ),
   ];
 
   void toggleFavorite(int index) {
@@ -42,14 +122,12 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(16),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      padding: const EdgeInsets.all(12), // Adjust padding if needed
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        childAspectRatio: 0.75,
+        mainAxisSpacing: 12, // Adjust spacing for aesthetics
+        crossAxisSpacing: 12,
+        childAspectRatio: 0.7, // Try tweaking this for better item proportions
       ),
       itemCount: furnitureItems.length,
       itemBuilder: (context, index) {
