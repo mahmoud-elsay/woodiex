@@ -12,6 +12,12 @@ class Fonts {
     height: 1.25,
   );
 
+  static TextStyle mainBlackGelasio18Bold = GoogleFonts.gelasio(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
   static TextStyle merriweather30regular = GoogleFonts.merriweather(
     fontSize: 30.sp,
     fontWeight: FontWeightHelper.regular,
@@ -24,6 +30,12 @@ class Fonts {
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
     height: 1.27,
+  );
+
+  static TextStyle gelasio18Regular = GoogleFonts.gelasio(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.secondaryGrey,
   );
 
   static TextStyle merriweather24bold = GoogleFonts.merriweather(
