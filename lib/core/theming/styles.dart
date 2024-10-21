@@ -100,4 +100,22 @@ class Fonts {
     fontWeight: FontWeightHelper.bold, // Regular
     color: ColorsManager.mainBlack,
   );
+
+  static TextStyle secondaryGreyNunitoSansBold18 = GoogleFonts.nunitoSans(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle darkNnitoSansBold20 = GoogleFonts.nunitoSans(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold, // Regular
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle whiteNnitoSansSemiBold20 = GoogleFonts.nunitoSans(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold, // Regular
+    color: ColorsManager.white,
+  );
 }

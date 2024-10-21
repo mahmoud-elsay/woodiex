@@ -1,6 +1,5 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
@@ -25,7 +24,7 @@ class CartTopBar extends StatelessWidget {
               width: 24.h,
             ),
           ),
-          horizontalSpace(50),
+          horizontalSpace(70),
           Text(
             'My Cart',
             style: Fonts.blackMerriweather16bold,

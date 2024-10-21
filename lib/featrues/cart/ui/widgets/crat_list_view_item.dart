@@ -36,7 +36,7 @@ class _CartListViewItemState extends State<CartListViewItem> {
       children: [
         Row(
           children: [
-            Container(
+            SizedBox(
               width: 100.w,
               height: 100.h,
               child: ClipRRect(
@@ -76,7 +76,7 @@ class _CartListViewItemState extends State<CartListViewItem> {
                     horizontalSpace(5),
                     Text(
                       quantity.toString(),
-                      style: Fonts.darkGreyNunitoSansBold14,
+                      style: Fonts.darkNnitoSansSemiBold18,
                     ),
                     horizontalSpace(5),
                     GestureDetector(
@@ -96,7 +96,7 @@ class _CartListViewItemState extends State<CartListViewItem> {
           height: 1.h,
           color: Colors.grey.shade300,
         ),
-        verticalSpace(10),
+        verticalSpace(20),
       ],
     );
   }
