@@ -28,7 +28,7 @@ class AppTopBar extends StatelessWidget {
           Spacer(), // Pushes the cart icon to the right
           GestureDetector(
             onTap: () {
-              context.pushNamed(Routes.loginScreen);
+              context.pushNamed(Routes.cartScreen);
             },
             child: SvgPicture.asset(
               'assets/svgs/cartsvg.svg',
