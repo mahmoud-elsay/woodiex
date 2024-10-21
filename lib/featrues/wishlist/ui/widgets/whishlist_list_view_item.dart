@@ -15,7 +15,7 @@ class WhishlistListViewItem extends StatelessWidget {
       children: [
         Row(
           children: [
-            Container(
+            SizedBox(
               width: 100.w,
               height: 100.h,
               child: ClipRRect(

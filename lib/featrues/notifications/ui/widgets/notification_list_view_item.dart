@@ -15,7 +15,7 @@ class NotificationListViewItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start, // Aligns top
           children: [
             // Image container with fixed size
-            Container(
+            SizedBox(
               width: 70.w,
               height: 70.h,
               child: ClipRRect(
