@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/cart/ui/widgets/bottom_cart.dart';
-import 'package:woodiex/featrues/cart/ui/widgets/cart_top_bar.dart';
 import 'package:woodiex/featrues/cart/ui/widgets/cart_list_view.dart';
 
 class CartScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         children: [
-          CartTopBar(),
+          BackableTopBar(screenTitle: 'My Cart'),
           verticalSpace(25),
           Expanded(child: CartListView()),
           verticalSpace(10),
