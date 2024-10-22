@@ -18,10 +18,12 @@ class WishlistScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppTopBar(
-              title: Text(
-            'Wishlist',
-            style: Fonts.blackMerriweather16bold,
-          )),
+            title: Text(
+              'Wishlist',
+              style: Fonts.blackMerriweather16bold,
+            ),
+            rightIconAsset: 'assets/svgs/cartsvg.svg',
+          ),
           verticalSpace(20),
           Expanded(child: WishlistListView())
         ],

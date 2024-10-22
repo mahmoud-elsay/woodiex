@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+                rightIconAsset: 'assets/svgs/cartsvg.svg',
               ),
               verticalSpace(20),
               const FilterOptionsList(),
