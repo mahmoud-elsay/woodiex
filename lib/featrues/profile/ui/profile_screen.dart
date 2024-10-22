@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/theming/styles.dart';
+import 'package:woodiex/core/widgets/app_top_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('prof'),
+    return Scaffold(
+        body: SafeArea(
+            child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      child: Column(
+        children: [
+          AppTopBar(
+            title: Text(
+              'Profile',
+              style: Fonts.blackMerriweather16bold,
+            ),
+            rightIconAsset: 'assets/svgs/logout.svg',
+          ),
+        ],
       ),
-    );
+    )));
   }
 }
