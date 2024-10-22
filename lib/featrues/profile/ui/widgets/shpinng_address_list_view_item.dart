@@ -16,6 +16,14 @@ class ShpinngAddressListViewItem extends StatefulWidget {
 class _ShpinngAddressListViewItemState
     extends State<ShpinngAddressListViewItem> {
   bool _isChecked = false;
+  bool _isEditing = false; // Flag to toggle edit mode
+  final TextEditingController _addressController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _addressController.text = 'Elmansora, Elmeena'; // Default address
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,7 @@ class _ShpinngAddressListViewItemState
           children: [
             Checkbox(
               activeColor: ColorsManager.mainBlack,
-              checkColor: ColorsManager.secondaryGrey,
+              checkColor: ColorsManager.white,
               onChanged: (bool? value) {
                 setState(() {
                   _isChecked = value ?? false;
@@ -35,7 +43,8 @@ class _ShpinngAddressListViewItemState
             ),
             Text(
               'Use as the shipping address',
-              style: Fonts.nunitoSansRegular18,
+              style: Fonts.nunitoSansRegular18
+                  .copyWith(color: ColorsManager.mainBlack),
             ),
           ],
         ),
@@ -66,15 +75,68 @@ class _ShpinngAddressListViewItemState
                       'mostfa naf3',
                       style: Fonts.blacknNnitoSansBold18,
                     ),
-                    horizontalSpace(200),
-                    SvgPicture.asset('assets/svgs/edit_icon.svg'),
+                    horizontalSpace(170),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _isEditing = !_isEditing; // Toggle edit mode
+                        });
+                        // Log the edit icon click
+                        debugPrint('Edit icon clicked');
+                      },
+                      child: SvgPicture.asset('assets/svgs/edit_icon.svg'),
+                    ),
                   ],
                 ),
                 verticalSpace(7),
                 Divider(
-                  color: ColorsManager.secondaryGrey,
-                  height: 1.h,
+                  color: Colors.grey.shade200,
+                  height: 0.3.h,
                 ),
+                _isEditing
+                    ? TextField(
+                        controller: _addressController,
+                        style: Fonts.nunitoSansRegular14,
+                        textAlign: TextAlign.left, // Align text to the left
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.r),
+                            borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.r),
+                            borderSide: BorderSide(
+                              color: ColorsManager
+                                  .mainBlack, // Border color on focus
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.r),
+                            borderSide: BorderSide(
+                              color: Colors
+                                  .grey.shade300, // Border color when enabled
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h,
+                            horizontal: 10.w,
+                          ),
+                        ),
+                        onSubmitted: (value) {
+                          setState(() {
+                            _isEditing = false; // Exit edit mode
+                          });
+                        },
+                      )
+                    : Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _addressController.text,
+                          style: Fonts.nunitoSansRegular14,
+                        ),
+                      ),
               ],
             ),
           ),

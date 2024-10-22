@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/profile/ui/widgets/shpinng_address_list_view.dart';
 
 class ShippingAddressScreen extends StatelessWidget {
   const ShippingAddressScreen({super.key});
@@ -16,6 +17,7 @@ class ShippingAddressScreen extends StatelessWidget {
           children: [
             BackableTopBar(screenTitle: 'Shipping Address'),
             verticalSpace(10),
+            Expanded(child: ShippingAddressListView())
           ],
         ),
       )),
