@@ -6,32 +6,48 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileListViewItem extends StatelessWidget {
-  const ProfileListViewItem({super.key});
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  const ProfileListViewItem({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 335.w,
-      height: 80.h,
-      color: ColorsManager.white,
-      child: Row(
-        children: [
-          Column(
-            children: [
-              Text(
-                'My orders',
-                style: Fonts.darkNnitoSansBold20.copyWith(fontSize: 18.sp),
+    return GestureDetector(
+      onTap: onTap, // Trigger the onTap callback when clicked
+      child: Container(
+        width: 335.w,
+        height: 80.h,
+        color: ColorsManager.white,
+        child: Row(
+          children: [
+            Expanded(
+              // Use Expanded to take full width and avoid using Column here
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to the start
+                children: [
+                  Text(
+                    title,
+                    style: Fonts.darkNnitoSansBold20.copyWith(fontSize: 18.sp),
+                  ),
+                  verticalSpace(5),
+                  Text(
+                    subtitle,
+                    style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12),
+                  ),
+                ],
               ),
-              verticalSpace(5),
-              Text(
-                'Already have 10 orders',
-                style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12),
-              )
-            ],
-          ),
-          Spacer(),
-          SvgPicture.asset('assets/svgs/next_arrow.svg')
-        ],
+            ),
+            SvgPicture.asset('assets/svgs/next_arrow.svg')
+          ],
+        ),
       ),
     );
   }
