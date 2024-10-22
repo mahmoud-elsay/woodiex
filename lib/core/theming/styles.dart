@@ -67,9 +67,9 @@ class Fonts {
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle blacknNnitoSansSemiBold18 = GoogleFonts.nunitoSans(
+  static TextStyle blacknNnitoSansBold18 = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.regular, // Regular
+    fontWeight: FontWeightHelper.bold, // Regular
     color: ColorsManager.mainBlack,
   );
 
