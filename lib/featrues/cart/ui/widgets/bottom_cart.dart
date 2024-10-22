@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+
 
 class BottomCart extends StatelessWidget {
   const BottomCart({super.key});
