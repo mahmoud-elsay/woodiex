@@ -24,7 +24,8 @@ class ProfileScreen extends StatelessWidget {
             rightIconAsset: 'assets/svgs/logout.svg',
           ),
           verticalSpace(30),
-          ProfilePicRow()
+          ProfilePicRow(),
+          verticalSpace(20),
         ],
       ),
     )));
