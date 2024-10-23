@@ -16,13 +16,13 @@ class ShpinngAddressListViewItem extends StatefulWidget {
 class _ShpinngAddressListViewItemState
     extends State<ShpinngAddressListViewItem> {
   bool _isChecked = false;
-  bool _isEditing = false; // Flag to toggle edit mode
+  bool _isEditing = false;
   final TextEditingController _addressController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _addressController.text = 'Elmansora, Elmeena'; // Default address
+    _addressController.text = 'Elmansora, Elmeena';
   }
 
   @override
@@ -57,11 +57,10 @@ class _ShpinngAddressListViewItemState
             borderRadius: BorderRadius.circular(10.r),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey
-                    .withOpacity(0.2), // Shadow color with transparency
-                spreadRadius: 2, // How much the shadow spreads
-                blurRadius: 6, // How soft the shadow appears
-                offset: const Offset(0, 3), // Position of the shadow (x, y)
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 6,
+                offset: const Offset(0, 3),
               ),
             ],
           ),
