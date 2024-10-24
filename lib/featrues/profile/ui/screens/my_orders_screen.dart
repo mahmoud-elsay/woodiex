@@ -3,6 +3,8 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/profile/ui/widgets/my_orders_screen_widgets/order_filter.dart';
+import 'package:woodiex/featrues/profile/ui/widgets/my_orders_screen_widgets/orders_list_view.dart';
+import 'package:woodiex/featrues/profile/ui/widgets/my_orders_screen_widgets/orders_list_view_item.dart';
 
 class MyOrdersScreen extends StatelessWidget {
   const MyOrdersScreen({super.key});
@@ -17,7 +19,9 @@ class MyOrdersScreen extends StatelessWidget {
         children: [
           BackableTopBar(screenTitle: 'My Orders'),
           verticalSpace(15),
-          OrderFilter()
+          OrderFilter(),
+          verticalSpace(15),
+          Expanded(child: OrdersListView())
         ],
       ),
     )));
