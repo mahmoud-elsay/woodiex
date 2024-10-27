@@ -1,8 +1,8 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/colors.dart';
-import 'package:woodiex/featrues/home/ui/home_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/home/ui/screens/home_screen.dart';
 import 'package:woodiex/featrues/wishlist/ui/wishlist_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/profile_screen.dart';
 import 'package:woodiex/featrues/notifications/ui/notifications_screen.dart';

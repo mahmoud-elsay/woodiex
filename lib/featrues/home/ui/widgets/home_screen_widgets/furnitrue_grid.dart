@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
-import 'package:woodiex/featrues/home/ui/widgets/furnitrue_item_widget.dart';
+import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/furnitrue_item_widget.dart';
 
 class FurnitureGridView extends StatefulWidget {
   const FurnitureGridView({super.key});
