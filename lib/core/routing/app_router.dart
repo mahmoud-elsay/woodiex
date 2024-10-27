@@ -6,10 +6,14 @@ import 'package:woodiex/featrues/splash/splash_screen.dart';
 import 'package:woodiex/featrues/auth/login/ui/login_screen.dart';
 import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
-    //this arguments to be passed in any screen like this ( arguments as ClassName )
     final arguments = settings.arguments;
 
     switch (settings.name) {
@@ -36,6 +40,26 @@ class AppRouter {
       case Routes.splashScreen:
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
+        );
+      case Routes.myOrders:
+        return MaterialPageRoute(
+          builder: (_) => const MyOrdersScreen(),
+        );
+      case Routes.setteing:
+        return MaterialPageRoute(
+          builder: (_) => const SettingScreen(),
+        );
+      case Routes.paymentMethods:
+        return MaterialPageRoute(
+          builder: (_) => const PaymentMethodScreen(),
+        );
+      case Routes.myReviewsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MyReviewsScreen(),
+        );
+      case Routes.shippingAddreesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ShippingAddressScreen(),
         );
       default:
         return MaterialPageRoute(

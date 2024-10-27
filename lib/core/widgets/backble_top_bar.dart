@@ -5,8 +5,13 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CartTopBar extends StatelessWidget {
-  const CartTopBar({super.key});
+class BackableTopBar extends StatelessWidget {
+  final String screenTitle;
+
+  const BackableTopBar({
+    super.key,
+    required this.screenTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class CartTopBar extends StatelessWidget {
           ),
           horizontalSpace(70),
           Text(
-            'My Cart',
+            screenTitle,
             style: Fonts.blackMerriweather16bold,
           ),
         ],

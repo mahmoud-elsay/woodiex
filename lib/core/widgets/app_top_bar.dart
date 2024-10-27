@@ -6,10 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTopBar extends StatelessWidget {
   final Widget title;
+  final String rightIconAsset; // New parameter for the right icon asset
 
   const AppTopBar({
     super.key,
     required this.title,
+    required this.rightIconAsset, // Required asset for right icon
   });
 
   @override
@@ -25,13 +27,18 @@ class AppTopBar extends StatelessWidget {
           ),
           Spacer(), // Pushes the title to the center
           title,
-          Spacer(), // Pushes the cart icon to the right
+          Spacer(), // Pushes the right icon to the right
           GestureDetector(
             onTap: () {
-              context.pushNamed(Routes.cartScreen);
+              // Add logic based on the rightIconAsset
+              if (rightIconAsset == 'assets/svgs/cart.svg') {
+                context.pushNamed(Routes.cartScreen);
+              } else if (rightIconAsset == 'assets/svgs/logout.svg') {
+                // Implement logic for logout
+              }
             },
             child: SvgPicture.asset(
-              'assets/svgs/cartsvg.svg',
+              rightIconAsset, // Using the passed icon asset
               height: 24.h,
               width: 24.h,
             ),
