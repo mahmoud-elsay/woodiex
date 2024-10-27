@@ -72,6 +72,7 @@ dependencies:
   #Render After Effects animations
   lottie: ^3.1.2
   google_fonts: ^6.2.1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
