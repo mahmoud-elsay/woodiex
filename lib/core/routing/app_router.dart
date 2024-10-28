@@ -9,7 +9,8 @@ import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
-import 'package:woodiex/featrues/home/ui/screens/products_details_screen.dart';
+import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
+import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
 
@@ -64,7 +65,9 @@ class AppRouter {
         );
       case Routes.prodcutDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) => const ProductsDetailsScreen(),
+          builder: (_) => ProductDetailsScreen(
+            item: arguments as FurnitureItemModel,
+          ),
         );
       default:
         return MaterialPageRoute(
