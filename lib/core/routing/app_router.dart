@@ -7,6 +7,7 @@ import 'package:woodiex/featrues/cart/ui/screens/cart_screen.dart';
 import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_screen.dart';
+import 'package:woodiex/featrues/cart/ui/screens/checkout_success.dart';
 import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
@@ -71,11 +72,15 @@ class AppRouter {
           ),
         );
 
-              case Routes.checkoutScreen:
+      case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (_) => const CheckoutScreen(),
         );
-        
+
+      case Routes.checkoutSuccess:
+        return MaterialPageRoute(
+          builder: (_) => const CheckoutSuccess(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +46,9 @@ class CheckoutScreen extends StatelessWidget {
                   buttonText: 'SUBMIT ORDER',
                   textStyle:
                       Fonts.whiteNunitoSansSemiBold18.copyWith(fontSize: 20.sp),
-                  onPressed: () {})
+                  onPressed: () {
+                    context.pushNamed(Routes.checkoutSuccess);
+                  })
             ],
           ),
         ),
