@@ -10,7 +10,7 @@ class ProductSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 350,
+      expandedHeight: 600,
       pinned: true,
       stretch: true,
       backgroundColor: ColorsManager.white,
