@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/featrues/layout/app_layout.dart';
-import 'package:woodiex/featrues/cart/ui/cart_screen.dart';
 import 'package:woodiex/featrues/splash/splash_screen.dart';
 import 'package:woodiex/featrues/auth/login/ui/login_screen.dart';
+import 'package:woodiex/featrues/cart/ui/screens/cart_screen.dart';
 import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
