@@ -1,5 +1,5 @@
+import 'filter_option_item.dart';
 import 'package:flutter/material.dart';
-import '../widgets/filter_option_item.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/data/models/fillter_option_model.dart';

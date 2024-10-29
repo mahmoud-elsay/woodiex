@@ -3,8 +3,8 @@ import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/app_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/home/ui/widgets/furnitrue_grid.dart';
-import 'package:woodiex/featrues/home/ui/widgets/filter_option_list.dart';
+import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/furnitrue_grid.dart';
+import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/filter_option_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

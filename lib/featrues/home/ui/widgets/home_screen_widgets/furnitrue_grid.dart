@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
-import 'package:woodiex/featrues/home/ui/widgets/furnitrue_item_widget.dart';
+import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/furnitrue_item_widget.dart';
 
 class FurnitureGridView extends StatefulWidget {
   const FurnitureGridView({super.key});
@@ -131,9 +133,19 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
       ),
       itemCount: furnitureItems.length,
       itemBuilder: (context, index) {
-        return FurnitureItemWidget(
-          item: furnitureItems[index],
-          onFavoriteToggle: () => toggleFavorite(index),
+        final item = furnitureItems[index];
+        return GestureDetector(
+          onTap: () {
+            context.pushNamed(
+              Routes.prodcutDetailsScreen,
+              arguments: item,
+            );
+          },
+          child: FurnitureItemWidget(
+            item: item,
+            onFavoriteToggle: () => toggleFavorite(index),
+            heroTag: 'furniture_${item.name}', // Unique hero tag
+          ),
         );
       },
     );
