@@ -144,7 +144,7 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
           child: FurnitureItemWidget(
             item: item,
             onFavoriteToggle: () => toggleFavorite(index),
-            heroTag: 'furniture_${item.name}', // Unique hero tag
+            heroTag: 'furniture_${item.name}_$index', // Unique hero tag
           ),
         );
       },

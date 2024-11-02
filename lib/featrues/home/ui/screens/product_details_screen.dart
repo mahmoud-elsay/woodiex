@@ -14,7 +14,10 @@ import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/p
 class ProductDetailsScreen extends StatefulWidget {
   final FurnitureItemModel item;
 
-  const ProductDetailsScreen({Key? key, required this.item}) : super(key: key);
+  const ProductDetailsScreen({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();

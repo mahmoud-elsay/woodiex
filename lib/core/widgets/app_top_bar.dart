@@ -30,8 +30,7 @@ class AppTopBar extends StatelessWidget {
           Spacer(), // Pushes the right icon to the right
           GestureDetector(
             onTap: () {
-              // Add logic based on the rightIconAsset
-              if (rightIconAsset == 'assets/svgs/cart.svg') {
+              if (rightIconAsset == 'assets/svgs/cartsvg.svg') {
                 context.pushNamed(Routes.cartScreen);
               } else if (rightIconAsset == 'assets/svgs/logout.svg') {
                 // Implement logic for logout

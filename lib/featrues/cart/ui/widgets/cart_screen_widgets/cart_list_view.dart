@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/featrues/cart/ui/widgets/crat_list_view_item.dart';
+import 'package:woodiex/featrues/cart/ui/widgets/cart_screen_widgets/crat_list_view_item.dart';
 
 class CartListView extends StatelessWidget {
   const CartListView({super.key});

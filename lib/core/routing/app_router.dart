@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/featrues/layout/app_layout.dart';
-import 'package:woodiex/featrues/cart/ui/cart_screen.dart';
 import 'package:woodiex/featrues/splash/splash_screen.dart';
 import 'package:woodiex/featrues/auth/login/ui/login_screen.dart';
+import 'package:woodiex/featrues/cart/ui/screens/cart_screen.dart';
 import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
+import 'package:woodiex/featrues/cart/ui/screens/checkout_screen.dart';
+import 'package:woodiex/featrues/cart/ui/screens/checkout_success.dart';
 import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
+import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
@@ -68,6 +71,21 @@ class AppRouter {
           builder: (_) => ProductDetailsScreen(
             item: arguments as FurnitureItemModel,
           ),
+        );
+
+      case Routes.checkoutScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CheckoutScreen(),
+        );
+
+      case Routes.checkoutSuccess:
+        return MaterialPageRoute(
+          builder: (_) => const CheckoutSuccess(),
+        );
+
+      case Routes.productReviewsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductReviewsScreen(),
         );
       default:
         return MaterialPageRoute(

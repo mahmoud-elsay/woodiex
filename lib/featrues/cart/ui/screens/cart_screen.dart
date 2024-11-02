@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/cart/ui/widgets/bottom_cart.dart';
-import 'package:woodiex/featrues/cart/ui/widgets/cart_list_view.dart';
+import 'package:woodiex/featrues/cart/ui/widgets/cart_screen_widgets/bottom_cart.dart';
+import 'package:woodiex/featrues/cart/ui/widgets/cart_screen_widgets/cart_list_view.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

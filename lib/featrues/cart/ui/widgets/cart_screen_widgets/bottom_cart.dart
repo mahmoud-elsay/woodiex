@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
-
-
+import 'package:woodiex/core/widgets/backble_top_bar.dart';
 
 class BottomCart extends StatelessWidget {
   const BottomCart({super.key});
@@ -29,7 +30,9 @@ class BottomCart extends StatelessWidget {
         AppTextButton(
             buttonText: 'checkout',
             textStyle: Fonts.whiteNnitoSansSemiBold20,
-            onPressed: () {})
+            onPressed: () {
+              context.pushNamed(Routes.checkoutScreen);
+            })
       ],
     );
   }
