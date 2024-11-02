@@ -3,6 +3,8 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_reviews_screen/product_row.dart';
+import 'package:woodiex/featrues/home/ui/widgets/product_reviews_screen/reviews_list_view.dart';
+import 'package:woodiex/featrues/home/ui/widgets/product_reviews_screen/reviews_list_view_item.dart';
 
 class ProductReviewsScreen extends StatefulWidget {
   const ProductReviewsScreen({super.key});
@@ -28,6 +30,8 @@ class _ProductReviewsScreenState extends State<ProductReviewsScreen> {
               height: 1.h,
               color: Colors.grey.shade300,
             ),
+            verticalSpace(35),
+            ReviewsListView()
           ],
         ),
       )),
