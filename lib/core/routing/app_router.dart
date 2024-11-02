@@ -12,7 +12,7 @@ import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
-import 'package:woodiex/featrues/cart/ui/screens/product_reviews_screen.dart';
+import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
