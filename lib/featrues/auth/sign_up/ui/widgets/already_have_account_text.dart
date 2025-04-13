@@ -13,11 +13,11 @@ class AlreadyHaveAccountText extends StatelessWidget {
         children: [
           TextSpan(
             text: 'Already have an account?',
-            style: Fonts.nunitoSansRegular14, // Use your custom Fonts style
+            style: Fonts.nunitoSans14RegularSecondaryGrey,
           ),
           TextSpan(
             text: ' Login',
-            style: Fonts.darkGreyNunitoSansBold14, // Adjust as needed
+            style: Fonts.nunitoSans14BoldDarkGrey,
           ),
         ],
       ),

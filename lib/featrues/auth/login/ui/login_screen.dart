@@ -3,10 +3,10 @@ import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
+import 'package:woodiex/core/widgets/app_form_field.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
-import 'package:woodiex/core/widgets/app_form_field.dart'; // Corrected Import
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -31,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const LoginAppBar(),
                 verticalSpace(45),
-                Text('Hello !', style: Fonts.merriweather30regular),
+                Text('Hello !', style: Fonts.merriweather30RegularMoreDarkGrey),
                 verticalSpace(10),
-                Text('Welcome Back', style: Fonts.merriweather24bold),
+                Text('Welcome Back', style: Fonts.merriweather24BoldDarkGrey),
                 verticalSpace(80),
                 AppTextFormField(
                   hintText: 'Email',
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 verticalSpace(35),
                 AppTextButton(
                     buttonText: 'login ',
-                    textStyle: Fonts.whiteNunitoSansSemiBold18,
+                    textStyle: Fonts.nunitoSans18SemiBoldWhite,
                     onPressed: () {}),
                 verticalSpace(35),
                 GestureDetector(
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Center(
                       child: Text(
                         'SIGN UP ',
-                        style: Fonts.darkNnitoSansSemiBold18,
+                        style: Fonts.nunitoSans18BoldMainBlack,
                       ),
                     ))
               ],

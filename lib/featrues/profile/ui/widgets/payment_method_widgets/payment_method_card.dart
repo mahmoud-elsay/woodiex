@@ -37,9 +37,9 @@ class PaymentMethodCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             child: Image.asset(
               isChecked
-                  ? 'assets/images/Payment_card.png' // Selected card
-                  : 'assets/images/unselcted_Payment_card.png', // Unselected card
-              fit: BoxFit.cover, // Make image fill the container
+                  ? 'assets/images/Payment_card.png'
+                  : 'assets/images/unselcted_Payment_card.png',
+              fit: BoxFit.fill,
             ),
           ),
         ),
@@ -54,8 +54,7 @@ class PaymentMethodCard extends StatelessWidget {
             ),
             Text(
               'Use this payment method ',
-              style: Fonts.nunitoSansRegular18
-                  .copyWith(color: ColorsManager.mainBlack),
+              style: Fonts.nunitoSans18RegularMainBlack,
             ),
           ],
         ),

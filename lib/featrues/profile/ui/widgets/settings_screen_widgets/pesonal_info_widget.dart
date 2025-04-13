@@ -15,14 +15,10 @@ class PersonalInfoWidget extends StatefulWidget {
 class _PersonalInfoWidgetState extends State<PersonalInfoWidget> {
   String _name = 'Mostfa Naf3';
   String _email = 'mostfa.naf3@gmail.com';
-
-  // TextControllers for input fields in the dialog
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  // Function to show edit dialog
   void _showEditDialog() {
-    // Set initial text for controllers
     _nameController.text = _name;
     _emailController.text = _email;
 
@@ -31,7 +27,7 @@ class _PersonalInfoWidgetState extends State<PersonalInfoWidget> {
       builder: (context) => AlertDialog(
         title: Text(
           'Edit Information',
-          style: Fonts.secondaryGreyNunitoSansBold18,
+          style: Fonts.nunitoSans18BoldSecondaryGrey,
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -77,8 +73,7 @@ class _PersonalInfoWidgetState extends State<PersonalInfoWidget> {
           children: [
             Text(
               'Personal Information',
-              style:
-                  Fonts.secondaryGreyNunitoSansBold18.copyWith(fontSize: 16.sp),
+              style: Fonts.nunitoSans18BoldSecondaryGrey,
             ),
             const Spacer(),
             GestureDetector(
@@ -120,12 +115,12 @@ class _PersonalInfoWidgetState extends State<PersonalInfoWidget> {
         children: [
           Text(
             label,
-            style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12.sp),
+            style: Fonts.nunitoSans12RegularSecondaryGrey,
           ),
           verticalSpace(5),
           Text(
             value,
-            style: Fonts.blacknNnitoSansBold18.copyWith(fontSize: 14.sp),
+            style: Fonts.nunitoSans14BoldMainBlack,
           ),
         ],
       ),

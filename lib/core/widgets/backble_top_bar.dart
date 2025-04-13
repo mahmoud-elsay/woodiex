@@ -32,7 +32,7 @@ class BackableTopBar extends StatelessWidget {
           horizontalSpace(70),
           Text(
             screenTitle,
-            style: Fonts.blackMerriweather16bold,
+            style: Fonts.merriweather16BoldMainBlack,
           ),
         ],
       ),

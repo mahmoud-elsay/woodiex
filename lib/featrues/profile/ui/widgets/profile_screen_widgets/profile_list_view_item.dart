@@ -20,7 +20,7 @@ class ProfileListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Trigger the onTap callback when clicked
+      onTap: onTap,
       child: Container(
         width: 335.w,
         height: 80.h,
@@ -28,19 +28,17 @@ class ProfileListViewItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              // Use Expanded to take full width and avoid using Column here
               child: Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start, // Align text to the start
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: Fonts.darkNnitoSansBold20.copyWith(fontSize: 18.sp),
+                    style: Fonts.nunitoSans18BoldMainBlack,
                   ),
                   verticalSpace(5),
                   Text(
                     subtitle,
-                    style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12),
+                    style: Fonts.nunitoSans12RegularSecondaryGrey,
                   ),
                 ],
               ),

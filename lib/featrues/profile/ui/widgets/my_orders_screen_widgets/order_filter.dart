@@ -36,18 +36,18 @@ class _OrderFilterState extends State<OrderFilter> {
                 Text(
                   _filterNames[index],
                   style: isSelected
-                      ? Fonts.blacknNnitoSansBold18
-                      : Fonts.nunitoSansRegular18,
+                      ? Fonts.nunitoSans18BoldMainBlack
+                      : Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 verticalSpace(5),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 400),
                   width: 40.w,
-                  height: isSelected ? 4.h : 0, // Hide if not selected
+                  height: isSelected ? 4.h : 0,
                   decoration: BoxDecoration(
                     color: isSelected
                         ? ColorsManager.mainBlack
-                        : Colors.transparent, // Transparent if not selected
+                        : Colors.transparent,
                     borderRadius: BorderRadius.circular(4.r),
                   ),
                 ),

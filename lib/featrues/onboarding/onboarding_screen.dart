@@ -12,14 +12,12 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Background image, filling the screen
           Positioned.fill(
             child: Image.asset(
               'assets/images/boarding.png',
               fit: BoxFit.fill,
             ),
           ),
-
           Positioned.fill(
             child: Padding(
               padding: EdgeInsets.only(left: 30.w, top: 276.h),
@@ -28,14 +26,17 @@ class OnboardingScreen extends StatelessWidget {
                 children: [
                   Text(
                     'MAKE YOUR',
-                    style: Fonts.gelasio24SemiBold,
+                    style: Fonts.gelasio24SemiBoldMainBlack,
                   ),
                   verticalSpace(10),
-                  Text('HOME BEAUTIFUL', style: Fonts.gelasio30Bold),
+                  Text(
+                    'HOME BEAUTIFUL',
+                    style: Fonts.gelasio30BoldMainBlack,
+                  ),
                   verticalSpace(35),
                   Text(
                     'The best simple place where you \n discover most wonderful furnitures\n and make your home beautiful',
-                    style: Fonts.nunitoSansRegular18,
+                    style: Fonts.nunitoSans18RegularSecondaryGrey,
                   ),
                   verticalSpace(200),
                   Center(child: OnboardingButton())

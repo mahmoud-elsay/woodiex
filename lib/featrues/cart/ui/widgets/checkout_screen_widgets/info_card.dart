@@ -26,7 +26,7 @@ class InfoCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: Fonts.secondaryGreyNunitoSansSemiBold18,
+              style: Fonts.nunitoSans18SemiBoldSecondaryGrey,
             ),
             const Spacer(),
             GestureDetector(
@@ -57,7 +57,7 @@ class InfoCard extends StatelessWidget {
               horizontalSpace(20),
               Text(
                 cardText,
-                style: Fonts.darkNnitoSansSemiBold18.copyWith(fontSize: 14),
+                style: Fonts.nunitoSans14SemiBoldMainBlack,
               ),
             ],
           ),

@@ -12,7 +12,7 @@ class OnboardingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        context.pushNamed(Routes.loginScreen); // Navigate to the login screen
+        context.pushNamed(Routes.loginScreen);
       },
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(ColorsManager.mainBlack),
@@ -27,8 +27,8 @@ class OnboardingButton extends StatelessWidget {
         ),
       ),
       child: Text(
-        'Get Started', // Button label text
-        style: Fonts.whiteGelasio18SemiBold, // Apply white Gelasio font style
+        'Get Started',
+        style: Fonts.gelasio18SemiBoldWhite,
       ),
     );
   }

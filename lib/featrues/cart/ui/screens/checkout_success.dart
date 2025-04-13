@@ -23,7 +23,7 @@ class CheckoutSuccess extends StatelessWidget {
               verticalSpace(150),
               Text(
                 'SUCCESS!',
-                style: Fonts.merriweather24bold.copyWith(fontSize: 36.sp),
+                style: Fonts.merriweather36BoldMainBlack,
               ),
               verticalSpace(30),
               SvgPicture.asset('assets/svgs/order_done.svg'),
@@ -33,20 +33,20 @@ class CheckoutSuccess extends StatelessWidget {
               Text(
                 '''Your order will be delivered soon.
             Thank you for choosing our app!''',
-                style: Fonts.nunitoSansRegular18,
+                style: Fonts.nunitoSans18RegularSecondaryGrey,
                 textAlign: TextAlign.center,
               ),
               verticalSpace(30),
               AppTextButton(
                   buttonText: 'Track your orders',
-                  textStyle: Fonts.whiteNunitoSansSemiBold18,
+                  textStyle: Fonts.nunitoSans18SemiBoldWhite,
                   onPressed: () {
                     context.pushReplacementNamed(Routes.myOrders);
                   }),
               verticalSpace(10),
               AppTextButton(
                   buttonText: 'BACK TO HOME',
-                  textStyle: Fonts.darkNnitoSansSemiBold18,
+                  textStyle: Fonts.nunitoSans18SemiBoldMainBlack,
                   backgroundColor: ColorsManager.white,
                   onPressed: () {
                     context.pushReplacementNamed(Routes.appLayout);

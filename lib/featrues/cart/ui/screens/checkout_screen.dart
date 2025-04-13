@@ -44,8 +44,7 @@ class CheckoutScreen extends StatelessWidget {
               verticalSpace(50),
               AppTextButton(
                   buttonText: 'SUBMIT ORDER',
-                  textStyle:
-                      Fonts.whiteNunitoSansSemiBold18.copyWith(fontSize: 20.sp),
+                  textStyle: Fonts.nunitoSans18SemiBoldWhite,
                   onPressed: () {
                     context.pushNamed(Routes.checkoutSuccess);
                   })

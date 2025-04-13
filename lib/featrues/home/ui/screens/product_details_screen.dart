@@ -78,7 +78,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         horizontalSpace(20),
                         AppTextButton(
                           buttonText: 'Add to cart',
-                          textStyle: Fonts.whiteNnitoSansSemiBold20,
+                          textStyle: Fonts.nunitoSans20SemiBoldWhite,
                           onPressed: () {},
                           buttonWidth: 250.w,
                           buttonHeight: 60.h,

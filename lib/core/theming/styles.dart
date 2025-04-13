@@ -5,117 +5,248 @@ import 'package:woodiex/core/theming/font_weight.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Fonts {
-  static TextStyle gelasio24SemiBold = GoogleFonts.gelasio(
+  static TextStyle gelasio24SemiBoldMoreDarkGrey = GoogleFonts.gelasio(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.moreDarkGrey,
     height: 1.25,
   );
 
-  static TextStyle mainBlackGelasio18Bold = GoogleFonts.gelasio(
+  static TextStyle gelasio24BoldMainBlack = GoogleFonts.gelasio(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
 
-  static TextStyle merriweather30regular = GoogleFonts.merriweather(
+  static TextStyle merriweather30RegularMoreDarkGrey = GoogleFonts.merriweather(
     fontSize: 30.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.moreDarkGrey,
     height: 1.25,
   );
 
-  static TextStyle gelasio30Bold = GoogleFonts.gelasio(
+  static TextStyle gelasio30BoldDarkGrey = GoogleFonts.gelasio(
     fontSize: 30.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
     height: 1.27,
   );
 
-  static TextStyle gelasio18Regular = GoogleFonts.gelasio(
+  static TextStyle gelasio18RegularSecondaryGrey = GoogleFonts.gelasio(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle merriweather24bold = GoogleFonts.merriweather(
+  static TextStyle merriweather24BoldDarkGrey = GoogleFonts.merriweather(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
     height: 1.25,
   );
 
-  static TextStyle blackMerriweather16bold = GoogleFonts.merriweather(
+  static TextStyle merriweather16BoldMainBlack = GoogleFonts.merriweather(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
-  static TextStyle nunitoSansRegular18 = GoogleFonts.nunitoSans(
+
+  static TextStyle nunitoSans18RegularSecondaryGrey = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.regular, // Regular
+    fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
-  static TextStyle whiteGelasio18SemiBold = GoogleFonts.gelasio(
+
+  static TextStyle gelasio18SemiBoldWhite = GoogleFonts.gelasio(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.white,
   );
 
-  static TextStyle nunitoSansRegular14 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans14RegularSecondaryGrey = GoogleFonts.nunitoSans(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle blacknNnitoSansBold18 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans18BoldMainBlack = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.bold, // Regular
+    fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
 
-  static TextStyle darkNnitoSansSemiBold18 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans18SemiBoldMainBlack = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
-    fontWeight: FontWeightHelper.semiBold, // Regular
+    fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.mainBlack,
   );
-  static TextStyle whiteNunitoSansSemiBold18 = GoogleFonts.nunitoSans(
+
+  static TextStyle nunitoSans18SemiBoldWhite = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.white,
   );
-  static TextStyle secondaryGreyNunitoSansSemiBold18 = GoogleFonts.nunitoSans(
+
+  static TextStyle nunitoSans18SemiBoldSecondaryGrey = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle darkGreyNunitoSansBold14 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans14BoldDarkGrey = GoogleFonts.nunitoSans(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.darkGrey,
   );
 
-  static TextStyle darkNnitoSansBold12 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans12BoldMainBlack = GoogleFonts.nunitoSans(
     fontSize: 12.sp,
-    fontWeight: FontWeightHelper.bold, // Regular
+    fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
 
-  static TextStyle secondaryGreyNunitoSansBold18 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans18BoldSecondaryGrey = GoogleFonts.nunitoSans(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.secondaryGrey,
   );
 
-  static TextStyle darkNnitoSansBold20 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans20BoldMainBlack = GoogleFonts.nunitoSans(
     fontSize: 20.sp,
-    fontWeight: FontWeightHelper.bold, // Regular
+    fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
 
-  static TextStyle whiteNnitoSansSemiBold20 = GoogleFonts.nunitoSans(
+  static TextStyle nunitoSans20BoldWhite = GoogleFonts.nunitoSans(
     fontSize: 20.sp,
-    fontWeight: FontWeightHelper.bold, // Regular
+    fontWeight: FontWeightHelper.bold,
     color: ColorsManager.white,
+  );
+
+  static TextStyle nunitoSans16BoldSecondaryGrey = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle nunitoSans16SemiBoldSecondaryGrey = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle nunitoSans16SemiBoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans12RegularSecondaryGrey = GoogleFonts.nunitoSans(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle nunitoSans14BoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans18RegularMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans14SemiBoldSecondaryGrey = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.secondaryGrey,
+  );
+
+  static TextStyle nunitoSans16BoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans14RegularMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle gelasio24SemiBoldMainBlack = GoogleFonts.gelasio(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle gelasio30BoldMainBlack = GoogleFonts.gelasio(
+    fontSize: 30.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans20SemiBoldWhite = GoogleFonts.nunitoSans(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.white,
+  );
+
+  static TextStyle nunitoSans14SemiBoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle gelasio18RegularMainBlack = GoogleFonts.gelasio(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle gelasio18BoldMainBlack = GoogleFonts.gelasio(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans14LightMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.light,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle gelasio24MediumMainBlack = GoogleFonts.gelasio(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans30BoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 30.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans24BoldMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
+  );
+
+  static TextStyle nunitoSans12RegularMainBlack = GoogleFonts.nunitoSans(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.mainBlack,
+  );
+
+  // New styles for CheckoutScreen and CheckoutSuccess
+  static TextStyle merriweather36BoldMainBlack = GoogleFonts.merriweather(
+    fontSize: 36.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.mainBlack,
   );
 }

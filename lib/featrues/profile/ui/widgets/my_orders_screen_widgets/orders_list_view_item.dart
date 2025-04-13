@@ -34,13 +34,14 @@ class OrdersListViewItem extends StatelessWidget {
               children: [
                 Text(
                   'Order No238562312',
-                  style: Fonts.secondaryGreyNunitoSansSemiBold18
+                  style: Fonts.nunitoSans18SemiBoldSecondaryGrey
                       .copyWith(fontSize: 16),
                 ),
                 Spacer(),
                 Text(
                   '22/10/2020',
-                  style: Fonts.nunitoSansRegular14,
+                  style: Fonts.nunitoSans14RegularSecondaryGrey
+                      .copyWith(fontSize: 14),
                 ),
               ],
             ),
@@ -56,15 +57,15 @@ class OrdersListViewItem extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: 'Quantity: ',
-                        style: Fonts.nunitoSansRegular14.copyWith(
+                        style: Fonts.nunitoSans14RegularSecondaryGrey.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeightHelper.semiBold,
                         ),
                       ),
                       TextSpan(
                         text: '03',
-                        style:
-                            Fonts.blacknNnitoSansBold18.copyWith(fontSize: 16),
+                        style: Fonts.nunitoSans18BoldMainBlack
+                            .copyWith(fontSize: 16),
                       ),
                     ],
                   ),
@@ -75,15 +76,15 @@ class OrdersListViewItem extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: 'Total Amount: ',
-                        style: Fonts.nunitoSansRegular14.copyWith(
+                        style: Fonts.nunitoSans14RegularSecondaryGrey.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeightHelper.semiBold,
                         ),
                       ),
                       TextSpan(
                         text: '\$50',
-                        style:
-                            Fonts.blacknNnitoSansBold18.copyWith(fontSize: 16),
+                        style: Fonts.nunitoSans18BoldMainBlack
+                            .copyWith(fontSize: 16),
                       ),
                     ],
                   ),
@@ -106,15 +107,15 @@ class OrdersListViewItem extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'detail',
-                      style: Fonts.whiteNunitoSansSemiBold18
+                      style: Fonts.nunitoSans18SemiBoldWhite
                           .copyWith(fontSize: 16),
                     ),
                   ),
                 ),
-                Spacer(), // Use Spacer for flexible spacing
+                Spacer(),
                 Text(
                   'Delivered',
-                  style: Fonts.darkNnitoSansSemiBold18.copyWith(
+                  style: Fonts.nunitoSans18SemiBoldMainBlack.copyWith(
                     fontSize: 16,
                     color: ColorsManager.green,
                   ),

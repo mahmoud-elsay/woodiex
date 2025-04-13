@@ -23,15 +23,11 @@ class ProfilePicRow extends StatelessWidget {
                   color: Colors.black.withOpacity(0.2),
                   blurRadius: 10.r,
                   spreadRadius: 2.r,
-                  offset:
-                      Offset(0, 5.h), // Slight shadow below the profile picture
+                  offset: Offset(0, 5.h),
                 ),
               ],
               gradient: LinearGradient(
-                colors: [
-                  Colors.blueAccent,
-                  Colors.purpleAccent
-                ], // Optional gradient for a cool effect
+                colors: [Colors.blueAccent, Colors.purpleAccent],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -48,13 +44,13 @@ class ProfilePicRow extends StatelessWidget {
         Column(
           children: [
             Text(
-              ' mostafa naf3',
-              style: Fonts.darkNnitoSansBold20,
+              'mostafa naf3',
+              style: Fonts.nunitoSans20BoldMainBlack,
             ),
             verticalSpace(10),
             Text(
               'moustfanaf3@gmail.com',
-              style: Fonts.nunitoSansRegular14,
+              style: Fonts.nunitoSans14RegularSecondaryGrey,
             )
           ],
         )

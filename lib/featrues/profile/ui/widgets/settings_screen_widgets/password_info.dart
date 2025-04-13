@@ -13,11 +13,9 @@ class PasswordInfo extends StatefulWidget {
 }
 
 class _PasswordInfoState extends State<PasswordInfo> {
-  String _password =
-      'yourpassword123'; // Example password, replace with real data
+  String _password = 'yourpassword123';
   final TextEditingController _passwordController = TextEditingController();
 
-  // Function to show the edit dialog for password
   void _showPasswordEditDialog() {
     _passwordController.text = _password;
 
@@ -26,7 +24,7 @@ class _PasswordInfoState extends State<PasswordInfo> {
       builder: (context) => AlertDialog(
         title: Text(
           'Edit Password',
-          style: Fonts.secondaryGreyNunitoSansBold18,
+          style: Fonts.nunitoSans18BoldSecondaryGrey,
         ),
         content: TextField(
           controller: _passwordController,
@@ -62,8 +60,7 @@ class _PasswordInfoState extends State<PasswordInfo> {
           children: [
             Text(
               'Password',
-              style:
-                  Fonts.secondaryGreyNunitoSansBold18.copyWith(fontSize: 16.sp),
+              style: Fonts.nunitoSans18BoldSecondaryGrey,
             ),
             const Spacer(),
             GestureDetector(
@@ -103,12 +100,12 @@ class _PasswordInfoState extends State<PasswordInfo> {
         children: [
           Text(
             'Password',
-            style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12.sp),
+            style: Fonts.nunitoSans12RegularSecondaryGrey,
           ),
           verticalSpace(5),
           Text(
-            '*****', // Display the password as asterisks
-            style: Fonts.blacknNnitoSansBold18.copyWith(fontSize: 14.sp),
+            '*****',
+            style: Fonts.nunitoSans14BoldMainBlack,
           ),
         ],
       ),

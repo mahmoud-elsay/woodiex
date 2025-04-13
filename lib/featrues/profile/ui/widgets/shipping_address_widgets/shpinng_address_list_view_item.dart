@@ -43,8 +43,7 @@ class _ShpinngAddressListViewItemState
             ),
             Text(
               'Use as the shipping address',
-              style: Fonts.nunitoSansRegular18
-                  .copyWith(color: ColorsManager.mainBlack),
+              style: Fonts.nunitoSans18RegularMainBlack,
             ),
           ],
         ),
@@ -72,15 +71,14 @@ class _ShpinngAddressListViewItemState
                   children: [
                     Text(
                       'mostfa naf3',
-                      style: Fonts.blacknNnitoSansBold18,
+                      style: Fonts.nunitoSans18BoldMainBlack,
                     ),
                     horizontalSpace(170),
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          _isEditing = !_isEditing; // Toggle edit mode
+                          _isEditing = !_isEditing;
                         });
-                        // Log the edit icon click
                         debugPrint('Edit icon clicked');
                       },
                       child: SvgPicture.asset('assets/svgs/edit_icon.svg'),
@@ -95,8 +93,8 @@ class _ShpinngAddressListViewItemState
                 _isEditing
                     ? TextField(
                         controller: _addressController,
-                        style: Fonts.nunitoSansRegular14,
-                        textAlign: TextAlign.left, // Align text to the left
+                        style: Fonts.nunitoSans14RegularSecondaryGrey,
+                        textAlign: TextAlign.left,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.r),
@@ -107,15 +105,13 @@ class _ShpinngAddressListViewItemState
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.r),
                             borderSide: BorderSide(
-                              color: ColorsManager
-                                  .mainBlack, // Border color on focus
+                              color: ColorsManager.mainBlack,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.r),
                             borderSide: BorderSide(
-                              color: Colors
-                                  .grey.shade300, // Border color when enabled
+                              color: Colors.grey.shade300,
                             ),
                           ),
                           contentPadding: EdgeInsets.symmetric(
@@ -125,7 +121,7 @@ class _ShpinngAddressListViewItemState
                         ),
                         onSubmitted: (value) {
                           setState(() {
-                            _isEditing = false; // Exit edit mode
+                            _isEditing = false;
                           });
                         },
                       )
@@ -133,7 +129,7 @@ class _ShpinngAddressListViewItemState
                         alignment: Alignment.centerLeft,
                         child: Text(
                           _addressController.text,
-                          style: Fonts.nunitoSansRegular14,
+                          style: Fonts.nunitoSans14RegularSecondaryGrey,
                         ),
                       ),
               ],

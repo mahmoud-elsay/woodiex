@@ -28,8 +28,7 @@ class ProductRow extends StatelessWidget {
           children: [
             Text(
               'Minimal Stand',
-              style: Fonts.nunitoSansRegular14
-                  .copyWith(color: ColorsManager.mainBlack),
+              style: Fonts.nunitoSans14RegularMainBlack,
             ),
             verticalSpace(10),
             Row(
@@ -38,14 +37,14 @@ class ProductRow extends StatelessWidget {
                 horizontalSpace(5),
                 Text(
                   '4.5',
-                  style: Fonts.darkNnitoSansBold20.copyWith(fontSize: 24),
+                  style: Fonts.nunitoSans24BoldMainBlack,
                 )
               ],
             ),
             verticalSpace(7),
             Text(
               '10 reviews',
-              style: Fonts.darkNnitoSansSemiBold18,
+              style: Fonts.nunitoSans18SemiBoldMainBlack,
             )
           ],
         )

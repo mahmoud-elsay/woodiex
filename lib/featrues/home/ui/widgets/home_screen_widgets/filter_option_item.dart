@@ -39,11 +39,12 @@ class FilterOptionItem extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Text(option.label,
-              style: option.isSelected
-                  ? Fonts.darkGreyNunitoSansBold14
-                      .copyWith(color: ColorsManager.mainBlack)
-                  : Fonts.nunitoSansRegular14),
+          Text(
+            option.label,
+            style: option.isSelected
+                ? Fonts.nunitoSans14BoldMainBlack
+                : Fonts.nunitoSans14RegularSecondaryGrey,
+          ),
         ],
       ),
     );

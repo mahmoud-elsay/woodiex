@@ -12,9 +12,8 @@ class NotificationListViewItem extends StatelessWidget {
     return Column(
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start, // Aligns top
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image container with fixed size
             SizedBox(
               width: 70.w,
               height: 70.h,
@@ -26,29 +25,26 @@ class NotificationListViewItem extends StatelessWidget {
                 ),
               ),
             ),
-            horizontalSpace(10), // Add some space between image and text
-
-            // Use Expanded to prevent overflow
+            horizontalSpace(10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Your order #123456789 has been canceled',
-                    style: Fonts.darkNnitoSansBold12,
-                    maxLines: 1, // Prevent text overflow with single line
-                    overflow:
-                        TextOverflow.ellipsis, // Add ellipsis if it overflows
+                    style: Fonts.nunitoSans12BoldMainBlack,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   verticalSpace(5),
                   Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
                     'Turpis pretium et in arcu adipiscing nec.',
-                    style: Fonts.nunitoSansRegular14.copyWith(
+                    style: Fonts.nunitoSans14RegularSecondaryGrey.copyWith(
                       fontSize: 10.sp,
                       color: ColorsManager.secondaryGrey,
                     ),
-                    maxLines: 2, // Limit to two lines to avoid overflow
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],

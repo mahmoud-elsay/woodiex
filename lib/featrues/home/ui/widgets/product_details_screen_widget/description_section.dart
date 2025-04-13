@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
-import 'package:woodiex/core/theming/font_weight.dart';
 
 class DescriptionSection extends StatelessWidget {
   final String description;
@@ -13,8 +12,7 @@ class DescriptionSection extends StatelessWidget {
     return Text(
       description,
       overflow: TextOverflow.fade,
-      style: Fonts.nunitoSansRegular14
-          .copyWith(fontWeight: FontWeightHelper.light),
+      style: Fonts.nunitoSans14LightMainBlack,
     );
   }
 }

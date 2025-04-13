@@ -30,12 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       'Make Home',
-                      style: Fonts.gelasio18Regular,
+                      style: Fonts.gelasio18RegularMainBlack,
                     ),
                     verticalSpace(2),
                     Text(
                       'BEAUTIFUL',
-                      style: Fonts.mainBlackGelasio18Bold,
+                      style: Fonts.gelasio18BoldMainBlack,
                     ),
                   ],
                 ),

@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/profile/ui/widgets/profile_screen_widgets/profile_list_view.dart';
 import 'package:woodiex/featrues/profile/ui/widgets/profile_screen_widgets/profile_pic_row.dart'; // Import the new widget
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -21,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
               AppTopBar(
                 title: Text(
                   'Profile',
-                  style: Fonts.blackMerriweather16bold,
+                  style: Fonts.merriweather16BoldMainBlack,
                 ),
                 rightIconAsset: 'assets/svgs/logout.svg',
               ),
@@ -29,8 +28,7 @@ class ProfileScreen extends StatelessWidget {
               ProfilePicRow(),
               verticalSpace(50),
               Expanded(
-                // Wrap the list view in an Expanded widget
-                child: ProfileListView(), // Use the new list view widget here
+                child: ProfileListView(),
               ),
             ],
           ),

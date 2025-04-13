@@ -26,7 +26,7 @@ class QuantitySelector extends StatelessWidget {
         horizontalSpace(10),
         Text(
           quantity.toString(),
-          style: Fonts.darkNnitoSansSemiBold18,
+          style: Fonts.nunitoSans18SemiBoldMainBlack,
         ),
         horizontalSpace(10),
         GestureDetector(

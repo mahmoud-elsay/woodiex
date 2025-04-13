@@ -20,7 +20,7 @@ class WishlistScreen extends StatelessWidget {
           AppTopBar(
             title: Text(
               'Wishlist',
-              style: Fonts.blackMerriweather16bold,
+              style: Fonts.merriweather16BoldMainBlack,
             ),
             rightIconAsset: 'assets/svgs/cartsvg.svg',
           ),

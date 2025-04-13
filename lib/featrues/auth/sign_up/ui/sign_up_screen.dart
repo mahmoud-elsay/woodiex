@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               verticalSpace(45),
               Text(
                 'Welcome',
-                style: Fonts.merriweather24bold,
+                style: Fonts.merriweather24BoldDarkGrey,
               ),
               verticalSpace(50),
               AppTextFormField(
@@ -75,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               verticalSpace(25),
               AppTextButton(
                   buttonText: 'sign up  ',
-                  textStyle: Fonts.whiteNunitoSansSemiBold18,
+                  textStyle: Fonts.nunitoSans18SemiBoldWhite,
                   onPressed: () {}),
               verticalSpace(30),
               Center(child: AlreadyHaveAccountText())

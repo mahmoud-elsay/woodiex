@@ -6,12 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
-// Import the custom page route
 
 class FurnitureItemWidget extends StatelessWidget {
   final FurnitureItemModel item;
   final VoidCallback onFavoriteToggle;
-  final String heroTag; // New property for the hero tag
+  final String heroTag;
 
   const FurnitureItemWidget({
     super.key,
@@ -25,8 +24,7 @@ class FurnitureItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(CustomHeroPageRoute(
-          page: ProductDetailsScreen(
-              item: item), // Pass the item to the details screen
+          page: ProductDetailsScreen(item: item),
         ));
       },
       child: Container(
@@ -47,7 +45,7 @@ class FurnitureItemWidget extends StatelessWidget {
             Stack(
               children: [
                 Hero(
-                  tag: heroTag, // Apply the unique hero tag here
+                  tag: heroTag,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
@@ -93,16 +91,14 @@ class FurnitureItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     item.name,
-                    style: Fonts.nunitoSansRegular14,
+                    style: Fonts.nunitoSans14RegularSecondaryGrey,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   verticalSpace(4),
                   Text(
                     '\$${item.price.toStringAsFixed(2)}',
-                    style: Fonts.darkGreyNunitoSansBold14.copyWith(
-                      color: ColorsManager.mainBlack,
-                    ),
+                    style: Fonts.nunitoSans14BoldMainBlack,
                   ),
                 ],
               ),

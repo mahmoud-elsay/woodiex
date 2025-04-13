@@ -10,7 +10,7 @@ class NotificationsTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w), // Adjusted padding
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
         children: [
           SvgPicture.asset(
@@ -21,7 +21,7 @@ class NotificationsTopBar extends StatelessWidget {
           horizontalSpace(50),
           Text(
             'Notification',
-            style: Fonts.blackMerriweather16bold,
+            style: Fonts.merriweather16BoldMainBlack,
           ),
         ],
       ),

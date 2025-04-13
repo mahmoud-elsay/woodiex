@@ -13,7 +13,7 @@ class ReviewsListViewItem extends StatefulWidget {
 }
 
 class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
-  bool _isExpanded = false; // State to track if the text is expanded
+  bool _isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
         'color is also the same and quality is very good despite very cheap price.';
 
     const truncatedText =
-        'Nice Furniture with good delivery  time is very fast ,Then products look like exactly the picture in the app. Besides'; // Shortened text
+        'Nice Furniture with good delivery  time is very fast ,Then products look like exactly the picture in the app. Besides';
 
     return Stack(
       clipBehavior: Clip.none,
@@ -45,10 +45,9 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
             ],
           ),
           child: SingleChildScrollView(
-            // Add this to allow scrolling
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // Allow column to size itself
+              mainAxisSize: MainAxisSize.min,
               children: [
                 verticalSpace(24),
                 Row(
@@ -56,13 +55,12 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
                   children: [
                     Text(
                       'Bruno Fernandes',
-                      style:
-                          Fonts.darkNnitoSansSemiBold18.copyWith(fontSize: 14),
+                      style: Fonts.nunitoSans14SemiBoldMainBlack,
                     ),
                     Spacer(),
                     Text(
                       '20/03/2020',
-                      style: Fonts.nunitoSansRegular14.copyWith(fontSize: 12),
+                      style: Fonts.nunitoSans12RegularMainBlack,
                     ),
                   ],
                 ),
@@ -82,8 +80,7 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
                   children: [
                     Text(
                       _isExpanded ? fullText : truncatedText,
-                      style: Fonts.nunitoSansRegular14
-                          .copyWith(color: ColorsManager.mainBlack),
+                      style: Fonts.nunitoSans14RegularMainBlack,
                       maxLines: _isExpanded ? null : 3,
                       overflow: _isExpanded
                           ? TextOverflow.visible
@@ -92,12 +89,12 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          _isExpanded = !_isExpanded; // Toggle state
+                          _isExpanded = !_isExpanded;
                         });
                       },
                       child: Text(
                         _isExpanded ? 'See Less' : 'See More',
-                        style: Fonts.darkGreyNunitoSansBold14,
+                        style: Fonts.nunitoSans14BoldDarkGrey,
                       ),
                     ),
                   ],
@@ -106,7 +103,6 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
             ),
           ),
         ),
-        // Centered overlapping profile image
         Positioned(
           top: -24,
           left: 0,

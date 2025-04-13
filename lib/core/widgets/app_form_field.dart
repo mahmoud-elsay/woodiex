@@ -48,14 +48,14 @@ class AppTextFormField extends StatelessWidget {
                 width: 1.3,
               ),
             ),
-        hintStyle: hintStyle ?? Fonts.nunitoSansRegular18,
+        hintStyle: hintStyle ?? Fonts.nunitoSans18RegularSecondaryGrey,
         hintText: hintText,
         suffixIcon: suffixIcon,
         fillColor: backgroundColor ?? Colors.transparent,
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style: Fonts.nunitoSansRegular18,
+      style: Fonts.nunitoSans18RegularSecondaryGrey,
     );
   }
 }

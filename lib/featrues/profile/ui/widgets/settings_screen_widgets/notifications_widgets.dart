@@ -15,10 +15,7 @@ class NotificationsWidgets extends StatelessWidget {
       children: [
         Text(
           'Notifications',
-          style: Fonts.blacknNnitoSansBold18.copyWith(
-            fontSize: 16.sp,
-            color: ColorsManager.secondaryGrey,
-          ),
+          style: Fonts.nunitoSans16BoldSecondaryGrey,
         ),
         verticalSpace(15),
         _buildNotificationOption(
@@ -59,7 +56,7 @@ class NotificationsWidgets extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Fonts.darkNnitoSansSemiBold18.copyWith(fontSize: 16.sp),
+            style: Fonts.nunitoSans16SemiBoldMainBlack,
           ),
           Spacer(),
           if (trailing != null) trailing,

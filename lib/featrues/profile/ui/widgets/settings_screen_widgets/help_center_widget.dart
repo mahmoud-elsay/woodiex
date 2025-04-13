@@ -15,10 +15,7 @@ class HelpCenterWidget extends StatelessWidget {
       children: [
         Text(
           'Help',
-          style: Fonts.blacknNnitoSansBold18.copyWith(
-            fontSize: 16.sp,
-            color: ColorsManager.secondaryGrey,
-          ),
+          style: Fonts.nunitoSans16BoldSecondaryGrey,
         ),
         verticalSpace(15),
         Container(
@@ -41,7 +38,7 @@ class HelpCenterWidget extends StatelessWidget {
             children: [
               Text(
                 'FAQ',
-                style: Fonts.darkNnitoSansSemiBold18.copyWith(fontSize: 16.sp),
+                style: Fonts.nunitoSans16SemiBoldMainBlack,
               ),
               Spacer(),
               SvgPicture.asset('assets/svgs/next_arrow.svg')

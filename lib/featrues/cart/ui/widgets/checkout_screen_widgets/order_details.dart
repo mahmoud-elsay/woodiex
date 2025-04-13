@@ -31,12 +31,12 @@ class OrderDetails extends StatelessWidget {
               children: [
                 Text(
                   'Order :',
-                  style: Fonts.nunitoSansRegular18,
+                  style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 Spacer(),
                 Text(
                   '\$90',
-                  style: Fonts.darkNnitoSansSemiBold18,
+                  style: Fonts.nunitoSans18SemiBoldMainBlack,
                 )
               ],
             ),
@@ -45,12 +45,12 @@ class OrderDetails extends StatelessWidget {
               children: [
                 Text(
                   'Delivery: :',
-                  style: Fonts.nunitoSansRegular18,
+                  style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 Spacer(),
                 Text(
                   '\$10',
-                  style: Fonts.darkNnitoSansSemiBold18,
+                  style: Fonts.nunitoSans18SemiBoldMainBlack,
                 )
               ],
             ),
@@ -59,12 +59,12 @@ class OrderDetails extends StatelessWidget {
               children: [
                 Text(
                   'Order :',
-                  style: Fonts.nunitoSansRegular18,
+                  style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 Spacer(),
                 Text(
                   '\$100',
-                  style: Fonts.darkNnitoSansSemiBold18,
+                  style: Fonts.nunitoSans18SemiBoldMainBlack,
                 )
               ],
             ),

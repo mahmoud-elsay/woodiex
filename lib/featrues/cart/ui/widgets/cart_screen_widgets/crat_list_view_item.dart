@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
-import 'package:woodiex/core/theming/font_weight.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartListViewItem extends StatefulWidget {
@@ -53,18 +52,12 @@ class _CartListViewItemState extends State<CartListViewItem> {
               children: [
                 Text(
                   'Coffee table',
-                  style: Fonts.darkGreyNunitoSansBold14.copyWith(
-                    fontWeight: FontWeightHelper.semiBold,
-                    color: ColorsManager.secondaryGrey,
-                  ),
+                  style: Fonts.nunitoSans14SemiBoldSecondaryGrey,
                 ),
                 verticalSpace(10),
                 Text(
                   '\$50',
-                  style: Fonts.darkGreyNunitoSansBold14.copyWith(
-                    color: ColorsManager.mainBlack,
-                    fontSize: 16.sp,
-                  ),
+                  style: Fonts.nunitoSans16BoldMainBlack,
                 ),
                 verticalSpace(20),
                 Row(
@@ -76,7 +69,7 @@ class _CartListViewItemState extends State<CartListViewItem> {
                     horizontalSpace(5),
                     Text(
                       quantity.toString(),
-                      style: Fonts.darkNnitoSansSemiBold18,
+                      style: Fonts.nunitoSans18SemiBoldMainBlack,
                     ),
                     horizontalSpace(5),
                     GestureDetector(

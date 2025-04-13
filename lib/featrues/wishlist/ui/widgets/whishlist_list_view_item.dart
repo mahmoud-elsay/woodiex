@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
-import 'package:woodiex/core/theming/font_weight.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WhishlistListViewItem extends StatelessWidget {
@@ -26,26 +24,22 @@ class WhishlistListViewItem extends StatelessWidget {
                 ),
               ),
             ),
-
             horizontalSpace(30),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // Align left
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Coffe table',
-                  style: Fonts.darkGreyNunitoSansBold14.copyWith(
-                      fontWeight: FontWeightHelper.semiBold,
-                      color: ColorsManager.secondaryGrey),
+                  style: Fonts.nunitoSans14SemiBoldSecondaryGrey,
                 ),
                 verticalSpace(10),
                 Text(
                   '\$50',
-                  style: Fonts.darkGreyNunitoSansBold14.copyWith(
-                      color: ColorsManager.mainBlack, fontSize: 16.sp),
+                  style: Fonts.nunitoSans16BoldMainBlack,
                 ),
               ],
             ),
-            const Spacer(), // Pushes content to the right
+            const Spacer(),
             Column(
               children: [
                 SvgPicture.asset('assets/svgs/remove.svg'),
