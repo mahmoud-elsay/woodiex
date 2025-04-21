@@ -8,8 +8,7 @@ class WishlistButton extends StatelessWidget {
   final VoidCallback onToggle;
 
   const WishlistButton(
-      {Key? key, required this.isSaved, required this.onToggle})
-      : super(key: key);
+      {super.key, required this.isSaved, required this.onToggle});
 
   @override
   Widget build(BuildContext context) {

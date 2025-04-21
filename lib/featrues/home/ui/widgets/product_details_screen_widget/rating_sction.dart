@@ -9,8 +9,7 @@ class RatingSection extends StatelessWidget {
   final double rating;
   final int reviews;
 
-  const RatingSection({Key? key, required this.rating, required this.reviews})
-      : super(key: key);
+  const RatingSection({super.key, required this.rating, required this.reviews});
 
   @override
   Widget build(BuildContext context) {

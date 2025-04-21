@@ -115,39 +115,74 @@ class _FurnitureGridViewState extends State<FurnitureGridView> {
     ),
   ];
 
+  late List<bool> shoppingCartStates;
+
+  @override
+  void initState() {
+    super.initState();
+    shoppingCartStates = List<bool>.filled(furnitureItems.length, false);
+  }
+
   void toggleFavorite(int index) {
     setState(() {
       furnitureItems[index].isFavorite = !furnitureItems[index].isFavorite;
     });
   }
 
+  void toggleShoppingCart(int index) {
+    setState(() {
+      shoppingCartStates[index] = !shoppingCartStates[index];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(12), // Adjust padding if needed
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 12, // Adjust spacing for aesthetics
-        crossAxisSpacing: 12,
-        childAspectRatio: 0.7, // Try tweaking this for better item proportions
-      ),
-      itemCount: furnitureItems.length,
-      itemBuilder: (context, index) {
-        final item = furnitureItems[index];
-        return GestureDetector(
-          onTap: () {
-            context.pushNamed(
-              Routes.prodcutDetailsScreen,
-              arguments: item,
-            );
-          },
-          child: FurnitureItemWidget(
-            item: item,
-            onFavoriteToggle: () => toggleFavorite(index),
-            heroTag: 'furniture_${item.name}_$index', // Unique hero tag
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.all(12),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final pairIndex = index * 2;
+                final hasSecondItem = pairIndex + 1 < furnitureItems.length;
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: FurnitureItemWidget(
+                          item: furnitureItems[pairIndex],
+                          onFavoriteToggle: () => toggleShoppingCart(pairIndex),
+                          heroTag:
+                              'furniture_${furnitureItems[pairIndex].name}_$pairIndex',
+                          isTapped: shoppingCartStates[pairIndex],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      hasSecondItem
+                          ? Expanded(
+                              child: FurnitureItemWidget(
+                                item: furnitureItems[pairIndex + 1],
+                                onFavoriteToggle: () =>
+                                    toggleShoppingCart(pairIndex + 1),
+                                heroTag:
+                                    'furniture_${furnitureItems[pairIndex + 1].name}_${pairIndex + 1}',
+                                isTapped: shoppingCartStates[pairIndex + 1],
+                              ),
+                            )
+                          : const Expanded(child: SizedBox()),
+                    ],
+                  ),
+                );
+              },
+              childCount: (furnitureItems.length / 2).ceil(),
+            ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

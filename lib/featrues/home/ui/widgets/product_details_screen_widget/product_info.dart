@@ -6,7 +6,7 @@ import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
 class ProductInfo extends StatelessWidget {
   final FurnitureItemModel item;
 
-  const ProductInfo({Key? key, required this.item}) : super(key: key);
+  const ProductInfo({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {

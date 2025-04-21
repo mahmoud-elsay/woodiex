@@ -15,9 +15,9 @@ class ProductDetailsScreen extends StatefulWidget {
   final FurnitureItemModel item;
 
   const ProductDetailsScreen({
-    Key? key,
+    super.key,
     required this.item,
-  }) : super(key: key);
+  });
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();

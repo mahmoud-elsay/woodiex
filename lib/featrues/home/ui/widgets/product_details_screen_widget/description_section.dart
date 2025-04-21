@@ -4,8 +4,7 @@ import 'package:woodiex/core/theming/styles.dart';
 class DescriptionSection extends StatelessWidget {
   final String description;
 
-  const DescriptionSection({Key? key, required this.description})
-      : super(key: key);
+  const DescriptionSection({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {

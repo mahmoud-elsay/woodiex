@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
 
 class ProductSliverAppBar extends StatelessWidget {
   final FurnitureItemModel item;
 
-  const ProductSliverAppBar({Key? key, required this.item}) : super(key: key);
+  const ProductSliverAppBar({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {

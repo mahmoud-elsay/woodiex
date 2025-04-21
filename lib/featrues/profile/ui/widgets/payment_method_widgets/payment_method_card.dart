@@ -9,10 +9,10 @@ class PaymentMethodCard extends StatelessWidget {
   final ValueChanged<bool?> onCheckboxChanged;
 
   const PaymentMethodCard({
-    Key? key,
+    super.key,
     required this.isChecked,
     required this.onCheckboxChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
