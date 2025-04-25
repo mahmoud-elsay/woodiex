@@ -15,13 +15,13 @@ class Woodiex extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        title: 'Furnix',
+        title: 'Woodiex',
         theme: ThemeData(
           primaryColor: ColorsManager.mainBlack,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.appLayout,
+        initialRoute: Routes.loginScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
