@@ -13,6 +13,8 @@ class AppTextFormField extends StatelessWidget {
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Color? backgroundColor;
+  final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
 
   const AppTextFormField({
     super.key,
@@ -25,6 +27,8 @@ class AppTextFormField extends StatelessWidget {
     this.isObscureText,
     this.suffixIcon,
     this.backgroundColor,
+    this.validator,
+    this.controller,
   });
 
   @override
