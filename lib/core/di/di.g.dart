@@ -6,11 +6,11 @@ part of 'di.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'11ee5271176f420273fa7e2640dcab976eaed7a6';
+String _$dioHash() => r'ebb0e5793f7766103786811ecff126c98b70558d';
 
 /// See also [dio].
 @ProviderFor(dio)
-final dioProvider = Provider<Dio>.internal(
+final dioProvider = AutoDisposeProvider<Dio>.internal(
   dio,
   name: r'dioProvider',
   debugGetCreateSourceHash:
@@ -21,12 +21,12 @@ final dioProvider = Provider<Dio>.internal(
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef DioRef = ProviderRef<Dio>;
-String _$apiServiceHash() => r'ebc86ac425c08661da62a8f4d9ed15f2235f42e1';
+typedef DioRef = AutoDisposeProviderRef<Dio>;
+String _$apiServiceHash() => r'983361584fdff05743eb08586a8e9867a8c522de';
 
 /// See also [apiService].
 @ProviderFor(apiService)
-final apiServiceProvider = Provider<ApiService>.internal(
+final apiServiceProvider = AutoDisposeProvider<ApiService>.internal(
   apiService,
   name: r'apiServiceProvider',
   debugGetCreateSourceHash:
@@ -37,6 +37,22 @@ final apiServiceProvider = Provider<ApiService>.internal(
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef ApiServiceRef = ProviderRef<ApiService>;
+typedef ApiServiceRef = AutoDisposeProviderRef<ApiService>;
+String _$signUpRepoHash() => r'b686c719f09328f56a69c950fd30e73d40593eca';
+
+/// See also [signUpRepo].
+@ProviderFor(signUpRepo)
+final signUpRepoProvider = AutoDisposeProvider<SignUpRepo>.internal(
+  signUpRepo,
+  name: r'signUpRepoProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$signUpRepoHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SignUpRepoRef = AutoDisposeProviderRef<SignUpRepo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
