@@ -254,4 +254,9 @@ class Fonts {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.red,
   );
+  static TextStyle nunitoSans14RegularRed = GoogleFonts.nunitoSans(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.red,
+  );
 }
