@@ -9,6 +9,7 @@ class ColorsManager {
   static const Color white = Color(0xFFFFFFFF);
   static const Color lighterGrey = Color(0xFFBDBDBD);
   static const Color green = Color(0xFF27AE60);
-  static Color lighterGreyWith40Opacity =
-      Color(0xFF606060).withValues(alpha: .40);
+  static Color lighterGreyWith40Opacity = Color(0xFF606060).withOpacity(0.40);
+
+  static const Color red = Color(0xFFFF0000);
 }

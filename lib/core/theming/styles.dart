@@ -249,4 +249,9 @@ class Fonts {
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
   );
+  static TextStyle nunitoSans16RegularRed = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.red,
+  );
 }
