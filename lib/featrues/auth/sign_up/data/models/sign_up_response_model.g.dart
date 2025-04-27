@@ -9,7 +9,7 @@ part of 'sign_up_response_model.dart';
 SignUpResponseModel _$SignUpResponseModelFromJson(Map<String, dynamic> json) =>
     SignUpResponseModel(
       success: json['success'] as bool,
-      message: json['message'] as String,
+      message: json['messsage'] as String,
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
       errors: json['errors'],
       statusCode: (json['statusCode'] as num).toInt(),
@@ -19,7 +19,7 @@ Map<String, dynamic> _$SignUpResponseModelToJson(
         SignUpResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'message': instance.message,
+      'messsage': instance.message,
       'data': instance.data,
       'errors': instance.errors,
       'statusCode': instance.statusCode,

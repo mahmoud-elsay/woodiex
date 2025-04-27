@@ -36,20 +36,22 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
         focusedBorder: focusedBorder ??
-            UnderlineInputBorder(
-              borderSide: const BorderSide(
+            const UnderlineInputBorder(
+              borderSide: BorderSide(
                 color: ColorsManager.mainBlack,
                 width: 1.3,
               ),
             ),
         enabledBorder: enabledBorder ??
-            UnderlineInputBorder(
-              borderSide: const BorderSide(
+            const UnderlineInputBorder(
+              borderSide: BorderSide(
                 color: ColorsManager.lightGrey,
                 width: 1.3,
               ),
@@ -61,7 +63,8 @@ class AppTextFormField extends StatelessWidget {
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style: Fonts.nunitoSans18RegularSecondaryGrey,
+      style: inputTextStyle ?? Fonts.nunitoSans18RegularSecondaryGrey,
+      validator: validator,
     );
   }
 }

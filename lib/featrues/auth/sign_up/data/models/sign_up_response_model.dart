@@ -5,6 +5,7 @@ part 'sign_up_response_model.g.dart';
 @JsonSerializable()
 class SignUpResponseModel {
   final bool success;
+  @JsonKey(name: 'messsage') // Match API's field name
   final String message;
   final Data data;
   final dynamic errors;

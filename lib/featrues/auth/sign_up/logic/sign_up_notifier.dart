@@ -1,8 +1,8 @@
 import 'package:woodiex/core/di/di.dart';
+import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/featrues/auth/sign_up/logic/sign_up_state.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.dart';
-
 
 part 'sign_up_notifier.g.dart';
 
@@ -30,15 +30,27 @@ class SignUpNotifier extends _$SignUpNotifier {
       confirmPassword: confirmPassword,
     );
 
-    final response = await ref.read(signUpRepoProvider).signUp(requestModel);
+    print('SignUpRequestModel: ${requestModel.toJson()}');
 
-    response.when(
-      success: (signUpResponse) {
-        state = SignUpSuccess(signUpResponse);
-      },
-      failure: (error) {
-        state = SignUpError(error);
-      },
-    );
+    try {
+      final response = await ref.read(signUpRepoProvider).signUp(requestModel);
+      response.when(
+        success: (signUpResponse) {
+          print('SignUp successful: ${signUpResponse.toJson()}');
+          state = SignUpSuccess(signUpResponse);
+        },
+        failure: (error) {
+          print('SignUp failed: ${error.message}');
+          state = SignUpError(error);
+        },
+      );
+    } catch (e, stackTrace) {
+      print('Exception in SignUpNotifier: $e');
+      print('StackTrace: $stackTrace');
+      state = SignUpError(ApiErrorModel(
+        message: 'Unexpected error: $e',
+        statusCode: 0,
+      ));
+    }
   }
 }

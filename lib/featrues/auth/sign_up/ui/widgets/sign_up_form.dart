@@ -58,6 +58,13 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
+      print('Submitting form with values:');
+      print('FullName: ${_fullNameController.text}');
+      print('UserName: ${_userNameController.text}');
+      print('Email: ${_emailController.text}');
+      print('Password: ${_passwordController.text}');
+      print('ConfirmPassword: ${_confirmPasswordController.text}');
+
       ref.read(signUpNotifierProvider.notifier).signUp(
             fullName: _fullNameController.text.trim(),
             userName: _userNameController.text.trim(),
@@ -65,6 +72,8 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
             password: _passwordController.text,
             confirmPassword: _confirmPasswordController.text,
           );
+    } else {
+      print('Form validation failed');
     }
   }
 
@@ -78,6 +87,33 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(signUpNotifierProvider, (previous, next) {
+      next.when(
+        initial: () {},
+        loading: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Signing up...')),
+          );
+        },
+        success: (data) {
+          _fullNameController.clear();
+          _userNameController.clear();
+          _emailController.clear();
+          _passwordController.clear();
+          _confirmPasswordController.clear();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Sign up successful!')),
+          );
+          // Navigate to next screen if needed
+        },
+        error: (error) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: ${error.message}')),
+          );
+        },
+      );
+    });
+
     return Form(
       key: _formKey,
       child: Column(
@@ -171,10 +207,14 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
             buttonText: 'Sign Up',
             textStyle: Fonts.nunitoSans18SemiBoldWhite,
             onPressed: () {
+              print('Sign Up button pressed');
               if (_isFormFilled()) {
+                print('Form is filled, submitting...');
                 _submitForm();
+              } else {
+                print('Form is not filled');
               }
-            }, // Disable button if form is not filled
+            },
           ),
         ],
       ),
