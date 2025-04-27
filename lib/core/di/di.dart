@@ -3,8 +3,8 @@ import '../network/dio_factory.dart';
 import 'package:woodiex/core/network/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/repos/sign_up_repo.dart';
-
 
 part 'di.g.dart';
 
@@ -21,4 +21,9 @@ ApiService apiService(Ref ref) {
 @riverpod
 SignUpRepo signUpRepo(Ref ref) {
   return SignUpRepo(ref.read(apiServiceProvider));
+}
+
+@riverpod
+LoginRepo loginRepo(Ref ref) {
+  return LoginRepo(ref.read(apiServiceProvider));
 }

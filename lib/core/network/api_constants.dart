@@ -3,4 +3,5 @@ class ApiConstants {
       "http://furnitureapplication.runasp.net/api/";
 
   static const String signUp = "Account/register";
+  static const String login = "Account/login";
 }

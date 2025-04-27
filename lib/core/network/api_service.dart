@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:woodiex/core/network/api_constants.dart';
+import 'package:woodiex/featrues/auth/login/data/models/login_request_model.dart';
+import 'package:woodiex/featrues/auth/login/data/models/login_response_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
 
@@ -13,5 +15,9 @@ abstract class ApiService {
   @POST(ApiConstants.signUp)
   Future<SignUpResponseModel> signUp(
     @Body() SignUpRequestModel signUpRequestModel,
+  );
+  @POST(ApiConstants.login)
+  Future<LoginResponseModel> login(
+    @Body() LoginRequestModel signUpRequestModel,
   );
 }
