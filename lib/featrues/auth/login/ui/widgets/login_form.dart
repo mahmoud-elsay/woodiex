@@ -3,26 +3,29 @@ import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/helpers/app_validtion.dart';
 import 'package:woodiex/core/widgets/app_form_field.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
+import 'package:woodiex/featrues/auth/login/logic/login_state.dart';
+import 'package:woodiex/featrues/auth/login/logic/login_notifier.dart';
 
-class LoginForm extends StatefulWidget {
+class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  ConsumerState<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends ConsumerState<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isObscureText = true;
   String? _emailError;
   String? _passwordError;
-  String? _formError;
 
   @override
   void initState() {
@@ -49,12 +52,14 @@ class _LoginFormState extends State<LoginForm> {
 
   void _submitForm() {
     setState(() {
-      _formError = null;
       _emailError = validateEmail(_emailController.text);
       _passwordError = validatePassword(_passwordController.text);
     });
     if (_formKey.currentState!.validate()) {
-      setState(() => _formError = 'Login successful!');
+      ref.read(loginNotifierProvider.notifier).login(
+            email: _emailController.text.trim(),
+            password: _passwordController.text,
+          );
     }
   }
 
@@ -64,19 +69,14 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final loginState = ref.watch(loginNotifierProvider);
+
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (_formError != null)
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: Text(
-                _formError!,
-                style: Fonts.nunitoSans16RegularRed,
-              ),
-            ),
+          if (loginState is LoginLoading) const LoadingCircleIndicator(),
           AppTextFormField(
             hintText: 'Email',
             controller: _emailController,
@@ -120,7 +120,9 @@ class _LoginFormState extends State<LoginForm> {
               if (_isFormFilled()) {
                 _submitForm();
               } else {
-                setState(() => _formError = 'Please fill all fields');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Please fill all fields')),
+                );
               }
             },
           ),
@@ -133,6 +135,18 @@ class _LoginFormState extends State<LoginForm> {
                 style: Fonts.nunitoSans18BoldMainBlack,
               ),
             ),
+          ),
+          loginState.when(
+            initial: () => const SizedBox.shrink(),
+            loading: () => const SizedBox.shrink(),
+            success: (data) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _emailController.clear();
+                _passwordController.clear();
+              });
+              return const SizedBox.shrink();
+            },
+            error: (_) => const SizedBox.shrink(),
           ),
         ],
       ),
