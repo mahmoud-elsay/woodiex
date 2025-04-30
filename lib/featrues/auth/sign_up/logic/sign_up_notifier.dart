@@ -1,6 +1,7 @@
 import 'package:woodiex/core/di/di.dart';
 import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/auth/sign_up/logic/sign_up_state.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.dart';
 
@@ -35,7 +36,8 @@ class SignUpNotifier extends _$SignUpNotifier {
     try {
       final response = await ref.read(signUpRepoProvider).signUp(requestModel);
       response.when(
-        success: (signUpResponse) {
+        success: (signUpResponse) async {
+          await SharedPrefHelper.saveUserToken(signUpResponse.data.token);
           print('SignUp successful: ${signUpResponse.toJson()}');
           state = SignUpSuccess(signUpResponse);
         },

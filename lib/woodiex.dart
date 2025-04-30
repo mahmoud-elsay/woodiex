@@ -1,13 +1,18 @@
-import 'core/routing/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Woodiex extends StatelessWidget {
   final AppRouter appRouter;
+  final String initialRoute;
 
-  const Woodiex({super.key, required this.appRouter});
+  const Woodiex({
+    super.key,
+    required this.appRouter,
+    required this.initialRoute,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class Woodiex extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.loginScreen,
+        initialRoute: initialRoute,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

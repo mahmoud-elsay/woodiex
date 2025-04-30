@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/routing/routes.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 
 class OnboardingButton extends StatelessWidget {
   const OnboardingButton({super.key});
@@ -11,7 +12,8 @@ class OnboardingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
+      onPressed: () async {
+        await SharedPrefHelper.setFirstLaunch(false);
         context.pushNamed(Routes.loginScreen);
       },
       style: ButtonStyle(

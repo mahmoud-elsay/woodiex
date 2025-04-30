@@ -39,7 +39,7 @@ class OnboardingScreen extends StatelessWidget {
                     style: Fonts.nunitoSans18RegularSecondaryGrey,
                   ),
                   verticalSpace(200),
-                  Center(child: OnboardingButton())
+                  Center(child: OnboardingButton()),
                 ],
               ),
             ),

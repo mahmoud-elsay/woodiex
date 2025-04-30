@@ -1,6 +1,7 @@
 import 'package:woodiex/core/di/di.dart';
 import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/auth/login/logic/login_state.dart';
 import 'package:woodiex/featrues/auth/login/data/models/login_request_model.dart';
 
@@ -25,7 +26,10 @@ class LoginNotifier extends _$LoginNotifier {
     try {
       final response = await ref.read(loginRepoProvider).login(requestModel);
       response.when(
-        success: (loginResponse) => state = LoginSuccess(loginResponse),
+        success: (loginResponse) async {
+          await SharedPrefHelper.saveUserToken(loginResponse.data!.token);
+          state = LoginSuccess(loginResponse);
+        },
         failure: (error) => state = LoginError(error),
       );
     } catch (e) {
