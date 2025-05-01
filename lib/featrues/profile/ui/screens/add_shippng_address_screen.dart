@@ -117,7 +117,7 @@ class _AddShippingAddressScreenState extends State<AddShippingAddressScreen> {
     VoidCallback? onAfterSave,
   }) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 15.h),
+      padding: EdgeInsets.only(bottom: 20.h),
       child: isDropdown
           ? WhiteAddressFieldsContainer(
               label: label,
@@ -195,7 +195,7 @@ class _AddShippingAddressScreenState extends State<AddShippingAddressScreen> {
                   isDropdown: true,
                   dropdownItems: districts,
                 ),
-                verticalSpace(80.h), // Extra space for bottom bar
+                verticalSpace(100.h), // Adjusted space for bottom bar
               ],
             ),
           ),
@@ -203,12 +203,14 @@ class _AddShippingAddressScreenState extends State<AddShippingAddressScreen> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
-        elevation: 0,
+        elevation: 8,
+        height: 100.h, // Increased height to fix clipping
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           child: AppTextButton(
             buttonText: 'SAVE ADDRESS',
             textStyle: Fonts.nunitoSans18SemiBoldWhite,
+            buttonHeight: 50.h, // Ensured button height fits
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

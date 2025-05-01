@@ -53,8 +53,8 @@ class WhiteAddressFieldsContainer extends StatelessWidget {
               if (isDropdown)
                 SvgPicture.asset(
                   'assets/svgs/menu_down_arrow.svg',
-                  width: 16.w, // Reduced size
-                  height: 16.h,
+                  width: 10.w,
+                  height: 10.h,
                   colorFilter: const ColorFilter.mode(
                     ColorsManager.mainBlack,
                     BlendMode.srcIn,
