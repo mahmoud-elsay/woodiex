@@ -90,7 +90,7 @@ class AppRouter {
         );
       case Routes.addShippingAddressScreen:
         return MaterialPageRoute(
-          builder: (_) => const AddShippngAddressScreen(),
+          builder: (_) => const AddShippingAddressScreen(),
         );
       default:
         return MaterialPageRoute(

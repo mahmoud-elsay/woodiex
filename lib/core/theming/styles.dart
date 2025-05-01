@@ -243,6 +243,17 @@ class Fonts {
     color: ColorsManager.mainBlack,
   );
 
+  static TextStyle nunitoSans12Reular80Grey = GoogleFonts.nunitoSans(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.grey80,
+  );
+  static TextStyle nunitoSans16SemiBoldB3Grey = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.b3Grey,
+  );
+
   // New styles for CheckoutScreen and CheckoutSuccess
   static TextStyle merriweather36BoldMainBlack = GoogleFonts.merriweather(
     fontSize: 36.sp,
@@ -259,4 +270,6 @@ class Fonts {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.red,
   );
+
+  static var nunitoSans16RegularSecondaryGrey;
 }
