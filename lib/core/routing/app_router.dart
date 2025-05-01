@@ -16,6 +16,7 @@ import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
 import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
+import 'package:woodiex/featrues/profile/ui/screens/add_shippng_address_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -86,6 +87,10 @@ class AppRouter {
       case Routes.productReviewsScreen:
         return MaterialPageRoute(
           builder: (_) => const ProductReviewsScreen(),
+        );
+      case Routes.addShippingAddressScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddShippngAddressScreen(),
         );
       default:
         return MaterialPageRoute(
