@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/helpers/extension.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/profile_screen_widgets/profile_list_view_item.dart';
+import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/profile_list_view_item.dart';
 
 class ProfileListView extends StatelessWidget {
   const ProfileListView({super.key});

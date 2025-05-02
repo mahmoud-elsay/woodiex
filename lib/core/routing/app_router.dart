@@ -8,15 +8,15 @@ import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_success.dart';
-import 'package:woodiex/featrues/profile/ui/screens/setting_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/my_orders_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/my_reviews_screen.dart';
+import 'package:woodiex/featrues/profile/profile/ui/setting_screen.dart';
+import 'package:woodiex/featrues/profile/orders/ui/my_orders_screen.dart';
+import 'package:woodiex/featrues/profile/reviews/ui/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/payment_method_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/shipping_address_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/add_shippng_address_screen.dart';
+import 'package:woodiex/featrues/profile/profile/ui/payment_method_screen.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/ui/shipping_address_screen.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/ui/add_shippng_address_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {

@@ -3,8 +3,8 @@ import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/app_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/profile_screen_widgets/profile_list_view.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/profile_screen_widgets/profile_pic_row.dart'; // Import the new widget
+import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/profile_list_view.dart';
+import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/profile_pic_row.dart'; // Import the new widget
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

@@ -4,7 +4,7 @@ import 'package:woodiex/core/theming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/ui/screens/home_screen.dart';
 import 'package:woodiex/featrues/wishlist/ui/wishlist_screen.dart';
-import 'package:woodiex/featrues/profile/ui/screens/profile_screen.dart';
+import 'package:woodiex/featrues/profile/profile/ui/profile_screen.dart';
 import 'package:woodiex/featrues/notifications/ui/notifications_screen.dart';
 
 class AppLayout extends StatefulWidget {

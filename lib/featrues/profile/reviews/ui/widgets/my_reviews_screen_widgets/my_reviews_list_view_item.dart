@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/my_reviews_screen_widgets/rating_widget.dart';
+import 'package:woodiex/featrues/profile/reviews/ui/widgets/my_reviews_screen_widgets/rating_widget.dart';
 
 class MyReviewsListViewItem extends StatelessWidget {
   const MyReviewsListViewItem({super.key});

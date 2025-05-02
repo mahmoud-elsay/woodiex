@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/my_reviews_screen_widgets/my_reviews_list_view.dart';
+import 'package:woodiex/featrues/profile/reviews/ui/widgets/my_reviews_screen_widgets/my_reviews_list_view.dart';
 
 class MyReviewsScreen extends StatelessWidget {
   const MyReviewsScreen({super.key});

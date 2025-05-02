@@ -5,9 +5,9 @@ import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:country_state_city/country_state_city.dart' as csc;
-import 'package:woodiex/featrues/profile/ui/widgets/add_shipping_address_widgets.dart/edit_address_dialog.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/add_shipping_address_widgets.dart/address_field_container.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/add_shipping_address_widgets.dart/white_address_fileds_container.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/ui/widgets/add_shipping_address_widgets.dart/edit_address_dialog.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/ui/widgets/add_shipping_address_widgets.dart/address_field_container.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/ui/widgets/add_shipping_address_widgets.dart/white_address_fileds_container.dart';
 
 class AddShippingAddressScreen extends StatefulWidget {
   const AddShippingAddressScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/payment_method_widgets/payment_method_card.dart';
+import 'package:woodiex/featrues/profile/profile/ui/widgets/payment_method_widgets/payment_method_card.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({super.key});

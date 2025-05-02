@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/my_reviews_screen_widgets/my_reviews_list_view_item.dart';
+import 'package:woodiex/featrues/profile/reviews/ui/widgets/my_reviews_screen_widgets/my_reviews_list_view_item.dart';
 
 // Import the widget you created
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/ui/widgets/settings_screen_widgets/custom_switch.dart';
+import 'package:woodiex/featrues/profile/profile/ui/widgets/settings_screen_widgets/custom_switch.dart';
 
 class NotificationsWidgets extends StatelessWidget {
   const NotificationsWidgets({super.key});
