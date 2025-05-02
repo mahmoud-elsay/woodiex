@@ -70,5 +70,24 @@ final loginRepoProvider = AutoDisposeProvider<LoginRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LoginRepoRef = AutoDisposeProviderRef<LoginRepo>;
+String _$shippingAddressRepoHash() =>
+    r'800649feeb8589569534b3f697ff93b5a05691eb';
+
+/// See also [shippingAddressRepo].
+@ProviderFor(shippingAddressRepo)
+final shippingAddressRepoProvider =
+    AutoDisposeProvider<ShippingAddressRepo>.internal(
+  shippingAddressRepo,
+  name: r'shippingAddressRepoProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$shippingAddressRepoHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ShippingAddressRepoRef = AutoDisposeProviderRef<ShippingAddressRepo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

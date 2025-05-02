@@ -4,4 +4,6 @@ class ApiConstants {
 
   static const String signUp = "Account/register";
   static const String login = "Account/login";
+  static const String addShippingAddress =
+      "ShippingAddresses/addShippingAddress";
 }

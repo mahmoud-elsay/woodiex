@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/repos/sign_up_repo.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/repos/shipping_address_repo.dart';
 
 part 'di.g.dart';
 
@@ -26,4 +27,9 @@ SignUpRepo signUpRepo(Ref ref) {
 @riverpod
 LoginRepo loginRepo(Ref ref) {
   return LoginRepo(ref.read(apiServiceProvider));
+}
+
+@riverpod
+ShippingAddressRepo shippingAddressRepo(Ref ref) {
+  return ShippingAddressRepo(ref.read(apiServiceProvider));
 }
