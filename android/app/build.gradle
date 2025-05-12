@@ -29,19 +29,19 @@ android {
 
     
     flavorDimensions "default"
-
-    productFlavors {
-        production {
-            dimension "default"
-            applicationIdSuffix ".production"
-            resvalue "app_name" "Woodiex Production"
-        }
-        development {
-            dimension "default"
-            applicationIdSuffix ".dev" 
-            resvalue "app_name" "Woodiex Development"
-        }
+productFlavors {
+    production {
+        dimension "default"
+        applicationIdSuffix ".production"
+        resValue "string", "app_name", "Woodiex Production"
     }
+    development {
+        dimension "default"
+        applicationIdSuffix ".dev"
+        resValue "string", "app_name", "Woodiex Development"
+    }
+}
+
 
     buildTypes {
         release {
