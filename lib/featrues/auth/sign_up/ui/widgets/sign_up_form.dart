@@ -40,7 +40,9 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   @override
   void dispose() {
-    _controllers.values.forEach((controller) => controller.dispose());
+    for (var controller in _controllers.values) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
@@ -75,8 +77,9 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   String? _validateUsername(String? value) {
     if (value == null || value.trim().isEmpty) return 'Username is required';
-    if (value.trim().length < 3)
+    if (value.trim().length < 3) {
       return 'Username must be at least 3 characters';
+    }
     return null;
   }
 
@@ -201,7 +204,9 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
             loading: () => const SizedBox.shrink(),
             success: (data) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                _controllers.values.forEach((controller) => controller.clear());
+                for (var controller in _controllers.values) {
+                  controller.clear();
+                }
                 setState(() => _formError = 'Sign up successful!');
               });
               return const SizedBox.shrink();

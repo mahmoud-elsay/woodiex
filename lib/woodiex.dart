@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/routing/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
