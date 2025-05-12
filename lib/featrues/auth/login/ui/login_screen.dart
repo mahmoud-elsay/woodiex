@@ -6,7 +6,6 @@ import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
-import 'package:woodiex/featrues/auth/login/logic/login_state.dart';
 import 'package:woodiex/featrues/auth/login/logic/login_notifier.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_form.dart';
 import 'package:woodiex/featrues/auth/login/ui/widgets/login_app_bar.dart';
