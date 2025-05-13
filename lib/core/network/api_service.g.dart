@@ -110,7 +110,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<AddShippingAddressResponseModel> getShippingAddress(
+  Future<GetShippingAddressResponseModel> getShippingAddress(
     String token,
   ) async {
     final _extra = <String, dynamic>{};
@@ -118,7 +118,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<AddShippingAddressResponseModel>(
+    final _options = _setStreamType<GetShippingAddressResponseModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -129,9 +129,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AddShippingAddressResponseModel _value;
+    late GetShippingAddressResponseModel _value;
     try {
-      _value = AddShippingAddressResponseModel.fromJson(_result.data!);
+      _value = GetShippingAddressResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -7,6 +7,7 @@ import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_request_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_response_model.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
 
 part 'api_service.g.dart';
 
@@ -30,7 +31,7 @@ abstract class ApiService {
     @Header('Authorization') String token,
   );
   @GET(ApiConstants.getShippingAddress)
-  Future<AddShippingAddressResponseModel> getShippingAddress(
+  Future<GetShippingAddressResponseModel> getShippingAddress(
     @Header('Authorization') String token,
   );
 }

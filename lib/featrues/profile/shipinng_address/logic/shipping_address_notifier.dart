@@ -53,4 +53,32 @@ class ShippingAddressNotifier extends _$ShippingAddressNotifier {
       ));
     }
   }
+
+  Future<void> getShippingAddress() async {
+    state = const ShippingAddressLoading();
+
+    try {
+      final token = await SharedPrefHelper.getUserToken();
+      if (token.isEmpty) {
+        state = ShippingAddressError(
+            ApiErrorModel(message: 'User not logged in', statusCode: 401));
+        return;
+      }
+
+      final response = await ref
+          .read(shippingAddressRepoProvider)
+          .getShippingAddress('Bearer $token');
+      response.when(
+        success: (getShippingAddressResponse) {
+          state = GetShippingAddressSuccess(getShippingAddressResponse);
+        },
+        failure: (error) => state = ShippingAddressError(error),
+      );
+    } catch (e) {
+      state = ShippingAddressError(ApiErrorModel(
+        message: 'Unexpected error: $e',
+        statusCode: 0,
+      ));
+    }
+  }
 }
