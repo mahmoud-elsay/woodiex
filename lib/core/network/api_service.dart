@@ -29,4 +29,8 @@ abstract class ApiService {
     @Body() AddShippingAddressRequestModel requestModel,
     @Header('Authorization') String token,
   );
+  @GET(ApiConstants.getShippingAddress)
+  Future<AddShippingAddressResponseModel> getShippingAddress(
+    @Header('Authorization') String token,
+  );
 }
