@@ -154,7 +154,6 @@ class _AddShippingAddressScreenState
 
   @override
   Widget build(BuildContext context) {
-    // Listen to state changes to show snackbar
     ref.listen<ShippingAddressState>(
       shippingAddressNotifierProvider,
       (previous, next) {
@@ -163,13 +162,16 @@ class _AddShippingAddressScreenState
           loading: () {},
           addShippingAddressSuccess: (data) {
             CustomSnackBar.showInfo(context, 'Address saved successfully');
+            // Refresh the shipping address list after success
+            ref
+                .read(shippingAddressNotifierProvider.notifier)
+                .getShippingAddress();
             Navigator.pop(context);
           },
           error: (error) {
             CustomSnackBar.showError(
                 context, 'Failed to save address: ${error.message}');
           },
-          // Ignore getShippingAddressSuccess since this screen is only for adding
           getShippingAddressSuccess: (_) {},
         );
       },
@@ -247,7 +249,6 @@ class _AddShippingAddressScreenState
             textStyle: Fonts.nunitoSans18SemiBoldWhite,
             buttonHeight: 50.h,
             onPressed: () async {
-              // Validate fields before making the API call
               if (fullName == 'Ex: Bruno Pham' || fullName.isEmpty) {
                 CustomSnackBar.showError(
                     context, 'Please enter a valid full name');
