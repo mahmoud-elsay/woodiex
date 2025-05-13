@@ -4,9 +4,12 @@ import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
 
 class ShpinngAddressListViewItem extends StatefulWidget {
-  const ShpinngAddressListViewItem({super.key});
+  final AddressData? address;
+
+  const ShpinngAddressListViewItem({super.key, this.address});
 
   @override
   State<ShpinngAddressListViewItem> createState() =>
@@ -22,7 +25,9 @@ class _ShpinngAddressListViewItemState
   @override
   void initState() {
     super.initState();
-    _addressController.text = 'Elmansora, Elmeena';
+    _addressController.text = widget.address?.fullName != null
+        ? '${widget.address?.fullName}, ${widget.address?.city}, ${widget.address?.country}'
+        : 'Elmansora, Elmeena';
   }
 
   @override
@@ -70,7 +75,7 @@ class _ShpinngAddressListViewItemState
                 Row(
                   children: [
                     Text(
-                      'mostfa naf3',
+                      widget.address?.fullName ?? 'mostfa naf3',
                       style: Fonts.nunitoSans18BoldMainBlack,
                     ),
                     horizontalSpace(170),

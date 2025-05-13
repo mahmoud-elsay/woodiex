@@ -169,6 +169,8 @@ class _AddShippingAddressScreenState
             CustomSnackBar.showError(
                 context, 'Failed to save address: ${error.message}');
           },
+          // Ignore getShippingAddressSuccess since this screen is only for adding
+          getShippingAddressSuccess: (_) {},
         );
       },
     );
