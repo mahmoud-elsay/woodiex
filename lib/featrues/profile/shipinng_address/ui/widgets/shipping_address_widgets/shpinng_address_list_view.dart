@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/widgets/shipping_address_widgets/shpinng_address_list_view_item.dart';
-// Import the widget you created
 
 class ShippingAddressListView extends StatelessWidget {
-  const ShippingAddressListView({super.key});
+  final List<AddressData>? addresses;
+
+  const ShippingAddressListView({super.key, this.addresses});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.symmetric(vertical: 10.h),
-      itemCount: 3, // Number of items
+      itemCount: addresses?.length ?? 0,
       separatorBuilder: (context, index) => verticalSpace(10),
       itemBuilder: (context, index) {
-        return const ShpinngAddressListViewItem();
+        return ShpinngAddressListViewItem(address: addresses![index]);
       },
     );
   }

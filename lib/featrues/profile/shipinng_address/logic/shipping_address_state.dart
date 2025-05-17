@@ -1,5 +1,6 @@
 import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_response_model.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
 
 sealed class ShippingAddressState {
   const ShippingAddressState();
@@ -9,6 +10,8 @@ sealed class ShippingAddressState {
     required T Function() loading,
     required T Function(AddShippingAddressResponseModel data)
         addShippingAddressSuccess,
+    required T Function(GetShippingAddressResponseModel data)
+        getShippingAddressSuccess,
     required T Function(ApiErrorModel errorModel) error,
   }) {
     return switch (this) {
@@ -16,6 +19,8 @@ sealed class ShippingAddressState {
       ShippingAddressLoading _ => loading(),
       AddShippingAddressSuccess(data: final data) =>
         addShippingAddressSuccess(data),
+      GetShippingAddressSuccess(data: final data) =>
+        getShippingAddressSuccess(data),
       ShippingAddressError(error: final errorModel) => error(errorModel),
     };
   }
@@ -38,6 +43,22 @@ class AddShippingAddressSuccess extends ShippingAddressState {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AddShippingAddressSuccess &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+
+  @override
+  int get hashCode => data.hashCode;
+}
+
+class GetShippingAddressSuccess extends ShippingAddressState {
+  final GetShippingAddressResponseModel data;
+
+  const GetShippingAddressSuccess(this.data);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GetShippingAddressSuccess &&
           runtimeType == other.runtimeType &&
           data == other.data;
 
