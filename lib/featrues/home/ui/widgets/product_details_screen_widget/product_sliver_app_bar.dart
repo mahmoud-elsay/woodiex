@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
+import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 
 class ProductSliverAppBar extends StatelessWidget {
-  final FurnitureItemModel item;
+  final ProductData item;
 
   const ProductSliverAppBar({super.key, required this.item});
 
@@ -16,7 +16,7 @@ class ProductSliverAppBar extends StatelessWidget {
         background: Hero(
           tag: 'furniture_${item.name}_${item.hashCode}', // Use item directly
           child: Image.asset(
-            item.productPath,
+            item.imageUrl,
             fit: BoxFit.cover,
           ),
         ),

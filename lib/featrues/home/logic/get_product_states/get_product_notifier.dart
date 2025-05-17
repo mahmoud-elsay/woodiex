@@ -17,6 +17,7 @@ class GetProductNotifier extends _$GetProductNotifier {
   GetProductState build() => const GetProductInitial();
 
   Future<void> fetchProducts() async {
+    print('Fetching products, page: $_currentPage');
     _currentPage = 1;
     _hasReachedMax = false;
     _allProducts = [];
@@ -24,33 +25,42 @@ class GetProductNotifier extends _$GetProductNotifier {
     state = const GetProductLoading([]);
 
     final token = await SharedPrefHelper.getUserToken();
+    print('Token retrieved: $token');
     if (token.isEmpty) {
+      print('Token is empty, setting error state');
       state = GetProductError(
           ApiErrorModel(message: 'User not logged in', statusCode: 401));
       return;
     }
 
-    final result =
-        await ref.read(getProductRepoProvider).getProducts(token, _currentPage);
+    final result = await ref
+        .read(getProductRepoProvider)
+        .getProducts('Bearer $token', _currentPage);
+    print('API response: $result');
 
     result.when(
       success: (response) {
+        print('Success, products count: ${response.data.length}');
         _cacheProductIds(response.data);
 
         _allProducts = response.data;
         _currentPage++;
-        _hasReachedMax = response.data.isEmpty ||
-            response.data.length < 10; // Adjust based on API page size
+        _hasReachedMax =
+            response.data.isEmpty; // Only set to true if no data is returned
+        print('Has reached max after fetch: $_hasReachedMax');
 
         state = GetProductSuccess(_allProducts);
       },
       failure: (error) {
+        print('Failure, error: ${error.message}');
         state = GetProductError(error);
       },
     );
   }
 
   Future<void> loadMoreProducts() async {
+    print(
+        'Loading more products, page: $_currentPage, hasReachedMax: $_hasReachedMax');
     if (_hasReachedMax) return;
 
     state = GetProductLoading(_allProducts);
@@ -62,24 +72,32 @@ class GetProductNotifier extends _$GetProductNotifier {
       return;
     }
 
-    final result =
-        await ref.read(getProductRepoProvider).getProducts(token, _currentPage);
+    final result = await ref
+        .read(getProductRepoProvider)
+        .getProducts('Bearer $token', _currentPage);
+    print('API response for load more: $result');
 
     result.when(
       success: (response) {
+        print('Load more success, new products count: ${response.data.length}');
         _allProducts.addAll(response.data);
         _currentPage++;
-        _hasReachedMax = response.data.isEmpty || response.data.length < 10;
+        _hasReachedMax =
+            response.data.isEmpty; // Only set to true if no data is returned
+        print('Has reached max after load more: $_hasReachedMax');
 
         state = GetProductLoadMoreSuccess(_allProducts, _hasReachedMax);
       },
       failure: (error) {
+        print('Load more failure, error: ${error.message}');
         state = GetProductError(error);
       },
     );
   }
 
   void checkAndLoadMore(int index) {
+    print(
+        'Checking load more at index: $index, hasReachedMax: $_hasReachedMax, total products: ${_allProducts.length}');
     if (index >= _allProducts.length - 5 && !_hasReachedMax) {
       loadMoreProducts();
     }
@@ -89,6 +107,7 @@ class GetProductNotifier extends _$GetProductNotifier {
     final List<String> productIds =
         products.map((product) => product.id.toString()).toList();
     final String idsString = productIds.join(',');
+    print('Caching product IDs: $idsString');
     await SharedPrefHelper.setData('cached_product_ids', idsString);
   }
 

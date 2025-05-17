@@ -3,7 +3,7 @@ import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/home/data/models/furnitrue_item_model.dart';
+import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/product_info.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/rating_sction.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/wishlist_button.dart';
@@ -12,12 +12,9 @@ import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/d
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/product_sliver_app_bar.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  final FurnitureItemModel item;
+  final ProductData item;
 
-  const ProductDetailsScreen({
-    super.key,
-    required this.item,
-  });
+  const ProductDetailsScreen({super.key, required this.item});
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
