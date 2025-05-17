@@ -7,7 +7,7 @@ part of 'shipping_address_notifier.dart';
 // **************************************************************************
 
 String _$shippingAddressNotifierHash() =>
-    r'7bb439923276839cf6110586ae30b21db7c5a802';
+    r'4b5a44eb7ce23f1f545d1da84b810666edd1919a';
 
 /// See also [ShippingAddressNotifier].
 @ProviderFor(ShippingAddressNotifier)

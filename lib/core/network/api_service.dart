@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:woodiex/core/network/api_constants.dart';
 import 'package:woodiex/featrues/auth/login/data/models/login_request_model.dart';
 import 'package:woodiex/featrues/auth/login/data/models/login_response_model.dart';
+import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_request_model.dart';
@@ -30,8 +31,15 @@ abstract class ApiService {
     @Body() AddShippingAddressRequestModel requestModel,
     @Header('Authorization') String token,
   );
+
   @GET(ApiConstants.getShippingAddress)
   Future<GetShippingAddressResponseModel> getShippingAddress(
     @Header('Authorization') String token,
+  );
+
+  @GET(ApiConstants.products)
+  Future<GetProductResponseModel> getProducts(
+    @Header('Authorization') String token,
+    @Query('pageIndex') int pageIndex,
   );
 }
