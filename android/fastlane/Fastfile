@@ -1,25 +1,19 @@
-
-
 default_platform(:android)
 
 platform :android do
   desc "Lane for Android Firebase App Distribution"
   lane :firebase_distribution do
-    gradle(task: "test")
-  end
-
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor production -t lib/main_production.dart --no-tree-shake-icons"
+   
+    firebase_app_distribution(
+      app: "1:816882805153:android:b404de2f03a9f38aa883e0",
+      firebase_cli_token: "1//03lKMNlLBZ55GCgYIARAAGAMSNwF-L9Ir-PyGFwFIJ7MqYIUzdWWvNVD2pVJZZh05hflw0V25awFEeg2X-OXayijle8RoQSZr93A",
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+      testers: "elsayedmahmoud763@gmail.com",
+      release_notes: "This is a new release of the app for testing purposes. Please provide feedback.",
+      upload_timeout: 600 # Increase timeout to 10 minutes (in seconds)
+    )
   end
 end
