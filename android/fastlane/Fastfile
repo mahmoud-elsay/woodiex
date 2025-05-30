@@ -8,12 +8,12 @@ platform :android do
    
     firebase_app_distribution(
       app: "1:816882805153:android:b404de2f03a9f38aa883e0",
-      firebase_cli_token: "1//03lKMNlLBZ55GCgYIARAAGAMSNwF-L9Ir-PyGFwFIJ7MqYIUzdWWvNVD2pVJZZh05hflw0V25awFEeg2X-OXayijle8RoQSZr93A",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"], # Use environment variable
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
       testers: "elsayedmahmoud763@gmail.com",
       release_notes: "This is a new release of the app for testing purposes. Please provide feedback.",
-      upload_timeout: 600 # Increase timeout to 10 minutes (in seconds)
+      upload_timeout: 600
     )
   end
 end
