@@ -7,4 +7,5 @@ class ApiConstants {
   static const String addShippingAddress =
       "ShippingAddresses/addShippingAddress";
   static const String getShippingAddress = "ShippingAddresses/allAddresses";
+  static const String products = "Products/allProducts";
 }
