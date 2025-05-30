@@ -11,7 +11,7 @@ platform :android do
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"], 
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-      testers: "elsayedmahmoud763@gmail.com",
+      testers: "elsayedmahmoud763@gmail.com,gamalwork81@gmail.com",
       release_notes: "This is a new release of the app for testing purposes. Please provide feedback.",
       upload_timeout: 600
     )
