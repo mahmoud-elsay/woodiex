@@ -5,14 +5,14 @@ part 'filter_product_model.g.dart';
 @JsonSerializable()
 class FilterProductModel {
   final bool success;
-  final String message;
+  final String messsage; // Updated to match the JSON typo
   final List<ProductData> data;
   final dynamic errors;
   final int statusCode;
 
   FilterProductModel({
     required this.success,
-    required this.message,
+    required this.messsage,
     required this.data,
     required this.errors,
     required this.statusCode,

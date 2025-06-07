@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
+import 'package:woodiex/featrues/home/logic/get_product_states/get_product_states.dart';
 import 'package:woodiex/featrues/home/logic/get_product_states/get_product_notifier.dart';
 import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/furnitrue_item_widget.dart';
 
@@ -48,6 +49,8 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
             }
           },
           error: (_) {},
+          filterLoading: (_) {}, // Skip load more during filtering
+          filterSuccess: (_) {}, // Skip load more during filtered state
         );
       }
     });
@@ -74,25 +77,42 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
       loading: (products) {
         print('Building grid with ${products.length} products (loading state)');
         shoppingCartStates = List<bool>.filled(products.length, false);
-        return _buildGridView(products);
+        return _buildGridView(products, state: state);
       },
       success: (products) {
         print('Building grid with ${products.length} products (success state)');
         shoppingCartStates = List<bool>.filled(products.length, false);
-        return _buildGridView(products);
+        return _buildGridView(products,
+            hasReachedMax: true,
+            state: state); // No more loading for initial fetch
       },
       loadMoreSuccess: (products, hasReachedMax) {
         print(
             'Building grid with ${products.length} products (load more success state)');
         shoppingCartStates = List<bool>.filled(products.length, false);
-        return _buildGridView(products, hasReachedMax: hasReachedMax);
+        return _buildGridView(products,
+            hasReachedMax: hasReachedMax, state: state);
       },
       error: (error) => Center(child: Text('Error: ${error.message}')),
+      filterLoading: (products) {
+        print(
+            'Building grid with ${products.length} products (filter loading state)');
+        shoppingCartStates = List<bool>.filled(products.length, false);
+        return _buildGridView(products,
+            hasReachedMax: true, state: state); // No more loading during filter
+      },
+      filterSuccess: (products) {
+        print(
+            'Building grid with ${products.length} products (filter success state)');
+        shoppingCartStates = List<bool>.filled(products.length, false);
+        return _buildGridView(products,
+            hasReachedMax: true, state: state); // No more loading after filter
+      },
     );
   }
 
   Widget _buildGridView(List<ProductData> products,
-      {bool hasReachedMax = false}) {
+      {bool hasReachedMax = false, required GetProductState state}) {
     return CustomScrollView(
       controller: _scrollController,
       slivers: [
@@ -120,6 +140,7 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
             ),
           ),
         ),
+        // Show loading indicator for all states except when hasReachedMax is true
         if (!hasReachedMax)
           const SliverToBoxAdapter(
             child: Padding(

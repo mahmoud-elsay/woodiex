@@ -3,6 +3,8 @@ import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
+import 'package:woodiex/featrues/home/data/models/filter_product_model.dart'
+    as filter;
 import 'package:woodiex/featrues/home/logic/get_product_states/get_product_states.dart';
 
 part 'get_product_notifier.g.dart';
@@ -101,6 +103,44 @@ class GetProductNotifier extends _$GetProductNotifier {
     if (index >= _allProducts.length - 5 && !_hasReachedMax) {
       loadMoreProducts();
     }
+  }
+
+  Future<void> fetchFilteredProducts(String category) async {
+    print('Fetching filtered products for category: $category');
+    state = GetProductFilterLoading(_allProducts);
+
+    final token = await SharedPrefHelper.getUserToken();
+    print('Token retrieved for filter: $token');
+    if (token.isEmpty) {
+      print('Token is empty, setting error state for filter');
+      state = GetProductError(
+          ApiErrorModel(message: 'User not logged in', statusCode: 401));
+      return;
+    }
+
+    final result = await ref
+        .read(getProductRepoProvider)
+        .getFilteredProducts('Bearer $token', category);
+    print('API response for filter: $result');
+
+    result.when(
+      success: (response) {
+        print('Filter success, products count: ${response.data.length}');
+        _allProducts = response.data
+            .map((filterProduct) => ProductData(
+                  id: filterProduct.id,
+                  imageUrl: filterProduct.imageUrl,
+                  name: filterProduct.name,
+                  price: filterProduct.price,
+                ))
+            .toList(); // Convert filter.ProductData to ProductData
+        state = GetProductFilterSuccess(_allProducts);
+      },
+      failure: (error) {
+        print('Filter failure, error: ${error.message}');
+        state = GetProductError(error);
+      },
+    );
   }
 
   Future<void> _cacheProductIds(List<ProductData> products) async {

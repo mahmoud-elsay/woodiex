@@ -11,6 +11,8 @@ sealed class GetProductState {
     required T Function(List<ProductData> products, bool hasReachedMax)
         loadMoreSuccess,
     required T Function(ApiErrorModel errorModel) error,
+    required T Function(List<ProductData> products) filterLoading,
+    required T Function(List<ProductData> products) filterSuccess,
   }) {
     return switch (this) {
       GetProductInitial _ => initial(),
@@ -22,6 +24,10 @@ sealed class GetProductState {
       ) =>
         loadMoreSuccess(products, hasReachedMax),
       GetProductError(error: final errorModel) => error(errorModel),
+      GetProductFilterLoading(products: final products) =>
+        filterLoading(products),
+      GetProductFilterSuccess(products: final products) =>
+        filterSuccess(products),
     };
   }
 }
@@ -94,4 +100,36 @@ class GetProductError extends GetProductState {
 
   @override
   int get hashCode => error.hashCode;
+}
+
+class GetProductFilterLoading extends GetProductState {
+  final List<ProductData> products;
+
+  const GetProductFilterLoading(this.products);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GetProductFilterLoading &&
+          runtimeType == other.runtimeType &&
+          products == other.products;
+
+  @override
+  int get hashCode => products.hashCode;
+}
+
+class GetProductFilterSuccess extends GetProductState {
+  final List<ProductData> products;
+
+  const GetProductFilterSuccess(this.products);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GetProductFilterSuccess &&
+          runtimeType == other.runtimeType &&
+          products == other.products;
+
+  @override
+  int get hashCode => products.hashCode;
 }

@@ -9,7 +9,7 @@ part of 'filter_product_model.dart';
 FilterProductModel _$FilterProductModelFromJson(Map<String, dynamic> json) =>
     FilterProductModel(
       success: json['success'] as bool,
-      message: json['message'] as String,
+      messsage: json['messsage'] as String,
       data: (json['data'] as List<dynamic>)
           .map((e) => ProductData.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -20,7 +20,7 @@ FilterProductModel _$FilterProductModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$FilterProductModelToJson(FilterProductModel instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'message': instance.message,
+      'messsage': instance.messsage,
       'data': instance.data,
       'errors': instance.errors,
       'statusCode': instance.statusCode,
