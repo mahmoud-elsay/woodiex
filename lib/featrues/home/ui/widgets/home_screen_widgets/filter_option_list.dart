@@ -1,17 +1,19 @@
 import 'filter_option_item.dart';
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/data/models/fillter_option_model.dart';
+import 'package:woodiex/featrues/home/logic/get_product_states/get_product_notifier.dart';
 
-class FilterOptionsList extends StatefulWidget {
+class FilterOptionsList extends ConsumerStatefulWidget {
   const FilterOptionsList({super.key});
 
   @override
-  State<FilterOptionsList> createState() => _FilterOptionsListState();
+  _FilterOptionsListState createState() => _FilterOptionsListState();
 }
 
-class _FilterOptionsListState extends State<FilterOptionsList> {
+class _FilterOptionsListState extends ConsumerState<FilterOptionsList> {
   List<FilterOption> filterOptions = [
     FilterOption(
         iconPath: 'assets/svgs/popular.svg',
@@ -20,7 +22,8 @@ class _FilterOptionsListState extends State<FilterOptionsList> {
     FilterOption(iconPath: 'assets/svgs/chair.svg', label: 'Chair'),
     FilterOption(iconPath: 'assets/svgs/table.svg', label: 'Table'),
     FilterOption(iconPath: 'assets/svgs/armchair.svg', label: 'Armchair'),
-    FilterOption(iconPath: 'assets/svgs/bed.svg', label: 'Bed'),
+    FilterOption(iconPath: 'assets/svgs/bed.svg', label: 'sofa'),
+    FilterOption(iconPath: 'assets/svgs/lamp.svg', label: 'lamp'),
   ];
 
   void toggleSelection(int index) {
@@ -29,6 +32,16 @@ class _FilterOptionsListState extends State<FilterOptionsList> {
         filterOptions[i].isSelected = i == index;
       }
     });
+    final selectedCategory = filterOptions[index].label;
+    if (selectedCategory != 'popular') {
+      ref
+          .read(getProductNotifierProvider.notifier)
+          .fetchFilteredProducts(selectedCategory);
+    } else {
+      ref
+          .read(getProductNotifierProvider.notifier)
+          .fetchProducts(); // Reset to all products for 'popular'
+    }
   }
 
   @override

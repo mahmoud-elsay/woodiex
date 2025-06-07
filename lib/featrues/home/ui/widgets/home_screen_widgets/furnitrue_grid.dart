@@ -48,6 +48,8 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
             }
           },
           error: (_) {},
+          filterLoading: (_) {},
+          filterSuccess: (_) {},
         );
       }
     });
@@ -88,6 +90,19 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
         return _buildGridView(products, hasReachedMax: hasReachedMax);
       },
       error: (error) => Center(child: Text('Error: ${error.message}')),
+      filterLoading: (products) {
+        print(
+            'Building grid with ${products.length} products (filter loading state)');
+        shoppingCartStates = List<bool>.filled(products.length, false);
+        return _buildGridView(
+            products); // Show current products while filtering
+      },
+      filterSuccess: (products) {
+        print(
+            'Building grid with ${products.length} products (filter success state)');
+        shoppingCartStates = List<bool>.filled(products.length, false);
+        return _buildGridView(products); // Show filtered products
+      },
     );
   }
 
