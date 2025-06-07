@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:woodiex/core/network/api_constants.dart';
+import 'package:woodiex/featrues/home/data/models/filter_product_model.dart';
 import 'package:woodiex/featrues/auth/login/data/models/login_request_model.dart';
 import 'package:woodiex/featrues/auth/login/data/models/login_response_model.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
@@ -41,5 +42,11 @@ abstract class ApiService {
   Future<GetProductResponseModel> getProducts(
     @Header('Authorization') String token,
     @Query('pageIndex') int pageIndex,
+  );
+
+  @GET(ApiConstants.filterProducts)
+  Future<FilterProductModel> getFilterProducts(
+    @Header('Authorization') String token,
+    @Query('categories') String categories,
   );
 }

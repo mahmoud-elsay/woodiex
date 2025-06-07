@@ -8,4 +8,6 @@ class ApiConstants {
       "ShippingAddresses/addShippingAddress";
   static const String getShippingAddress = "ShippingAddresses/allAddresses";
   static const String products = "Products/allProducts";
+
+  static const String filterProducts = "Products/allProductsForCategry";
 }
