@@ -81,28 +81,28 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductInfo(
-                        item: data ??
-                            ProductDetailsData(
-                              id: widget.id,
-                              name: 'Loading...',
-                              imageUrl: '',
-                              description: 'Loading description...',
-                              price: 0.0,
-                              reviewsCount: 0,
-                              reveiewAverageRating: 0.0,
-                              reviews: [],
-                            ),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 40),
-                        child: QuantitySelector(
-                          quantity: quantity,
-                          onIncrease: _increaseQuantity,
-                          onDecrease: _decreaseQuantity,
+                      Expanded(
+                        child: ProductInfo(
+                          item: data ??
+                              ProductDetailsData(
+                                id: widget.id,
+                                name: 'Loading...',
+                                imageUrl: '',
+                                description: 'Loading description...',
+                                price: 0.0,
+                                reviewsCount: 0,
+                                reveiewAverageRating: 0.0,
+                                reviews: [],
+                              ),
                         ),
+                      ),
+                      const SizedBox(width: 10),
+                      QuantitySelector(
+                        quantity: quantity,
+                        onIncrease: _increaseQuantity,
+                        onDecrease: _decreaseQuantity,
                       ),
                     ],
                   ),

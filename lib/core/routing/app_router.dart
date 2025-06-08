@@ -16,6 +16,7 @@ import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/profile/ui/payment_method_screen.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/shipping_address_screen.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/add_shippng_address_screen.dart';
+import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -67,10 +68,12 @@ class AppRouter {
           builder: (_) => const ShippingAddressScreen(),
         );
       case Routes.prodcutDetailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => ProductDetailsScreen(
+        // Enhanced hero route with proper settings
+        return CustomHeroPageRoute(
+          page: ProductDetailsScreen(
             id: arguments as int,
           ),
+          settings: settings, // Pass settings for proper route handling
         );
       case Routes.checkoutScreen:
         return MaterialPageRoute(

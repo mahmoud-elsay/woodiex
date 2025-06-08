@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 
 class ProductSliverAppBar extends StatelessWidget {
@@ -16,9 +16,13 @@ class ProductSliverAppBar extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(
           tag: 'furniture_${item.name}_${item.hashCode}',
-          child: Image.network(
-            item.imageUrl,
+          child: CachedNetworkImage(
+            imageUrl: item.imageUrl,
             fit: BoxFit.cover,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) =>
+                const Center(child: Icon(Icons.broken_image)),
           ),
         ),
       ),
