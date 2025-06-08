@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/cart/logic/cart_notifier.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/product_info.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/rating_sction.dart';
@@ -42,16 +44,47 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
 
   void _toggleWishlist() => setState(() => isSaved = !isSaved);
 
+  Future<void> _addToCart() async {
+    final cartNotifier = ref.read(cartNotifierProvider.notifier);
+    await cartNotifier.addToCart(widget.id, quantity);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(productDetailsNotifierProvider);
+    final productState = ref.watch(productDetailsNotifierProvider);
+    final cartState = ref.watch(cartNotifierProvider);
 
     return Scaffold(
-      body: state.when(
-        initial: () => const Center(child: CircularProgressIndicator()),
-        loading: (data) => _buildContent(data),
-        success: (data) => _buildContent(data),
-        error: (error) => Center(child: Text('Error: ${error.message}')),
+      body: Consumer(
+        builder: (context, ref, child) {
+          cartState.when(
+            initial: () {},
+            loading: (data) {},
+            success: (data) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                CustomSnackBar.showSuccess(
+                  context,
+                  data.messsage ?? 'Product added to cart successfully!',
+                );
+              });
+            },
+            error: (error) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                CustomSnackBar.showError(
+                  context,
+                  error.message ?? 'Failed to add product to cart.',
+                );
+              });
+            },
+          );
+
+          return productState.when(
+            initial: () => const Center(child: CircularProgressIndicator()),
+            loading: (data) => _buildContent(data),
+            success: (data) => _buildContent(data),
+            error: (error) => Center(child: Text('Error: ${error.message}')),
+          );
+        },
       ),
     );
   }
@@ -127,7 +160,7 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                       AppTextButton(
                         buttonText: 'Add to cart',
                         textStyle: Fonts.nunitoSans20SemiBoldWhite,
-                        onPressed: () {},
+                        onPressed: _addToCart,
                         buttonWidth: 250.w,
                         buttonHeight: 60.h,
                       ),
