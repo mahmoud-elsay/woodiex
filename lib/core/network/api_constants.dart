@@ -12,4 +12,5 @@ class ApiConstants {
   static const String filterProducts = "Products/allProductsForCategry";
   static const String productDetails = "Products/id";
   static const String cart = "Cart/{productId}";
+  static const String getCart = "Cart";
 }
