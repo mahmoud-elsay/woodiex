@@ -4,7 +4,7 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/data/models/fillter_option_model.dart';
-import 'package:woodiex/featrues/home/logic/get_product_states/get_product_notifier.dart';
+import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_notifier.dart';
 
 class FilterOptionsList extends ConsumerStatefulWidget {
   const FilterOptionsList({super.key});

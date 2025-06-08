@@ -106,5 +106,24 @@ final getProductRepoProvider = AutoDisposeProvider<GetProductRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef GetProductRepoRef = AutoDisposeProviderRef<GetProductRepo>;
+String _$productDetailsRepoHash() =>
+    r'3d2c3c9a625003a088c64c34a5805efd9b2e370c';
+
+/// See also [productDetailsRepo].
+@ProviderFor(productDetailsRepo)
+final productDetailsRepoProvider =
+    AutoDisposeProvider<ProductDetailsRepo>.internal(
+  productDetailsRepo,
+  name: r'productDetailsRepoProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$productDetailsRepoHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef ProductDetailsRepoRef = AutoDisposeProviderRef<ProductDetailsRepo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

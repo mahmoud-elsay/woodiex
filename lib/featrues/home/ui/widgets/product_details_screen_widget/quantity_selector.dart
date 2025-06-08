@@ -18,10 +18,12 @@ class QuantitySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         GestureDetector(
-          onTap: onIncrease,
-          child: SvgPicture.asset('assets/svgs/add.svg'),
+          onTap: onDecrease,
+          child: SvgPicture.asset('assets/svgs/decrease.svg',
+              width: 24, height: 24),
         ),
         horizontalSpace(10),
         Text(
@@ -30,8 +32,8 @@ class QuantitySelector extends StatelessWidget {
         ),
         horizontalSpace(10),
         GestureDetector(
-          onTap: onDecrease,
-          child: SvgPicture.asset('assets/svgs/decrease.svg'),
+          onTap: onIncrease,
+          child: SvgPicture.asset('assets/svgs/add.svg', width: 24, height: 24),
         ),
       ],
     );

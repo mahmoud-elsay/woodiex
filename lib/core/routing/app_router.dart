@@ -14,9 +14,9 @@ import 'package:woodiex/featrues/profile/reviews/ui/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/profile/profile/ui/payment_method_screen.dart';
-import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/shipping_address_screen.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/add_shippng_address_screen.dart';
+import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -68,22 +68,21 @@ class AppRouter {
           builder: (_) => const ShippingAddressScreen(),
         );
       case Routes.prodcutDetailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => ProductDetailsScreen(
-            item: arguments as ProductData,
+        // Enhanced hero route with proper settings
+        return CustomHeroPageRoute(
+          page: ProductDetailsScreen(
+            id: arguments as int,
           ),
+          settings: settings, // Pass settings for proper route handling
         );
-
       case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (_) => const CheckoutScreen(),
         );
-
       case Routes.checkoutSuccess:
         return MaterialPageRoute(
           builder: (_) => const CheckoutSuccess(),
         );
-
       case Routes.productReviewsScreen:
         return MaterialPageRoute(
           builder: (_) => const ProductReviewsScreen(),

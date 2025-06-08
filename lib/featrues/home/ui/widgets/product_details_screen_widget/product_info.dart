@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
+import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 
 class ProductInfo extends StatelessWidget {
-  final ProductData item;
+  final ProductDetailsData item;
 
   const ProductInfo({super.key, required this.item});
 
