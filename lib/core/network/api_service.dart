@@ -7,6 +7,7 @@ import 'package:woodiex/featrues/auth/login/data/models/login_response_model.dar
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
+import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_request_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
@@ -48,5 +49,11 @@ abstract class ApiService {
   Future<FilterProductModel> getFilterProducts(
     @Header('Authorization') String token,
     @Query('categories') String categories,
+  );
+
+  @GET(ApiConstants.productDetails)
+  Future<ProductDetailsResponseModel> getProductDetails(
+    @Header('Authorization') String token,
+    @Query('id') int id,
   );
 }
