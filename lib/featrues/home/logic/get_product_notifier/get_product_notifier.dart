@@ -5,7 +5,7 @@ import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/home/data/models/filter_product_model.dart'
     as filter;
-import 'package:woodiex/featrues/home/logic/get_product_states/get_product_states.dart';
+import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_states.dart';
 
 part 'get_product_notifier.g.dart';
 

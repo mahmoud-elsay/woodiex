@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
-import 'package:woodiex/featrues/home/logic/get_product_states/get_product_states.dart';
-import 'package:woodiex/featrues/home/logic/get_product_states/get_product_notifier.dart';
+import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_states.dart';
+import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_notifier.dart';
 import 'package:woodiex/featrues/home/ui/widgets/home_screen_widgets/furnitrue_item_widget.dart';
 
 class FurnitureGridView extends ConsumerStatefulWidget {
