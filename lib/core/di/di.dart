@@ -3,6 +3,7 @@ import '../network/dio_factory.dart';
 import 'package:woodiex/core/network/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:woodiex/featrues/cart/data/repos/cart_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/get_product_repo.dart';
 import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/product_details_repo.dart';
@@ -44,4 +45,9 @@ GetProductRepo getProductRepo(Ref ref) {
 @riverpod
 ProductDetailsRepo productDetailsRepo(Ref ref) {
   return ProductDetailsRepo(ref.read(apiServiceProvider));
+}
+
+@riverpod
+CartRepo cartRepo(Ref ref) {
+  return CartRepo(ref.read(apiServiceProvider));
 }
