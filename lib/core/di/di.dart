@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/featrues/home/data/repo/get_product_repo.dart';
 import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
+import 'package:woodiex/featrues/home/data/repo/product_details_repo.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/repos/sign_up_repo.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/repos/shipping_address_repo.dart';
 
@@ -38,4 +39,9 @@ ShippingAddressRepo shippingAddressRepo(Ref ref) {
 @riverpod
 GetProductRepo getProductRepo(Ref ref) {
   return GetProductRepo(ref.read(apiServiceProvider));
+}
+
+@riverpod
+ProductDetailsRepo productDetailsRepo(Ref ref) {
+  return ProductDetailsRepo(ref.read(apiServiceProvider));
 }
