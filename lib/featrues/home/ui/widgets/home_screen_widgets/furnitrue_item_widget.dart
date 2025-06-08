@@ -33,7 +33,7 @@ class FurnitureItemWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.of(context).push(CustomHeroPageRoute(
-                page: ProductDetailsScreen(item: item),
+                page: ProductDetailsScreen(id: item.id),
               ));
             },
             child: Container(

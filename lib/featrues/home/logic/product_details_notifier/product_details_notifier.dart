@@ -16,7 +16,17 @@ class ProductDetailsNotifier extends _$ProductDetailsNotifier {
 
   Future<void> fetchProductDetails(int id) async {
     print('Fetching product details for id: $id');
-    state = ProductDetailsLoading(_productDetails!);
+    state = ProductDetailsLoading(_productDetails ??
+        ProductDetailsData(
+          id: 0,
+          name: '',
+          imageUrl: '',
+          description: '',
+          price: 0.0,
+          reviewsCount: 0,
+          reveiewAverageRating: 0.0,
+          reviews: [],
+        ));
 
     final token = await SharedPrefHelper.getUserToken();
     print('Token retrieved: $token');
