@@ -1,6 +1,7 @@
 import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:woodiex/featrues/cart/data/models/get_cart_response_model.dart';
 import 'package:woodiex/featrues/cart/data/models/add_product_response_model.dart';
+import 'package:woodiex/featrues/cart/data/models/delete_cart_item_response_model.dart';
 
 sealed class AddCartState {
   const AddCartState();
@@ -135,6 +136,76 @@ class GetCartError extends GetCartState {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is GetCartError &&
+          runtimeType == other.runtimeType &&
+          error == other.error;
+
+  @override
+  int get hashCode => error.hashCode;
+}
+
+sealed class DeleteCartState {
+  const DeleteCartState();
+
+  T when<T>({
+    required T Function() initial,
+    required T Function(DeleteCartItemResponseModel data) loading,
+    required T Function(DeleteCartItemResponseModel data) success,
+    required T Function(ApiErrorModel errorModel) error,
+  }) {
+    return switch (this) {
+      DeleteCartInitial _ => initial(),
+      DeleteCartLoading(data: final data) => loading(data),
+      DeleteCartSuccess(data: final data) => success(data),
+      DeleteCartError(error: final errorModel) => error(errorModel),
+    };
+  }
+}
+
+class DeleteCartInitial extends DeleteCartState {
+  const DeleteCartInitial();
+}
+
+class DeleteCartLoading extends DeleteCartState {
+  final DeleteCartItemResponseModel data;
+
+  const DeleteCartLoading(this.data);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DeleteCartLoading &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+
+  @override
+  int get hashCode => data.hashCode;
+}
+
+class DeleteCartSuccess extends DeleteCartState {
+  final DeleteCartItemResponseModel data;
+
+  const DeleteCartSuccess(this.data);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DeleteCartSuccess &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+
+  @override
+  int get hashCode => data.hashCode;
+}
+
+class DeleteCartError extends DeleteCartState {
+  final ApiErrorModel error;
+
+  const DeleteCartError(this.error);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DeleteCartError &&
           runtimeType == other.runtimeType &&
           error == other.error;
 

@@ -22,6 +22,23 @@ class GetCartResponseModel {
       _$GetCartResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetCartResponseModelToJson(this);
+
+  // Add copyWith method
+  GetCartResponseModel copyWith({
+    bool? success,
+    String? messsage,
+    CartData? data,
+    dynamic errors,
+    int? statusCode,
+  }) {
+    return GetCartResponseModel(
+      success: success ?? this.success,
+      messsage: messsage ?? this.messsage,
+      data: data ?? this.data,
+      errors: errors ?? this.errors,
+      statusCode: statusCode ?? this.statusCode,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -40,6 +57,19 @@ class CartData {
       _$CartDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$CartDataToJson(this);
+
+  // Add copyWith method
+  CartData copyWith({
+    int? id,
+    double? total,
+    List<CartItem>? items,
+  }) {
+    return CartData(
+      id: id ?? this.id,
+      total: total ?? this.total,
+      items: items ?? this.items,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -66,4 +96,25 @@ class CartItem {
       _$CartItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$CartItemToJson(this);
+
+  // Add copyWith method
+  CartItem copyWith({
+    int? id,
+    int? productId,
+    String? productName,
+    String? productImageUrl,
+    double? price,
+    int? quantity,
+    double? subTotal,
+  }) {
+    return CartItem(
+      id: id ?? this.id,
+      productId: productId ?? this.productId,
+      productName: productName ?? this.productName,
+      productImageUrl: productImageUrl ?? this.productImageUrl,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      subTotal: subTotal ?? this.subTotal,
+    );
+  }
 }
