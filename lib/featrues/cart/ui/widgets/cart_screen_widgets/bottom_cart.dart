@@ -6,7 +6,9 @@ import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 
 class BottomCart extends StatelessWidget {
-  const BottomCart({super.key});
+  final double total;
+
+  const BottomCart({super.key, required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,21 @@ class BottomCart extends StatelessWidget {
               'Total:',
               style: Fonts.nunitoSans18BoldSecondaryGrey,
             ),
-            Spacer(),
+            const Spacer(),
             Text(
-              '\$50',
+              '\$${total.toStringAsFixed(2)}',
               style: Fonts.nunitoSans20BoldMainBlack,
             ),
           ],
         ),
         verticalSpace(10),
         AppTextButton(
-            buttonText: 'checkout',
-            textStyle: Fonts.nunitoSans20SemiBoldWhite,
-            onPressed: () {
-              context.pushNamed(Routes.checkoutScreen);
-            })
+          buttonText: 'Checkout',
+          textStyle: Fonts.nunitoSans20SemiBoldWhite,
+          onPressed: () {
+            context.pushNamed(Routes.checkoutScreen);
+          },
+        ),
       ],
     );
   }

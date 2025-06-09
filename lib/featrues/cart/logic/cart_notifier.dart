@@ -8,17 +8,14 @@ import 'package:woodiex/featrues/cart/data/models/add_product_response_model.dar
 
 part 'cart_notifier.g.dart';
 
+// Separate provider for AddCart functionality
 @riverpod
-class CartNotifier extends _$CartNotifier {
+class AddCartNotifier extends _$AddCartNotifier {
   AddProductResponseModel? _cartResponse;
-  GetCartResponseModel? _getCartResponse;
   static const String _cachedCartProductIdsKey = 'cachedCartProductIds';
 
   @override
   AddCartState build() => const AddCartInitial();
-
-  @override
-  GetCartState buildGetCart() => const GetCartInitial();
 
   Future<void> addToCart(int productId, int quantity) async {
     print(
@@ -51,6 +48,8 @@ class CartNotifier extends _$CartNotifier {
         print('Success, product added to cart');
         _cartResponse = response;
         state = AddCartSuccess(_cartResponse!);
+        // Refresh the cart after adding a product
+        ref.invalidate(getCartNotifierProvider);
       },
       failure: (error) {
         print('Failure, error: ${error.message}');
@@ -58,6 +57,28 @@ class CartNotifier extends _$CartNotifier {
       },
     );
   }
+
+  Future<void> clearCartState() async {
+    print('Clearing cart state');
+    _cartResponse = null;
+    state = const AddCartInitial();
+  }
+
+  // Helper method to retrieve cached product IDs
+  Future<List<int>> getCachedProductIds() async {
+    final ids = await SharedPrefHelper.getString(_cachedCartProductIdsKey);
+    return ids.isNotEmpty ? (ids.split(',').map(int.parse).toList()) : [];
+  }
+}
+
+// Separate provider for GetCart functionality
+@riverpod
+class GetCartNotifier extends _$GetCartNotifier {
+  GetCartResponseModel? _getCartResponse;
+  static const String _cachedCartProductIdsKey = 'cachedCartProductIds';
+
+  @override
+  GetCartState build() => const GetCartInitial();
 
   Future<void> getCart() async {
     print('Fetching cart details');
@@ -99,21 +120,9 @@ class CartNotifier extends _$CartNotifier {
     );
   }
 
-  Future<void> clearCartState() async {
-    print('Clearing cart state');
-    _cartResponse = null;
-    state = const AddCartInitial();
-  }
-
   Future<void> clearGetCartState() async {
     print('Clearing get cart state');
     _getCartResponse = null;
     state = const GetCartInitial();
-  }
-
-  // Helper method to retrieve cached product IDs
-  Future<List<int>> getCachedProductIds() async {
-    final ids = await SharedPrefHelper.getString(_cachedCartProductIdsKey);
-    return ids.isNotEmpty ? (ids.split(',').map(int.parse).toList()) : [];
   }
 }

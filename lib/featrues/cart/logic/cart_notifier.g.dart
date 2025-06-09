@@ -6,20 +6,37 @@ part of 'cart_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cartNotifierHash() => r'4487ee6d1adaec46ebdf93cd6267a56ec52ca7ba';
+String _$addCartNotifierHash() => r'd6b30123c6e44cf07735016bb4e83a19aa73aa6b';
 
-/// See also [CartNotifier].
-@ProviderFor(CartNotifier)
-final cartNotifierProvider =
-    AutoDisposeNotifierProvider<CartNotifier, AddCartState>.internal(
-  CartNotifier.new,
-  name: r'cartNotifierProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cartNotifierHash,
+/// See also [AddCartNotifier].
+@ProviderFor(AddCartNotifier)
+final addCartNotifierProvider =
+    AutoDisposeNotifierProvider<AddCartNotifier, AddCartState>.internal(
+  AddCartNotifier.new,
+  name: r'addCartNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$addCartNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CartNotifier = AutoDisposeNotifier<AddCartState>;
+typedef _$AddCartNotifier = AutoDisposeNotifier<AddCartState>;
+String _$getCartNotifierHash() => r'4c6e041e151ce0ca19991ce766d631275213a20d';
+
+/// See also [GetCartNotifier].
+@ProviderFor(GetCartNotifier)
+final getCartNotifierProvider =
+    AutoDisposeNotifierProvider<GetCartNotifier, GetCartState>.internal(
+  GetCartNotifier.new,
+  name: r'getCartNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getCartNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$GetCartNotifier = AutoDisposeNotifier<GetCartState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
