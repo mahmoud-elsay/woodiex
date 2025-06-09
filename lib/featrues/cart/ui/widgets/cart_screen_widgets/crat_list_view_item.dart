@@ -31,7 +31,6 @@ class _CartListViewItemState extends ConsumerState<CartListViewItem> {
     if (quantity > 1) {
       setState(() {
         quantity--;
-        // Optionally, update the cart via notifier (not implemented here)
       });
     }
   }
