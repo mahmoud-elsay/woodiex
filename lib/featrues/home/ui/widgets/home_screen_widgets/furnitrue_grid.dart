@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
+import 'package:woodiex/featrues/wishlist/logic/wishlist_notifier.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_states.dart';
 import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_notifier.dart';
@@ -130,10 +131,19 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
                 if (index >= products.length) return null;
                 return FurnitureItemWidget(
                   item: products[index],
-                  onCartToggle: () => toggleShoppingCart(index),
+                  onCartToggle: () {
+                    final wishlistNotifier =
+                        ref.read(wishlistNotifierProvider.notifier);
+                    wishlistNotifier.addToWishlist(products[index]);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Added to wishlist')),
+                    );
+                  },
                   heroTag:
                       'furniture_${products[index].name}_${products[index].id}',
-                  isTapped: shoppingCartStates[index],
+                  isTapped: ref
+                      .watch(wishlistNotifierProvider)
+                      .any((item) => item.id == products[index].id),
                 );
               },
               childCount: products.length,
