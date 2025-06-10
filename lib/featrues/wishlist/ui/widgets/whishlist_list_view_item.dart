@@ -3,9 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/wishlist/data/wishlist_item_model.dart';
 
-class WhishlistListViewItem extends StatelessWidget {
-  const WhishlistListViewItem({super.key});
+class WishlistListViewItem extends StatelessWidget {
+  final WishlistItem item;
+  final VoidCallback onRemove;
+
+  const WishlistListViewItem(
+      {super.key, required this.item, required this.onRemove});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +23,11 @@ class WhishlistListViewItem extends StatelessWidget {
               height: 100.h,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  'assets/images/prod.png',
+                child: Image.network(
+                  item.imageUrl,
                   fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
                 ),
               ),
             ),
@@ -29,12 +36,12 @@ class WhishlistListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Coffe table',
+                  item.name,
                   style: Fonts.nunitoSans14SemiBoldSecondaryGrey,
                 ),
                 verticalSpace(10),
                 Text(
-                  '\$50',
+                  '\$${item.price.toStringAsFixed(2)}',
                   style: Fonts.nunitoSans16BoldMainBlack,
                 ),
               ],
@@ -42,7 +49,10 @@ class WhishlistListViewItem extends StatelessWidget {
             const Spacer(),
             Column(
               children: [
-                SvgPicture.asset('assets/svgs/remove.svg'),
+                GestureDetector(
+                  onTap: onRemove,
+                  child: SvgPicture.asset('assets/svgs/remove.svg'),
+                ),
                 verticalSpace(20),
                 SvgPicture.asset('assets/svgs/selected_wish_list.svg'),
               ],

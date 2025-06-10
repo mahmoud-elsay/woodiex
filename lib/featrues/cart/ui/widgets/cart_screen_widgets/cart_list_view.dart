@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/featrues/cart/data/models/get_cart_response_model.dart';
 import 'package:woodiex/featrues/cart/ui/widgets/cart_screen_widgets/crat_list_view_item.dart';
 
 class CartListView extends StatelessWidget {
-  const CartListView({super.key});
+  final List<CartItem> items;
+
+  const CartListView({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 3, // Adjust the number of items as needed
+      itemCount: items.length,
       itemBuilder: (context, index) {
-        return const CartListViewItem(); // Render each item
+        return CartListViewItem(item: items[index]);
       },
     );
   }

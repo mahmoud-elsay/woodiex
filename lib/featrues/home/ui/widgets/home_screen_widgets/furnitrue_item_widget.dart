@@ -8,7 +8,6 @@ import 'package:woodiex/featrues/home/ui/screens/product_details_screen.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
 
-
 class FurnitureItemWidget extends StatelessWidget {
   final ProductData item;
   final VoidCallback onCartToggle;
@@ -54,14 +53,15 @@ class FurnitureItemWidget extends StatelessWidget {
                     tag: heroTag,
                     child: Container(
                       width: double.infinity,
-                      height: 180.h, // Reduced height to fit better
+                      height: 180.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: Colors.transparent,
                         image: DecorationImage(
                           image: NetworkImage(item.imageUrl),
                           fit: BoxFit.cover,
-                          onError: (exception, stackTrace) => const Icon(Icons.error),
+                          onError: (exception, stackTrace) =>
+                              const Icon(Icons.error),
                         ),
                       ),
                     ),

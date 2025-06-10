@@ -2,21 +2,28 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/cart/logic/cart_notifier.dart';
+import 'package:woodiex/featrues/cart/data/models/get_cart_response_model.dart';
 
-class CartListViewItem extends StatefulWidget {
-  const CartListViewItem({super.key});
+class CartListViewItem extends ConsumerStatefulWidget {
+  final CartItem item;
+
+  const CartListViewItem({super.key, required this.item});
 
   @override
-  State<CartListViewItem> createState() => _CartListViewItemState();
+  ConsumerState<CartListViewItem> createState() => _CartListViewItemState();
 }
 
-class _CartListViewItemState extends State<CartListViewItem> {
-  int quantity = 1;
+class _CartListViewItemState extends ConsumerState<CartListViewItem> {
+  late int quantity = widget.item.quantity;
 
   void _increaseQuantity() {
     setState(() {
       quantity++;
+      // Optionally, update the cart via notifier (not implemented here)
     });
   }
 
@@ -26,6 +33,16 @@ class _CartListViewItemState extends State<CartListViewItem> {
         quantity--;
       });
     }
+  }
+
+  void _removeItem() async {
+    final notifier = ref.read(getCartNotifierProvider.notifier);
+    await notifier.deleteCartItem(widget.item.productId);
+    // Show feedback (e.g., snackbar) - optional, based on UI preference
+    CustomSnackBar.showSuccess(
+      context,
+      'Item removed from cart',
+    );
   }
 
   @override
@@ -39,9 +56,11 @@ class _CartListViewItemState extends State<CartListViewItem> {
               height: 100.h,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  'assets/images/prod.png',
+                child: Image.network(
+                  widget.item.productImageUrl,
                   fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
                 ),
               ),
             ),
@@ -50,12 +69,12 @@ class _CartListViewItemState extends State<CartListViewItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Coffee table',
+                  widget.item.productName,
                   style: Fonts.nunitoSans14SemiBoldSecondaryGrey,
                 ),
                 verticalSpace(10),
                 Text(
-                  '\$50',
+                  '\$${widget.item.price}',
                   style: Fonts.nunitoSans16BoldMainBlack,
                 ),
                 verticalSpace(20),
@@ -80,7 +99,10 @@ class _CartListViewItemState extends State<CartListViewItem> {
               ],
             ),
             const Spacer(),
-            SvgPicture.asset('assets/svgs/remove.svg'),
+            GestureDetector(
+              onTap: _removeItem,
+              child: SvgPicture.asset('assets/svgs/remove.svg'),
+            ),
           ],
         ),
         verticalSpace(10),
