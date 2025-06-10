@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
 import 'package:woodiex/featrues/wishlist/logic/wishlist_notifier.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
@@ -50,7 +51,7 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
             }
           },
           error: (_) {},
-          filterLoading: (_) {}, // Skip load more during filtering
+          filterLoading: (_) {},
           filterSuccess: (_) {}, // Skip load more during filtered state
         );
       }
@@ -135,8 +136,9 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
                     final wishlistNotifier =
                         ref.read(wishlistNotifierProvider.notifier);
                     wishlistNotifier.addToWishlist(products[index]);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Added to wishlist')),
+                    CustomSnackBar.showInfo(
+                      context,
+                      '${products[index].name} added to cart successfully!',
                     );
                   },
                   heroTag:

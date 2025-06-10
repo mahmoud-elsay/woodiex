@@ -89,7 +89,7 @@ class FurnitureItemWidget extends StatelessWidget {
                         ),
                         child: Center(
                           child: SvgPicture.asset(
-                            'assets/svgs/wishlist.svg', // Changed to wishlist icon
+                            'assets/svgs/shopping.svg',
                             height: 16.h,
                             width: 16.w,
                             color: isTapped ? Colors.white : Colors.black,

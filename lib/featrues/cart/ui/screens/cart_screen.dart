@@ -18,12 +18,9 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   @override
   void initState() {
     super.initState();
-    // If using the separate provider approach
+
     Future.microtask(
         () => ref.read(getCartNotifierProvider.notifier).getCart());
-
-    // If using the first solution (single provider with _getCartState field)
-    // Future.microtask(() => ref.read(cartNotifierProvider.notifier).getCart());
   }
 
   @override
