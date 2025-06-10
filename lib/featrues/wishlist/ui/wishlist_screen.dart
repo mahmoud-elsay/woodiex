@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/widgets/app_top_bar.dart';
@@ -31,7 +32,27 @@ class WishlistScreen extends ConsumerWidget {
               verticalSpace(20),
               Expanded(
                 child: wishlist.isEmpty
-                    ? const Center(child: Text('Loading wishlist...'))
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.production_quantity_limits_sharp,
+                              size: 70,
+                              color: Colors.grey,
+                            ),
+                            verticalSpace(20),
+                            Text(
+                              'No Items Added to Wishlist',
+                              style: Fonts.nunitoSans16RegularSecondaryGrey
+                                  .copyWith(
+                                color: ColorsManager.moreDarkGrey
+                                    .withAlpha(179), // 70% opacity
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     : WishlistListView(items: wishlist),
               ),
             ],

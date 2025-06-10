@@ -271,5 +271,9 @@ class Fonts {
     color: ColorsManager.red,
   );
 
-  static var nunitoSans16RegularSecondaryGrey;
+  static TextStyle nunitoSans16RegularSecondaryGrey = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.secondaryGrey,
+  );
 }
