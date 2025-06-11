@@ -11,6 +11,7 @@ import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 import 'package:woodiex/featrues/cart/data/models/delete_cart_item_response_model.dart';
+import 'package:woodiex/featrues/profile/profile/data/models/update_profile_image_response.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_request_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
@@ -76,5 +77,12 @@ abstract class ApiService {
   Future<DeleteCartItemResponseModel> deleteCartItem(
     @Path('productId') int productId,
     @Header('Authorization') String token,
+  );
+
+  @PUT('${ApiConstants.profilePic}')
+  @MultiPart()
+  Future<UpdateProfileImageResponse> updateProfileImage(
+    @Header('Authorization') String token,
+    @Part() FormData formData,
   );
 }
