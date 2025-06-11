@@ -46,8 +46,8 @@ class WishlistScreen extends ConsumerWidget {
                               'No Items Added to Wishlist',
                               style: Fonts.nunitoSans16RegularSecondaryGrey
                                   .copyWith(
-                                color: ColorsManager.moreDarkGrey
-                                    .withAlpha(179), // 70% opacity
+                                color:
+                                    ColorsManager.moreDarkGrey.withAlpha(179),
                               ),
                             ),
                           ],

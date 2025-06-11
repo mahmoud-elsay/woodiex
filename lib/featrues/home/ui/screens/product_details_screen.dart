@@ -7,6 +7,7 @@ import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/cart/logic/cart_states.dart';
 import 'package:woodiex/featrues/cart/logic/cart_notifier.dart';
+import 'package:woodiex/core/animations/custom_loading_animation.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/product_info.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/rating_sction.dart';
@@ -87,7 +88,7 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
           );
 
           return productState.when(
-            initial: () => const Center(child: CircularProgressIndicator()),
+            initial: () => const Center(child: CustomLoadingWidget()),
             loading: (data) => _buildContent(data),
             success: (data) => _buildContent(data),
             error: (error) => Center(child: Text('Error: ${error.message}')),

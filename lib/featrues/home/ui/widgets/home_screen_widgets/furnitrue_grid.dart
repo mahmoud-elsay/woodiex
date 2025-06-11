@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:woodiex/core/widgets/loading_circle_indicator.dart';
+import 'package:woodiex/core/animations/custom_loading_animation.dart';
 import 'package:woodiex/featrues/wishlist/logic/wishlist_notifier.dart';
 import 'package:woodiex/featrues/home/data/models/get_product_response_model.dart';
 import 'package:woodiex/featrues/home/logic/get_product_notifier/get_product_states.dart';
@@ -157,7 +158,7 @@ class _FurnitureGridViewState extends ConsumerState<FurnitureGridView> {
           const SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.all(16.0),
-              child: Center(child: LoadingCircleIndicator()),
+              child: Center(child: CustomLoadingWidget()),
             ),
           ),
         if (hasReachedMax && products.isNotEmpty)

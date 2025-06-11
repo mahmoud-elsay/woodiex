@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:woodiex/core/animations/custom_loading_animation.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 
 class ProductSliverAppBar extends StatelessWidget {
@@ -20,9 +21,9 @@ class ProductSliverAppBar extends StatelessWidget {
             imageUrl: item.imageUrl,
             fit: BoxFit.cover,
             placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
+                const Center(child: CustomLoadingWidget()),
             errorWidget: (context, url, error) =>
-                const Center(child: Icon(Icons.broken_image)),
+                const Center(child: CustomLoadingWidget()),
           ),
         ),
       ),
