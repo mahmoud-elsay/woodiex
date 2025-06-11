@@ -14,7 +14,7 @@ import 'package:woodiex/featrues/profile/profile/logic/get_profile_notifier.dart
 import 'package:woodiex/featrues/profile/profile/logic/profile_image_notifier.dart';
 import 'package:woodiex/featrues/profile/profile/data/models/update_profile_image_request.dart';
 import 'package:woodiex/featrues/profile/profile/data/models/get_profile_info_response_model.dart';
-import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/image_picker_dialog.dart';
+import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/Image_picker_dialog.dart';
 
 class ProfilePicRow extends ConsumerStatefulWidget {
   final Data? profileData;
