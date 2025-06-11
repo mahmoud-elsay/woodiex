@@ -5,7 +5,11 @@ part 'get_profile_info_response_model.g.dart';
 @JsonSerializable()
 class GetProfileInfoResponseModel {
   final bool success;
+
+  // Handle the typo in the API response - it returns "messsage" instead of "message"
+  @JsonKey(name: 'messsage') // Map to the actual API field name
   final String message;
+
   final Data? data;
   final dynamic errors; // Can be null or a list/map depending on API
   final int statusCode;

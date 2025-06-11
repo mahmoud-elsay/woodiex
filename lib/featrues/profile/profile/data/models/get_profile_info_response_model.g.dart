@@ -10,7 +10,7 @@ GetProfileInfoResponseModel _$GetProfileInfoResponseModelFromJson(
         Map<String, dynamic> json) =>
     GetProfileInfoResponseModel(
       success: json['success'] as bool,
-      message: json['message'] as String,
+      message: json['messsage'] as String,
       data: json['data'] == null
           ? null
           : Data.fromJson(json['data'] as Map<String, dynamic>),
@@ -22,7 +22,7 @@ Map<String, dynamic> _$GetProfileInfoResponseModelToJson(
         GetProfileInfoResponseModel instance) =>
     <String, dynamic>{
       'success': instance.success,
-      'message': instance.message,
+      'messsage': instance.message,
       'data': instance.data,
       'errors': instance.errors,
       'statusCode': instance.statusCode,
