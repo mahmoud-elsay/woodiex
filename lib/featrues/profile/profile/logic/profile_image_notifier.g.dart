@@ -7,7 +7,7 @@ part of 'profile_image_notifier.dart';
 // **************************************************************************
 
 String _$profileImageNotifierHash() =>
-    r'3bbfdcee62d97fb3390c69f90d1cdf8a7b315bb7';
+    r'09e7eff246ee5e8b0f14a79b823feadbb39e20da';
 
 /// See also [ProfileImageNotifier].
 @ProviderFor(ProfileImageNotifier)

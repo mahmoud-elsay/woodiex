@@ -20,11 +20,10 @@ class UpdateEngineerProfileRequest {
 
   Future<FormData> toFormData() async {
     final formData = FormData();
-
     if (profileImageUrl != null && await profileImageUrl!.exists()) {
       formData.files.add(
         MapEntry(
-          'ProfileImageUrl',
+          'File', // Match the field name from the curl example (-F 'File=@...')
           await MultipartFile.fromFile(
             profileImageUrl!.path,
             filename: profileImageUrl!.path.split(Platform.pathSeparator).last,
@@ -32,19 +31,11 @@ class UpdateEngineerProfileRequest {
         ),
       );
     }
-
     return formData;
   }
 }
 
 class FileConverter {
-  static File? fromJson(String? path) {
-    if (path == null) return null;
-    return File(path);
-  }
-
-  static String? toJson(File? file) {
-    if (file == null) return null;
-    return file.path;
-  }
+  static File? fromJson(String? path) => path != null ? File(path) : null;
+  static String? toJson(File? file) => file?.path;
 }

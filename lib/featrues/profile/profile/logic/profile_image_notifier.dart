@@ -13,28 +13,40 @@ class ProfileImageNotifier extends _$ProfileImageNotifier {
   ProfileImageState build() => const ProfileImageInitial();
 
   Future<void> updateProfileImage(String token, FormData formData) async {
+    print('Notifier: Starting updateProfileImage with token: $token');
     state = const ProfileImageLoading();
+    print('Notifier: State set to Loading');
 
     final profileRepo = ref.read(profileRepoProvider);
-    final result = await profileRepo.updateProfileImage(token, formData);
+    try {
+      final result = await profileRepo.updateProfileImage(token, formData);
+      print('Notifier: API result: $result');
 
-    result.when(
-      success: (response) async {
-        // Added async here
-        if (response.success) {
-          final imagePath = response.data?.toString() ?? '';
-          state = ProfileImageSuccess(imagePath);
-          // Added await keyword here
-          await SharedPrefHelper.setData('profile_image_path', imagePath);
-        } else {
-          state = ProfileImageError(ApiErrorModel(
-              message: response.messsage, statusCode: response.statusCode));
-        }
-      },
-      failure: (error) {
-        state = ProfileImageError(error);
-      },
-    );
+      result.when(
+        success: (response) async {
+          print('Notifier: Success response: $response');
+          if (response.success) {
+            final imagePath = response.data?.toString() ?? '';
+            state = ProfileImageSuccess(imagePath);
+            print('Notifier: State set to Success with imagePath: $imagePath');
+            await SharedPrefHelper.setData('profile_image_path', imagePath);
+          } else {
+            state = ProfileImageError(ApiErrorModel(
+                message: response.messsage ?? 'Unknown error',
+                statusCode: response.statusCode ?? 0));
+            print('Notifier: State set to Error: ${response.messsage}');
+          }
+        },
+        failure: (error) {
+          state = ProfileImageError(error);
+          print('Notifier: State set to Error: ${error.message}');
+        },
+      );
+    } catch (e) {
+      print('Notifier: Unexpected error: $e');
+      state = ProfileImageError(
+          ApiErrorModel(message: e.toString(), statusCode: 0));
+    }
   }
 
   Future<String?> getCachedProfileImagePath() async {

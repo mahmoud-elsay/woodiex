@@ -14,7 +14,7 @@ class CustomLoadingWidget extends StatelessWidget {
         children: [
           SizedBox(
             height: 200,
-            child: Lottie.asset('assetsظlottiesظfurniture_loading_lottie.json'),
+            child: Lottie.asset('assets/lotties/furniture_loading_lottie.json'),
           ),
           const SizedBox(
             height: 20,
