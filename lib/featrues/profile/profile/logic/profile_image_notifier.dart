@@ -5,7 +5,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/profile/profile/logic/profile_image_states.dart';
 
-
 part 'profile_image_notifier.g.dart';
 
 @riverpod
@@ -20,12 +19,12 @@ class ProfileImageNotifier extends _$ProfileImageNotifier {
     final result = await profileRepo.updateProfileImage(token, formData);
 
     result.when(
-      success: (response) {
+      success: (response) async {
+        // Added async here
         if (response.success) {
-          
-          final imagePath = response.data?.toString() ?? ''; // Placeholder; replace with actual logic
+          final imagePath = response.data?.toString() ?? '';
           state = ProfileImageSuccess(imagePath);
-          // Optionally cache the image path
+          // Added await keyword here
           await SharedPrefHelper.setData('profile_image_path', imagePath);
         } else {
           state = ProfileImageError(ApiErrorModel(

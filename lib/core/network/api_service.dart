@@ -79,10 +79,11 @@ abstract class ApiService {
     @Header('Authorization') String token,
   );
 
+  // Fixed: Use @Body() instead of @Part() for FormData
   @PUT('${ApiConstants.profilePic}')
   @MultiPart()
   Future<UpdateProfileImageResponse> updateProfileImage(
     @Header('Authorization') String token,
-    @Part() FormData formData,
+    @Body() FormData formData,
   );
 }
