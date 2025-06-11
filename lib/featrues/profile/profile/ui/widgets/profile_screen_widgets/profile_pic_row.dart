@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/core/helpers/shared_pref_helper.dart';
+import 'package:woodiex/core/theming/colors.dart'; // Import ColorsManager
 import 'package:woodiex/featrues/profile/profile/logic/profile_image_states.dart';
 import 'package:woodiex/featrues/profile/profile/logic/profile_image_notifier.dart';
 import 'package:woodiex/featrues/profile/profile/data/models/update_profile_image_request.dart';
@@ -115,17 +116,21 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
               height: 80.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
+                border: Border.all(color: ColorsManager.white, width: 2),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: ColorsManager.mainBlack.withOpacity(0.2),
                     blurRadius: 10.r,
                     spreadRadius: 2.r,
                     offset: Offset(0, 5.h),
                   ),
                 ],
                 gradient: LinearGradient(
-                  colors: [Colors.blueAccent, Colors.purpleAccent],
+                  colors: [
+                    ColorsManager.mainBlack,
+                    ColorsManager.secondaryGrey,
+                    ColorsManager.white,
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -143,7 +148,7 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
                         : Icon(
                             Icons.person,
                             size: 60,
-                            color: Colors.white,
+                            color: ColorsManager.white,
                           ),
                     if (profileImageState is ProfileImageLoading)
                       Container(
@@ -151,7 +156,7 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
                         height: 80.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.black.withOpacity(0.5),
+                          color: ColorsManager.mainBlack.withOpacity(0.5),
                         ),
                         child: Center(
                           child: SizedBox(
@@ -159,25 +164,25 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
                             height: 30.h,
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
-                              valueColor:
-                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  ColorsManager.white),
                             ),
                           ),
                         ),
                       ),
                     if (profileImageState is! ProfileImageLoading)
                       Positioned(
-                        bottom: 0,
-                        right: 0,
+                        bottom: 5.w, // Reduced offset to prevent cropping
+                        right: 5.w, // Reduced offset to prevent cropping
                         child: Container(
-                          width: 24.w,
-                          height: 24.h,
+                          width: 22.w, // Slightly reduced size
+                          height: 22.h, // Slightly reduced size
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white,
+                            color: ColorsManager.white,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
+                                color: ColorsManager.mainBlack.withOpacity(0.2),
                                 blurRadius: 4,
                                 spreadRadius: 1,
                               ),
@@ -185,8 +190,8 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
                           ),
                           child: Icon(
                             Icons.camera_alt,
-                            size: 14,
-                            color: Colors.grey[700],
+                            size: 12, // Reduced icon size
+                            color: ColorsManager.secondaryGrey,
                           ),
                         ),
                       ),

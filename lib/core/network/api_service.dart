@@ -15,6 +15,7 @@ import 'package:woodiex/featrues/profile/profile/data/models/update_profile_imag
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_request_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/add_shipping_address_response_model.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
+import 'package:woodiex/featrues/profile/profile/data/models/get_profile_info_response_model.dart'; // Import the new model
 
 part 'api_service.g.dart';
 
@@ -79,11 +80,15 @@ abstract class ApiService {
     @Header('Authorization') String token,
   );
 
-  // Fixed: Use @Body() instead of @Part() for FormData
   @PUT('${ApiConstants.profilePic}')
   @MultiPart()
   Future<UpdateProfileImageResponse> updateProfileImage(
     @Header('Authorization') String token,
     @Body() FormData formData,
+  );
+
+  @GET(ApiConstants.profile)
+  Future<GetProfileInfoResponseModel> getProfileInfo(
+    @Header('Authorization') String token,
   );
 }
