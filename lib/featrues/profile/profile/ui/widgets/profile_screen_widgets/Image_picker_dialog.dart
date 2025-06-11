@@ -14,7 +14,7 @@ class ImagePickerDialog {
       backgroundColor: Colors.transparent,
       builder: (BuildContext modalContext) {
         return WillPopScope(
-          onWillPop: () async => false, // Prevent back button from dismissing
+          onWillPop: () async => false,
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
