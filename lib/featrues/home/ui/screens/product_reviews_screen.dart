@@ -17,23 +17,27 @@ class _ProductReviewsScreenState extends State<ProductReviewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
-          children: [
-            BackableTopBar(screenTitle: 'Rating & Review'),
-            verticalSpace(40),
-            ProductRow(),
-            verticalSpace(20),
-            Divider(
-              height: 1.h,
-              color: Colors.grey.shade300,
-            ),
-            verticalSpace(35),
-            ReviewsListView()
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          child: Column(
+            children: [
+              BackableTopBar(screenTitle: 'Rating & Review'),
+              verticalSpace(40),
+              ProductRow(),
+              verticalSpace(20),
+              Divider(
+                height: 1.h,
+                color: Colors.grey.shade300,
+              ),
+              verticalSpace(35),
+              Expanded(
+                // Add Expanded to constrain ListView height
+                child: ReviewsListView(),
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

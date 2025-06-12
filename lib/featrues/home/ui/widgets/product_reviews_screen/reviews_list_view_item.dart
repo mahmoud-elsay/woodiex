@@ -25,12 +25,16 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
         'Nice Furniture with good delivery  time is very fast ,Then products look like exactly the picture in the app. Besides';
 
     return Stack(
-      clipBehavior: Clip.none,
+      clipBehavior: Clip.none, // Allow overflow for the CircleAvatar
+      alignment: Alignment.topCenter, // Center the children horizontally
       children: [
         Container(
           width: 335.w,
-          padding: EdgeInsets.all(16),
-          margin: EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.only(
+              top: 40.h,
+              left: 16,
+              right: 16,
+              bottom: 16), // Positive top padding for avatar space
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -48,7 +52,7 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                verticalSpace(24),
+                verticalSpace(16), // Adjusted space to account for avatar
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -102,10 +106,10 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
             ),
           ),
         ),
-        Positioned(
-          top: -24,
-          left: 0,
-          right: 0,
+        // Centered CircleAvatar above the Container using positive offset
+        Padding(
+          padding:
+              EdgeInsets.only(top: 10.h), // Positive padding to position avatar
           child: CircleAvatar(
             radius: 20,
             backgroundImage: AssetImage('assets/images/profile_pic.png'),
