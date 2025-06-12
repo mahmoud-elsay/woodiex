@@ -27,9 +27,8 @@ class _MyReviewsScreenState extends ConsumerState<MyReviewsScreen> {
   Future<void> _fetchReviews() async {
     final token = await SharedPrefHelper.getUserToken();
     if (token.isNotEmpty) {
-      ref.read(myReviewsNotifierProvider.notifier).getMyReviews(token);
+      ref.read(myReviewsNotifierProvider.notifier).getMyReviews();
     } else {
-      // Handle case where token is not available (e.g., show login prompt)
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Please log in to view your reviews')),
@@ -76,11 +75,6 @@ class _MyReviewsScreenState extends ConsumerState<MyReviewsScreen> {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _fetchReviews,
-        backgroundColor: Colors.black,
-        child: const Icon(Icons.refresh),
       ),
     );
   }

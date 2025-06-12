@@ -187,7 +187,7 @@ class _ProfilePicRowState extends ConsumerState<ProfilePicRow> {
       if (next is ProfileImageSuccess) {
         CustomSnackBar.showSuccess(
             context, 'Profile image updated successfully!');
-        // Refresh profile data to get updated image URL
+
         ref.read(getProfileNotifierProvider.notifier).refreshProfile();
       } else if (next is ProfileImageError) {
         CustomSnackBar.showError(

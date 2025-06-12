@@ -1,9 +1,9 @@
 import 'package:woodiex/core/di/di.dart';
-import 'package:woodiex/core/network/api_result.dart';
+import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 import 'package:woodiex/featrues/profile/reviews/logic/my_reviews_state.dart';
 import 'package:woodiex/featrues/profile/reviews/data/models/my_reviews_response_model.dart';
-
 
 part 'my_reviews_notifier.g.dart';
 
@@ -14,21 +14,35 @@ class MyReviewsNotifier extends _$MyReviewsNotifier {
   @override
   MyReviewsState build() => const MyReviewsInitial();
 
-  Future<void> getMyReviews(String token) async {
-    print('Getting my reviews with token: $token');
+  Future<void> getMyReviews() async {
+    print('Getting my reviews');
     state = MyReviewsLoading(data: _myReviewsResponse);
 
-    final result = await ref.read(myReviewsRepoProvider).getMyReviews(token);
+    final token = await SharedPrefHelper.getUserToken();
+    print('Retrieved token: $token'); // Debug full token
+    if (token.isEmpty) {
+      print('Token is empty, setting error state');
+      state = MyReviewsError(
+          ApiErrorModel(message: 'User not logged in', statusCode: 401));
+      return;
+    }
+
+    final authToken = 'Bearer $token'; // Add Bearer prefix
+    print('Formatted auth token: $authToken'); // Debug formatted token
+
+    final result =
+        await ref.read(myReviewsRepoProvider).getMyReviews(authToken);
     print('API response: $result');
 
     result.when(
       success: (response) {
-        print('Success, my reviews fetched');
+        print('Success, my reviews fetched: ${response.data?.length} reviews');
         _myReviewsResponse = response;
         state = MyReviewsSuccess(data: _myReviewsResponse);
       },
       failure: (error) {
-        print('Failure, error: ${error.message}');
+        print(
+            'Failure, error: ${error.message}, statusCode: ${error.statusCode}');
         state = MyReviewsError(error);
       },
     );

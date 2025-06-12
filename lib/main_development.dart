@@ -4,23 +4,22 @@ import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/routing/app_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/core/widgets/app_connectivity.dart';
 import 'package:woodiex/core/helpers/shared_pref_helper.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // To fix texts being hidden bug in flutter_screenutil in release mode.
-  await ScreenUtil.ensureScreenSize();
+
   bool isFirstLaunch = await SharedPrefHelper.isFirstLaunch();
   bool isLoggedIn = isFirstLaunch ? false : await checkIfLoggedInUser();
 
+  final initialRoute = isFirstLaunch
+      ? Routes.onBoardingScreen
+      : (isLoggedIn ? Routes.appLayout : Routes.loginScreen);
+
   runApp(
     ProviderScope(
-      child: Woodiex(
-        appRouter: AppRouter(),
-        initialRoute: isFirstLaunch
-            ? Routes.onBoardingScreen
-            : (isLoggedIn ? Routes.appLayout : Routes.loginScreen),
-      ),
+      child: App(initialRoute: initialRoute),
     ),
   );
 }
@@ -28,4 +27,28 @@ void main() async {
 Future<bool> checkIfLoggedInUser() async {
   String token = await SharedPrefHelper.getUserToken();
   return token.isNotEmpty;
+}
+
+class App extends StatelessWidget {
+  final String initialRoute;
+
+  const App({super.key, required this.initialRoute});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          builder: (context, child) => AppConnectivity(child: child!),
+          home: Woodiex(
+            appRouter: AppRouter(),
+            initialRoute: initialRoute,
+          ),
+        );
+      },
+    );
+  }
 }
