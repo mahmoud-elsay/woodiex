@@ -1,19 +1,32 @@
 import 'package:woodiex/core/network/api_error_model.dart';
 import 'package:woodiex/featrues/home/data/models/add_review_response_model.dart';
+import 'package:woodiex/featrues/home/data/models/get_reviews_response_model.dart';
 
 sealed class ReviewsState {
   const ReviewsState();
 
   T when<T>({
     required T Function() initial,
-    required T Function(AddReviewResponseModel data) loading,
-    required T Function(AddReviewResponseModel data) success,
+    required T Function(AddReviewResponseModel? addData,
+            GetReviewsResponseModel? getReviewsData)
+        loading,
+    required T Function(AddReviewResponseModel? addData,
+            GetReviewsResponseModel? getReviewsData)
+        success,
     required T Function(ApiErrorModel errorModel) error,
   }) {
     return switch (this) {
       ReviewsInitial _ => initial(),
-      ReviewsLoading(data: final data) => loading(data),
-      ReviewsSuccess(data: final data) => success(data),
+      ReviewsLoading(
+        addData: final addData,
+        getReviewsData: final getReviewsData
+      ) =>
+        loading(addData, getReviewsData),
+      ReviewsSuccess(
+        addData: final addData,
+        getReviewsData: final getReviewsData
+      ) =>
+        success(addData, getReviewsData),
       ReviewsError(error: final errorModel) => error(errorModel),
     };
   }
@@ -24,35 +37,39 @@ class ReviewsInitial extends ReviewsState {
 }
 
 class ReviewsLoading extends ReviewsState {
-  final AddReviewResponseModel data;
+  final AddReviewResponseModel? addData;
+  final GetReviewsResponseModel? getReviewsData;
 
-  const ReviewsLoading(this.data);
+  const ReviewsLoading({this.addData, this.getReviewsData});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ReviewsLoading &&
           runtimeType == other.runtimeType &&
-          data == other.data;
+          addData == other.addData &&
+          getReviewsData == other.getReviewsData;
 
   @override
-  int get hashCode => data.hashCode;
+  int get hashCode => addData.hashCode ^ getReviewsData.hashCode;
 }
 
 class ReviewsSuccess extends ReviewsState {
-  final AddReviewResponseModel data;
+  final AddReviewResponseModel? addData;
+  final GetReviewsResponseModel? getReviewsData;
 
-  const ReviewsSuccess(this.data);
+  const ReviewsSuccess({this.addData, this.getReviewsData});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ReviewsSuccess &&
           runtimeType == other.runtimeType &&
-          data == other.data;
+          addData == other.addData &&
+          getReviewsData == other.getReviewsData;
 
   @override
-  int get hashCode => data.hashCode;
+  int get hashCode => addData.hashCode ^ getReviewsData.hashCode;
 }
 
 class ReviewsError extends ReviewsState {

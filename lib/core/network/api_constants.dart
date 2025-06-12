@@ -18,4 +18,5 @@ class ApiConstants {
   static const String profile = "Profile/currentUser";
 
   static const String addReview = "Reviews";
+  static const String getReviews = "Reviews/{productId}/reviews";
 }
