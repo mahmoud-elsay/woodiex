@@ -283,4 +283,6 @@ class Fonts {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
+
+  static var nunitoSans16RegularMainBlack;
 }

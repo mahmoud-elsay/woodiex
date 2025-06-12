@@ -1,11 +1,19 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/home/data/models/get_reviews_response_model.dart';
 
 class ReviewsListViewItem extends StatefulWidget {
-  const ReviewsListViewItem({super.key});
+  final ReviewItem reviewItem;
+
+  const ReviewsListViewItem({
+    super.key,
+    required this.reviewItem,
+  });
 
   @override
   _ReviewsListViewItemState createState() => _ReviewsListViewItemState();
@@ -14,27 +22,30 @@ class ReviewsListViewItem extends StatefulWidget {
 class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
   bool _isExpanded = false;
 
+  String _formatDate(DateTime date) {
+    return DateFormat('dd/MM/yyyy').format(date);
+  }
+
   @override
   Widget build(BuildContext context) {
-    const fullText =
-        'Nice Furniture with good delivery. The delivery time is very fast. '
-        'Then products look like exactly the picture in the app. Besides, '
-        'color is also the same and quality is very good despite very cheap price.';
-
-    const truncatedText =
-        'Nice Furniture with good delivery  time is very fast ,Then products look like exactly the picture in the app. Besides';
+    final comment = widget.reviewItem.comment;
+    final shouldShowSeeMore = comment.length > 120;
+    final displayText = shouldShowSeeMore && !_isExpanded
+        ? '${comment.substring(0, 120)}...'
+        : comment;
 
     return Stack(
-      clipBehavior: Clip.none, // Allow overflow for the CircleAvatar
-      alignment: Alignment.topCenter, // Center the children horizontally
+      clipBehavior: Clip.none,
+      alignment: Alignment.topCenter,
       children: [
         Container(
           width: 335.w,
           padding: EdgeInsets.only(
-              top: 40.h,
-              left: 16,
-              right: 16,
-              bottom: 16), // Positive top padding for avatar space
+            top: 40.h,
+            left: 16,
+            right: 16,
+            bottom: 16,
+          ),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -52,17 +63,19 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                verticalSpace(16), // Adjusted space to account for avatar
+                verticalSpace(16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Bruno Fernandes',
-                      style: Fonts.nunitoSans14SemiBoldMainBlack,
+                    Expanded(
+                      child: Text(
+                        widget.reviewItem.userName,
+                        style: Fonts.nunitoSans14SemiBoldMainBlack,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    Spacer(),
                     Text(
-                      '20/03/2020',
+                      _formatDate(widget.reviewItem.createdAt),
                       style: Fonts.nunitoSans12RegularMainBlack,
                     ),
                   ],
@@ -74,6 +87,12 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
                       'assets/svgs/star.svg',
                       width: 20.0,
                       height: 20.0,
+                      colorFilter: ColorFilter.mode(
+                        index < widget.reviewItem.rating
+                            ? ColorsManager.secondaryGold
+                            : Colors.grey.shade300,
+                        BlendMode.srcIn,
+                      ),
                     );
                   }),
                 ),
@@ -82,37 +101,55 @@ class _ReviewsListViewItemState extends State<ReviewsListViewItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      _isExpanded ? fullText : truncatedText,
+                      displayText,
                       style: Fonts.nunitoSans14RegularMainBlack,
-                      maxLines: _isExpanded ? null : 3,
-                      overflow: _isExpanded
-                          ? TextOverflow.visible
-                          : TextOverflow.ellipsis,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _isExpanded = !_isExpanded;
-                        });
-                      },
-                      child: Text(
-                        _isExpanded ? 'See Less' : 'See More',
-                        style: Fonts.nunitoSans14BoldDarkGrey,
+                    if (shouldShowSeeMore) ...[
+                      verticalSpace(5),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isExpanded = !_isExpanded;
+                          });
+                        },
+                        child: Text(
+                          _isExpanded ? 'See Less' : 'See More',
+                          style: Fonts.nunitoSans14BoldDarkGrey,
+                        ),
                       ),
-                    ),
+                    ],
                   ],
                 ),
               ],
             ),
           ),
         ),
-        // Centered CircleAvatar above the Container using positive offset
         Padding(
-          padding:
-              EdgeInsets.only(top: 10.h), // Positive padding to position avatar
+          padding: EdgeInsets.only(top: 10.h),
           child: CircleAvatar(
             radius: 20,
-            backgroundImage: AssetImage('assets/images/profile_pic.png'),
+            backgroundColor: Colors.grey.shade300,
+            child: widget.reviewItem.userImageUrl.isNotEmpty
+                ? ClipOval(
+                    child: Image.network(
+                      widget.reviewItem.userImageUrl,
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          Icons.person,
+                          color: Colors.grey.shade600,
+                          size: 24,
+                        );
+                      },
+                    ),
+                  )
+                : Icon(
+                    Icons.person,
+                    color: Colors.grey.shade600,
+                    size: 24,
+                  ),
           ),
         ),
       ],
