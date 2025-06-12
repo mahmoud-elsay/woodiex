@@ -5,7 +5,14 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductRow extends StatelessWidget {
-  const ProductRow({super.key});
+  final String imageUrl; // Add imageUrl parameter
+  final String name; // Add name parameter
+
+  const ProductRow({
+    super.key,
+    required this.imageUrl,
+    required this.name,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +23,8 @@ class ProductRow extends StatelessWidget {
           height: 100.h,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16.r),
-            child: Image.asset(
-              'assets/images/prod.png',
+            child: Image.network(
+              imageUrl, // Use dynamic imageUrl
               fit: BoxFit.fill,
             ),
           ),
@@ -26,7 +33,7 @@ class ProductRow extends StatelessWidget {
         Column(
           children: [
             Text(
-              'Minimal Stand',
+              name, // Use dynamic name
               style: Fonts.nunitoSans14RegularMainBlack,
             ),
             verticalSpace(10),
@@ -35,14 +42,14 @@ class ProductRow extends StatelessWidget {
                 SvgPicture.asset('assets/svgs/star.svg'),
                 horizontalSpace(5),
                 Text(
-                  '4.5',
+                  '4.5', // This could be dynamic if passed
                   style: Fonts.nunitoSans24BoldMainBlack,
                 )
               ],
             ),
             verticalSpace(7),
             Text(
-              '10 reviews',
+              '10 reviews', // This could be dynamic if passed
               style: Fonts.nunitoSans18SemiBoldMainBlack,
             )
           ],
