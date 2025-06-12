@@ -8,6 +8,7 @@ import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_success.dart';
+import 'package:woodiex/featrues/home/ui/screens/add_review_screen.dart';
 import 'package:woodiex/featrues/profile/orders/ui/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/reviews/ui/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
@@ -17,8 +18,6 @@ import 'package:woodiex/featrues/profile/profile/ui/screens/payment_method_scree
 import 'package:woodiex/featrues/profile/shipinng_address/ui/shipping_address_screen.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/add_shippng_address_screen.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
-
-
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -92,6 +91,10 @@ class AppRouter {
       case Routes.addShippingAddressScreen:
         return MaterialPageRoute(
           builder: (_) => const AddShippingAddressScreen(),
+        );
+      case Routes.addReviewScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddReviewScreen(),
         );
       default:
         return MaterialPageRoute(

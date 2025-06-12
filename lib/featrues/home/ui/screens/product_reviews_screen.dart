@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
+import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_reviews_screen/product_row.dart';
@@ -38,6 +41,19 @@ class _ProductReviewsScreenState extends State<ProductReviewsScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.pushNamed(Routes.addReviewScreen); 
+        },
+        backgroundColor: ColorsManager.mainBlack,
+        elevation: 6.0,
+        child: Icon(
+          Icons.add,
+          color: ColorsManager.white, 
+          size: 28.sp, 
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
