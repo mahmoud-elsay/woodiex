@@ -6,7 +6,7 @@ part of 'reviews_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$reviewsNotifierHash() => r'9dbf434e5c4262555a9d898d345a58b2c59e486e';
+String _$reviewsNotifierHash() => r'62483434cc49458e7da3c98281027374f7272733';
 
 /// See also [ReviewsNotifier].
 @ProviderFor(ReviewsNotifier)
