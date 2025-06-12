@@ -14,4 +14,5 @@ class ColorsManager {
   static const Color disableGray = Color(0xFFF5F5F5);
   static const Color grey80 = Color(0xFF808080);
   static const Color red = Color(0xFFFF0000);
+  static const Color secondaryGold = Color(0xFFC29818);
 }

@@ -4,18 +4,32 @@ import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
+import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 
 class RatingSection extends StatelessWidget {
   final double rating;
   final int reviews;
+  final ProductDetailsData? productDetails;
 
-  const RatingSection({super.key, required this.rating, required this.reviews});
+  const RatingSection({
+    super.key,
+    required this.rating,
+    required this.reviews,
+    this.productDetails,
+  });
 
   @override
   Widget build(BuildContext context) {
+    print(
+        'RatingSection - ProductDetails: ${productDetails?.name}, ${productDetails?.imageUrl}'); // Debug print
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.productReviewsScreen);
+        print(
+            'Navigating to ProductReviewsScreen with: ${productDetails?.name}, ${productDetails?.imageUrl}'); // Debug print
+        context.pushNamed(
+          Routes.productReviewsScreen,
+          arguments: productDetails,
+        );
       },
       child: Row(
         children: [

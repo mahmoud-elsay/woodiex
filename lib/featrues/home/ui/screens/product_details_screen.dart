@@ -39,15 +39,12 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
   }
 
   void _increaseQuantity() => setState(() => quantity++);
-
   void _decreaseQuantity() {
     if (quantity > 1) setState(() => quantity--);
   }
 
   void _toggleWishlist() => setState(() => isSaved = !isSaved);
-
   Future<void> _addToCart() async {
-    // Use the separate AddCartNotifier
     final addCartNotifier = ref.read(addCartNotifierProvider.notifier);
     await addCartNotifier.addToCart(widget.id, quantity);
   }
@@ -55,38 +52,34 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final productState = ref.watch(productDetailsNotifierProvider);
-    // Watch the AddCartNotifier state instead of the old cartNotifier
     final addCartState = ref.watch(addCartNotifierProvider);
+
+    addCartState.when(
+      initial: () {},
+      loading: (data) {},
+      success: (data) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          CustomSnackBar.showSuccess(
+            context,
+            data.messsage ?? 'Product added to cart successfully!',
+          );
+          ref.read(addCartNotifierProvider.notifier).clearCartState();
+        });
+      },
+      error: (error) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          CustomSnackBar.showError(
+            context,
+            error.message ?? 'Failed to add product to cart.',
+          );
+          ref.read(addCartNotifierProvider.notifier).clearCartState();
+        });
+      },
+    );
 
     return Scaffold(
       body: Consumer(
         builder: (context, ref, child) {
-          // Handle add to cart state changes
-          addCartState.when(
-            initial: () {},
-            loading: (data) {},
-            success: (data) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                CustomSnackBar.showSuccess(
-                  context,
-                  data.messsage ?? 'Product added to cart successfully!',
-                );
-                // Clear the state after showing success message
-                ref.read(addCartNotifierProvider.notifier).clearCartState();
-              });
-            },
-            error: (error) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                CustomSnackBar.showError(
-                  context,
-                  error.message ?? 'Failed to add product to cart.',
-                );
-                // Clear the state after showing error message
-                ref.read(addCartNotifierProvider.notifier).clearCartState();
-              });
-            },
-          );
-
           return productState.when(
             initial: () => const Center(child: CustomLoadingWidget()),
             loading: (data) => _buildContent(data),
@@ -99,6 +92,8 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
   }
 
   Widget _buildContent(ProductDetailsData? data) {
+    print(
+        'ProductDetailsScreen - Data: ${data?.name}, ${data?.imageUrl}'); // Debug print
     return CustomScrollView(
       slivers: [
         ProductSliverAppBar(
@@ -152,6 +147,7 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                   RatingSection(
                     rating: data?.reveiewAverageRating ?? 0.0,
                     reviews: data?.reviewsCount ?? 0,
+                    productDetails: data, // Pass the full product details
                   ),
                   verticalSpace(20),
                   DescriptionSection(
@@ -175,9 +171,7 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                           return AppTextButton(
                             buttonText: isLoading ? 'Adding...' : 'Add to cart',
                             textStyle: Fonts.nunitoSans20SemiBoldWhite,
-                            onPressed: isLoading
-                                ? () {} // Empty function when loading
-                                : () => _addToCart(),
+                            onPressed: isLoading ? () {} : () => _addToCart(),
                             buttonWidth: 250.w,
                             buttonHeight: 60.h,
                           );

@@ -8,6 +8,7 @@ import 'package:woodiex/featrues/onboarding/onboarding_screen.dart';
 import 'package:woodiex/featrues/auth/sign_up/ui/sign_up_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_screen.dart';
 import 'package:woodiex/featrues/cart/ui/screens/checkout_success.dart';
+import 'package:woodiex/featrues/home/ui/screens/add_review_screen.dart';
 import 'package:woodiex/featrues/profile/orders/ui/my_orders_screen.dart';
 import 'package:woodiex/featrues/profile/reviews/ui/my_reviews_screen.dart';
 import 'package:woodiex/featrues/home/ui/screens/product_reviews_screen.dart';
@@ -17,8 +18,7 @@ import 'package:woodiex/featrues/profile/profile/ui/screens/payment_method_scree
 import 'package:woodiex/featrues/profile/shipinng_address/ui/shipping_address_screen.dart';
 import 'package:woodiex/featrues/profile/shipinng_address/ui/add_shippng_address_screen.dart';
 import 'package:woodiex/featrues/home/ui/widgets/product_details_screen_widget/animation_transtion.dart';
-
-
+import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart'; // Import the model
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -70,12 +70,11 @@ class AppRouter {
           builder: (_) => const ShippingAddressScreen(),
         );
       case Routes.prodcutDetailsScreen:
-        // Enhanced hero route with proper settings
         return CustomHeroPageRoute(
           page: ProductDetailsScreen(
             id: arguments as int,
           ),
-          settings: settings, // Pass settings for proper route handling
+          settings: settings,
         );
       case Routes.checkoutScreen:
         return MaterialPageRoute(
@@ -87,7 +86,17 @@ class AppRouter {
         );
       case Routes.productReviewsScreen:
         return MaterialPageRoute(
-          builder: (_) => const ProductReviewsScreen(),
+          builder: (_) => ProductReviewsScreen(
+            productDetails:
+                arguments as ProductDetailsData?, // Retrieve arguments
+          ),
+        );
+      case Routes.addReviewScreen:
+        return MaterialPageRoute(
+          builder: (_) => AddReviewScreen(
+            productDetails:
+                arguments as ProductDetailsData?, // Retrieve arguments
+          ),
         );
       case Routes.addShippingAddressScreen:
         return MaterialPageRoute(

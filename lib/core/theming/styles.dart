@@ -16,6 +16,13 @@ class Fonts {
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.mainBlack,
+    height: 1.25,
+  );
+
+  static TextStyle nunitoSans16BoldWhite = GoogleFonts.nunitoSans(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.white,
   );
 
   static TextStyle merriweather30RegularMoreDarkGrey = GoogleFonts.merriweather(
@@ -276,4 +283,6 @@ class Fonts {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.secondaryGrey,
   );
+
+  static var nunitoSans16RegularMainBlack;
 }

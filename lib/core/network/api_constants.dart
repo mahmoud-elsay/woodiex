@@ -16,4 +16,8 @@ class ApiConstants {
   static const String deleteCartItem = "Cart/{productId}";
   static const String profilePic = "Profile/UpdateProfileImage";
   static const String profile = "Profile/currentUser";
+
+  static const String addReview = "Reviews";
+  static const String getReviews = "Reviews/{productId}/reviews";
+  static const String getMyReviews = "Reviews/my-reviews";
 }

@@ -14,6 +14,7 @@ import 'package:woodiex/featrues/profile/profile/logic/get_profile_notifier.dart
 import 'package:woodiex/featrues/profile/profile/logic/profile_image_notifier.dart';
 import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/profile_pic_row.dart';
 import 'package:woodiex/featrues/profile/profile/ui/widgets/profile_screen_widgets/profile_list_view.dart';
+// ignore_for_file: avoid_print
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -143,91 +144,109 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               ),
             ),
 
-            // Full Screen Loading Overlay (only for initial loading)
+            // Full Screen Loading Overlay (only for initial loading) - Fixed Version
             if (_shouldShowFullScreenLoading(getProfileState))
               Container(
                 color: Colors.black.withOpacity(0.3),
                 child: Center(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40.w),
-                    padding: EdgeInsets.all(20.w),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 100.w,
-                          height: 100.h,
-                          child: CustomLoadingWidget(),
-                        ),
-                        verticalSpace(16),
-                        Text(
-                          'Loading profile...',
-                          style: Fonts.nunitoSans16SemiBoldMainBlack,
-                          textAlign: TextAlign.center,
-                        ),
-                        verticalSpace(8),
-                        Text(
-                          'Please wait while we fetch your profile information',
-                          style: Fonts.nunitoSans14RegularSecondaryGrey,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 40.w, vertical: 20.h),
+                      padding: EdgeInsets.all(20.w),
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width - 80.w,
+                        maxHeight: MediaQuery.of(context).size.height * 0.6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: 80.w,
+                            height: 80.h,
+                            child: CustomLoadingWidget(),
+                          ),
+                          verticalSpace(16),
+                          Text(
+                            'Loading profile...',
+                            style: Fonts.nunitoSans16SemiBoldMainBlack,
+                            textAlign: TextAlign.center,
+                          ),
+                          verticalSpace(8),
+                          Text(
+                            'Please wait while we fetch your profile information',
+                            style: Fonts.nunitoSans14RegularSecondaryGrey,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
 
-            // Profile Image Upload Loading Overlay
+            // Profile Image Upload Loading Overlay - Fixed Version
             if (profileImageState is ProfileImageLoading)
               Container(
                 color: Colors.black.withOpacity(0.3),
                 child: Center(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40.w),
-                    padding: EdgeInsets.all(20.w),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 100.w,
-                          height: 100.h,
-                          child: CustomLoadingWidget(),
-                        ),
-                        verticalSpace(16),
-                        Text(
-                          'Uploading profile image...',
-                          style: Fonts.nunitoSans16SemiBoldMainBlack,
-                          textAlign: TextAlign.center,
-                        ),
-                        verticalSpace(8),
-                        Text(
-                          'Please wait while we update your profile',
-                          style: Fonts.nunitoSans14RegularSecondaryGrey,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 40.w, vertical: 20.h),
+                      padding: EdgeInsets.all(20.w),
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width - 80.w,
+                        maxHeight: MediaQuery.of(context).size.height * 0.6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: 80.w,
+                            height: 80.h,
+                            child: CustomLoadingWidget(),
+                          ),
+                          verticalSpace(16),
+                          Text(
+                            'Uploading profile image...',
+                            style: Fonts.nunitoSans16SemiBoldMainBlack,
+                            textAlign: TextAlign.center,
+                          ),
+                          verticalSpace(8),
+                          Text(
+                            'Please wait while we update your profile',
+                            style: Fonts.nunitoSans14RegularSecondaryGrey,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
