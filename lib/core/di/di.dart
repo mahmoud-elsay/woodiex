@@ -4,6 +4,7 @@ import 'package:woodiex/core/network/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:woodiex/featrues/cart/data/repos/cart_repo.dart';
+import 'package:woodiex/featrues/home/data/repo/reviews_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/get_product_repo.dart';
 import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/product_details_repo.dart';
@@ -56,4 +57,9 @@ CartRepo cartRepo(Ref ref) {
 @riverpod
 ProfileRepo profileRepo(Ref ref) {
   return ProfileRepo(ref.read(apiServiceProvider));
+}
+
+@riverpod
+ReviewsRepo reviewsRepo(Ref ref) {
+  return ReviewsRepo(ref.read(apiServiceProvider));
 }
