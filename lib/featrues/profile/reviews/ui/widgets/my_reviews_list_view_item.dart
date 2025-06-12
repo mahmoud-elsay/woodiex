@@ -2,10 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:woodiex/featrues/profile/reviews/ui/widgets/my_reviews_screen_widgets/rating_widget.dart';
+import 'package:woodiex/featrues/profile/reviews/ui/widgets/rating_widget.dart';
 
 class MyReviewsListViewItem extends StatelessWidget {
-  const MyReviewsListViewItem({super.key});
+  final String name;
+  final String imageUrl;
+  final double price;
+  final int rating;
+  final String comment;
+  final String date;
+
+  const MyReviewsListViewItem({
+    super.key,
+    required this.name,
+    required this.imageUrl,
+    required this.price,
+    required this.rating,
+    required this.comment,
+    required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +50,11 @@ class MyReviewsListViewItem extends StatelessWidget {
                   height: 75.h,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.r),
-                    child: Image.asset(
-                      'assets/images/prod.png',
+                    child: Image.network(
+                      imageUrl,
                       fit: BoxFit.fill,
+                      errorBuilder: (context, error, stackTrace) => Image.asset(
+                          'assets/images/prod.png'), // Fallback image
                     ),
                   ),
                 ),
@@ -46,12 +63,12 @@ class MyReviewsListViewItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Coffe table',
+                      name,
                       style: Fonts.nunitoSans16BoldSecondaryGrey,
                     ),
                     verticalSpace(10),
                     Text(
-                      '\$50',
+                      '\$${price.toStringAsFixed(2)}',
                       style: Fonts.nunitoSans16BoldMainBlack,
                     ),
                   ],
@@ -61,10 +78,10 @@ class MyReviewsListViewItem extends StatelessWidget {
             verticalSpace(15),
             Row(
               children: [
-                RatingWidget(),
-                Spacer(),
+                RatingWidget(rating: rating),
+                const Spacer(),
                 Text(
-                  '22/10/2020',
+                  date.split('T')[0], // Extract date part only
                   style: Fonts.nunitoSans14RegularSecondaryGrey,
                 ),
               ],
@@ -72,10 +89,12 @@ class MyReviewsListViewItem extends StatelessWidget {
             verticalSpace(15),
             Expanded(
               child: Text(
-                'Nice Furniture with good delivery\n. The delivery time is very fast. Then products look like exactly \n the picture in the app. Besides, color is also the \n same  and quality is very good despite \n very cheap price',
+                comment,
                 style: Fonts.nunitoSans14RegularMainBlack,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 5,
               ),
-            )
+            ),
           ],
         ),
       ),
