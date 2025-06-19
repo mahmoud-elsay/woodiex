@@ -20,5 +20,9 @@ class ApiConstants {
   static const String addReview = "Reviews";
   static const String getReviews = "Reviews/{productId}/reviews";
   static const String getMyReviews = "Reviews/my-reviews";
+<<<<<<< HEAD
   static const String postOrder = "Order";
+=======
+  static const String order = "Order";
+>>>>>>> ff2fd884ea3356259dd73de10e62e707d4141503
 }

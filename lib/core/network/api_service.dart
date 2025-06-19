@@ -14,7 +14,6 @@ import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_request_model.
 import 'package:woodiex/featrues/auth/sign_up/data/models/sign_up_response_model.dart';
 import 'package:woodiex/featrues/home/data/models/product_details_response_model.dart';
 import 'package:woodiex/featrues/cart/data/models/delete_cart_item_response_model.dart';
-import 'package:woodiex/featrues/profile/orders/data/models/post_order_response_model.dart';
 import 'package:woodiex/featrues/profile/reviews/data/models/my_reviews_response_model.dart';
 import 'package:woodiex/featrues/profile/profile/data/models/update_profile_image_response.dart';
 import 'package:woodiex/featrues/profile/profile/data/models/get_profile_info_response_model.dart';
@@ -111,12 +110,6 @@ abstract class ApiService {
 
   @GET(ApiConstants.getMyReviews)
   Future<MyReviewsResponseModel> getMyReviews(
-    @Header('Authorization') String token,
-  );
-
-  @POST(ApiConstants.postOrder)
-  Future<PostOrderResponseModel> postOrder(
-    @Query('deliveryMethodId') int deliveryMethodId,
     @Header('Authorization') String token,
   );
 }
