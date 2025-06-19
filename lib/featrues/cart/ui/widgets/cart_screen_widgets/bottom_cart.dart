@@ -32,7 +32,11 @@ class BottomCart extends StatelessWidget {
           buttonText: 'Checkout',
           textStyle: Fonts.nunitoSans20SemiBoldWhite,
           onPressed: () {
-            context.pushNamed(Routes.checkoutScreen);
+            // Pass the total as a navigation argument
+            context.pushNamed(
+              Routes.checkoutScreen,
+              arguments: {'total': total},
+            );
           },
         ),
       ],
