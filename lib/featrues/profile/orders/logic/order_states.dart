@@ -6,14 +6,14 @@ sealed class OrderState {
 
   T when<T>({
     required T Function() initial,
-    required T Function() loading,
-    required T Function(PostOrderResponseModel data) postOrderSuccess,
+    required T Function(PostOrderResponseModel data) loading,
+    required T Function(PostOrderResponseModel data) success,
     required T Function(ApiErrorModel errorModel) error,
   }) {
     return switch (this) {
       OrderInitial _ => initial(),
-      OrderLoading _ => loading(),
-      PostOrderSuccess(data: final data) => postOrderSuccess(data),
+      OrderLoading(data: final data) => loading(data),
+      OrderSuccess(data: final data) => success(data),
       OrderError(error: final errorModel) => error(errorModel),
     };
   }
@@ -24,18 +24,30 @@ class OrderInitial extends OrderState {
 }
 
 class OrderLoading extends OrderState {
-  const OrderLoading();
-}
-
-class PostOrderSuccess extends OrderState {
   final PostOrderResponseModel data;
 
-  const PostOrderSuccess(this.data);
+  const OrderLoading(this.data);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PostOrderSuccess &&
+      other is OrderLoading &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+
+  @override
+  int get hashCode => data.hashCode;
+}
+
+class OrderSuccess extends OrderState {
+  final PostOrderResponseModel data;
+
+  const OrderSuccess(this.data);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderSuccess &&
           runtimeType == other.runtimeType &&
           data == other.data;
 

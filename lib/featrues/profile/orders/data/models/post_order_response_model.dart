@@ -5,9 +5,9 @@ part 'post_order_response_model.g.dart';
 @JsonSerializable()
 class PostOrderResponseModel {
   final bool success;
-  final String messsage;
+  final String messsage; // Updated to match the typo in the JSON
   final OrderData? data;
-  final dynamic errors;
+  final dynamic errors; // Use dynamic for null or list of errors
   final int statusCode;
 
   PostOrderResponseModel({
