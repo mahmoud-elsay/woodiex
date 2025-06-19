@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'get_order_response_model.g.dart';
+part 'post_order_response_model.g.dart';
 
 @JsonSerializable()
-class GetOrderResponseModel {
+class PostOrderResponseModel {
   final bool success;
   final String message;
   final OrderData? data;
   final dynamic errors; // Use dynamic for null or list of errors
   final int statusCode;
 
-  GetOrderResponseModel({
+  PostOrderResponseModel({
     required this.success,
     required this.message,
     this.data,
@@ -18,10 +18,10 @@ class GetOrderResponseModel {
     required this.statusCode,
   });
 
-  factory GetOrderResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$GetOrderResponseModelFromJson(json);
+  factory PostOrderResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$PostOrderResponseModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetOrderResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$PostOrderResponseModelToJson(this);
 }
 
 @JsonSerializable()

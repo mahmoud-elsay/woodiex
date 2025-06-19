@@ -8,6 +8,7 @@ import 'package:woodiex/featrues/home/data/repo/reviews_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/get_product_repo.dart';
 import 'package:woodiex/featrues/auth/login/data/repo/login_repo.dart';
 import 'package:woodiex/featrues/home/data/repo/product_details_repo.dart';
+import 'package:woodiex/featrues/profile/orders/data/repos/order_repo.dart';
 import 'package:woodiex/featrues/auth/sign_up/data/repos/sign_up_repo.dart';
 import 'package:woodiex/featrues/profile/profile/data/repos/profile_repo.dart';
 import 'package:woodiex/featrues/profile/reviews/data/repo/my_reviews_repo.dart';
@@ -64,7 +65,12 @@ ProfileRepo profileRepo(Ref ref) {
 ReviewsRepo reviewsRepo(Ref ref) {
   return ReviewsRepo(ref.read(apiServiceProvider));
 }
+
 @riverpod
 MyReviewsRepo myReviewsRepo(Ref ref) {
   return MyReviewsRepo(ref.read(apiServiceProvider));
+}
+@riverpod
+OrderRepo orderRepo(Ref ref) {
+  return OrderRepo(ref.read(apiServiceProvider));
 }
