@@ -22,7 +22,7 @@ final addCartNotifierProvider =
 );
 
 typedef _$AddCartNotifier = AutoDisposeNotifier<AddCartState>;
-String _$getCartNotifierHash() => r'abd7b4b2d82fbef3f65442bf3f631a8ebcc175ac';
+String _$getCartNotifierHash() => r'68317ab5581a60ed52054687f8f805865a1ee824';
 
 /// See also [GetCartNotifier].
 @ProviderFor(GetCartNotifier)

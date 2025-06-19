@@ -182,4 +182,51 @@ class GetCartNotifier extends _$GetCartNotifier {
     _getCartResponse = null;
     state = const GetCartInitial();
   }
+
+  // New method to update quantity
+  Future<void> updateQuantity(int productId, int newQuantity) async {
+    if (_getCartResponse == null) return;
+
+    final token = await SharedPrefHelper.getUserToken();
+    if (token.isEmpty) {
+      print('Token is empty, setting error state');
+      state = GetCartError(
+          ApiErrorModel(message: 'User not logged in', statusCode: 401));
+      return;
+    }
+
+    // Assuming an API call to update quantity (replace with actual API method)
+    // For now, we'll simulate with a refresh after a mock update
+    final updatedItems = _getCartResponse!.data.items.map((item) {
+      if (item.productId == productId && newQuantity > 0) {
+        return item.copyWith(
+            quantity: newQuantity, subTotal: item.price * newQuantity);
+      }
+      return item;
+    }).toList();
+    final newTotal = updatedItems.fold(0.0, (sum, item) => sum + item.subTotal);
+
+    _getCartResponse = _getCartResponse!.copyWith(
+      data:
+          _getCartResponse!.data.copyWith(items: updatedItems, total: newTotal),
+    );
+    state = GetCartSuccess(_getCartResponse!);
+
+    // Mock API call (replace with actual update endpoint)
+    final result = await ref
+        .read(cartRepoProvider)
+        .addToCart('Bearer $token', productId, newQuantity);
+    result.when(
+      success: (response) async {
+        print('Success, quantity updated on server');
+        // Refresh cart to sync with server
+        await getCart();
+      },
+      failure: (error) async {
+        print('Failure, error: ${error.message}');
+        // Revert to last known state on failure
+        await getCart();
+      },
+    );
+  }
 }
