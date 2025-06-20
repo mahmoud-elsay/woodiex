@@ -39,6 +39,33 @@ class _CartScreenState extends ConsumerState<CartScreen> {
     print('=== NAVIGATION DEBUG ===');
     print('CartScreen - _navigateToCheckout called with total: $total');
     print('CartScreen - _lastKnownTotal: $_lastKnownTotal');
+    // Verify cart state before navigation
+    final cartState = ref.read(getCartNotifierProvider);
+    cartState.when(
+      initial: () => print('CartScreen - Cart state before nav: Initial'),
+      loading: (data) => print(
+          'CartScreen - Cart state before nav: Loading, total: ${data?.data.total}'),
+      success: (data) {
+        print(
+            'CartScreen - Cart state before nav: Success, total: ${data.data.total}');
+        print('CartScreen - Items count: ${data.data.items.length}');
+        for (var item in data.data.items) {
+          print(
+              'CartScreen - Item: productId=${item.productId}, quantity=${item.quantity}, price=${item.price}, subTotal=${item.subTotal}');
+        }
+      },
+      error: (error) =>
+          print('CartScreen - Cart state before nav: Error - ${error.message}'),
+    );
+    if (total <= 0) {
+      print('CartScreen - Total is zero, preventing navigation');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+                'Cannot proceed to checkout: Cart is empty or total is zero')),
+      );
+      return;
+    }
     print('CartScreen - Navigating to checkout...');
 
     // Create arguments map
@@ -46,10 +73,15 @@ class _CartScreenState extends ConsumerState<CartScreen> {
     print('CartScreen - Arguments being passed: $arguments');
 
     // Navigate
-    context.pushNamed(
-      Routes.checkoutScreen,
-      arguments: arguments,
-    );
+    try {
+      context.pushNamed(
+        Routes.checkoutScreen,
+        arguments: arguments,
+      );
+      print('CartScreen - Navigation call successful');
+    } catch (e) {
+      print('CartScreen - Navigation error: $e');
+    }
 
     print('CartScreen - Navigation call completed');
     print('========================');

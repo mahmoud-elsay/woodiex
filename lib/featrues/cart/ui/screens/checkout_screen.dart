@@ -8,6 +8,7 @@ import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/cart/logic/cart_notifier.dart';
 import 'package:woodiex/featrues/profile/orders/logic/order_states.dart';
 import 'package:woodiex/featrues/profile/orders/logic/order_notifier.dart';
 import 'package:woodiex/featrues/cart/ui/widgets/checkout_screen_widgets/info_card.dart';
@@ -24,28 +25,37 @@ class CheckoutScreen extends ConsumerStatefulWidget {
 
 class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
   final double deliveryCost = 10.0;
-  double? _cartTotal;
+  double _cartTotal = 0.0;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(shippingAddressNotifierProvider.notifier).getShippingAddress();
+      // Retrieve arguments
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      print('CheckoutScreen initState - Raw arguments: $args');
+      if (args != null && args.containsKey('total')) {
+        _cartTotal = (args['total'] as num?)?.toDouble() ?? 0.0;
+        print('CheckoutScreen initState - Retrieved cartTotal from arguments: $_cartTotal');
+      } else {
+        print('CheckoutScreen initState - No valid arguments or total provided, checking getCartNotifierProvider');
+        // Fallback to getCartNotifierProvider
+        final cartState = ref.read(getCartNotifierProvider);
+        cartState.when(
+          success: (data) {
+            _cartTotal = data.data.total;
+            print('CheckoutScreen initState - Retrieved cartTotal from getCartNotifierProvider: $_cartTotal');
+          },
+          loading: (data) {
+            _cartTotal = data?.data.total ?? 0.0;
+            print('CheckoutScreen initState - Retrieved cartTotal from loading state: $_cartTotal');
+          },
+          initial: () => print('CheckoutScreen initState - Cart state is initial, using default: $_cartTotal'),
+          error: (error) => print('CheckoutScreen initState - Cart state error: ${error.message}, using default: $_cartTotal'),
+        );
+      }
     });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Get the arguments once and store them
-    if (_cartTotal == null) {
-      final args =
-          ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-      _cartTotal = args?['total'] as double? ?? 0.0;
-      print(
-          'CheckoutScreen didChangeDependencies - Received cartTotal: $_cartTotal');
-    }
   }
 
   @override
@@ -53,13 +63,24 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     final orderState = ref.watch(orderNotifierProvider);
     final shippingAddressState = ref.watch(shippingAddressNotifierProvider);
 
-    // Use the stored cart total
-    final cartTotal = _cartTotal ?? 0.0;
-    final subTotal = cartTotal;
+    final subTotal = _cartTotal;
     final finalTotal = subTotal + deliveryCost;
 
     print(
-        'CheckoutScreen build - cartTotal: $cartTotal, subTotal: $subTotal, finalTotal: $finalTotal');
+        'CheckoutScreen build - cartTotal: $_cartTotal, subTotal: $subTotal, finalTotal: $finalTotal');
+
+    if (_cartTotal <= 0) {
+      return Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Text(
+              'Error: Cart is empty or total is zero',
+              style: Fonts.nunitoSans18RegularSecondaryGrey,
+            ),
+          ),
+        ),
+      );
+    }
 
     final selectedAddress = shippingAddressState.maybeWhen(
       getShippingAddressSuccess: (data) {

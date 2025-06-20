@@ -92,7 +92,7 @@ class GetCartNotifier extends _$GetCartNotifier {
 
     try {
       final token = await SharedPrefHelper.getUserToken();
-      print('Token retrieved: $token');
+      print('Token²Token retrieved: $token');
       if (token.isEmpty) {
         print('Token is empty, setting error state');
         state = GetCartError(
@@ -101,13 +101,29 @@ class GetCartNotifier extends _$GetCartNotifier {
       }
 
       final result = await ref.read(cartRepoProvider).getCart('Bearer $token');
-      print('API response for getCart: $result'); // Log full response
+      print('API response for getCart: $result');
+      print('Raw API response data: ${result.toString()}'); // Detailed logging
 
       result.when(
         success: (response) async {
           print(
               'Success, cart retrieved - total: ${response.data.total}, items: ${response.data.items.length}');
-          _getCartResponse = response;
+          // Log each item in the cart
+          for (var item in response.data.items) {
+            print(
+                'Cart item: productId=${item.productId}, quantity=${item.quantity}, price=${item.price}, subTotal=${item.subTotal}');
+          }
+          if (response.data.total < 0) {
+            print(
+                'Invalid total detected: ${response.data.total}, resetting to calculated total');
+            final calculatedTotal = response.data.items
+                .fold(0.0, (sum, item) => sum + item.subTotal);
+            _getCartResponse = response.copyWith(
+              data: response.data.copyWith(total: calculatedTotal),
+            );
+          } else {
+            _getCartResponse = response;
+          }
           final productIds = _getCartResponse!.data.items
               .map((item) => item.productId)
               .toList();
