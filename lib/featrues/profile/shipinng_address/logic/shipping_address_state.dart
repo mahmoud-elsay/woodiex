@@ -24,6 +24,26 @@ sealed class ShippingAddressState {
       ShippingAddressError(error: final errorModel) => error(errorModel),
     };
   }
+
+  T maybeWhen<T>({
+    T Function()? initial,
+    T Function()? loading,
+    T Function(AddShippingAddressResponseModel data)? addShippingAddressSuccess,
+    T Function(GetShippingAddressResponseModel data)? getShippingAddressSuccess,
+    T Function(ApiErrorModel errorModel)? error,
+    required T Function() orElse,
+  }) {
+    return switch (this) {
+      ShippingAddressInitial _ => initial?.call() ?? orElse(),
+      ShippingAddressLoading _ => loading?.call() ?? orElse(),
+      AddShippingAddressSuccess(data: final data) =>
+        addShippingAddressSuccess?.call(data) ?? orElse(),
+      GetShippingAddressSuccess(data: final data) =>
+        getShippingAddressSuccess?.call(data) ?? orElse(),
+      ShippingAddressError(error: final errorModel) =>
+        error?.call(errorModel) ?? orElse(),
+    };
+  }
 }
 
 class ShippingAddressInitial extends ShippingAddressState {

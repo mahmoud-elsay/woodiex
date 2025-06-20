@@ -43,8 +43,9 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                     return getCartState.when(
                       initial: () =>
                           const Center(child: CircularProgressIndicator()),
-                      loading: (data) =>
-                          data != null ? CartListView(items: data.data.items) : const Center(child: CircularProgressIndicator()),
+                      loading: (data) => data != null
+                          ? CartListView(items: data.data.items)
+                          : const Center(child: CircularProgressIndicator()),
                       success: (data) => CartListView(items: data.data.items),
                       error: (error) =>
                           Center(child: Text('Error: ${error.message}')),
@@ -59,7 +60,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
                   final total = getCartState.when(
                     initial: () => 0.0,
-                    loading: (data) => data?.data.total ?? 0.0, // Preserve last known total
+                    loading: (data) => data?.data.total ?? 0.0,
                     success: (data) => data.data.total,
                     error: (_) => 0.0,
                   );
