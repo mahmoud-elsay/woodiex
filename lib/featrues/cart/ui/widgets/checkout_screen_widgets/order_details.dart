@@ -17,9 +17,12 @@ class OrderDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveTotal = total ?? 100.0; // Default value if not provided
-    final effectiveSubTotal = subTotal ?? 90.0; // Default value
-    final effectiveDeliveryCost = deliveryCost ?? 10.0; // Default value
+    final effectiveSubTotal = subTotal ?? 0.0;
+    final effectiveDeliveryCost = deliveryCost ?? 10.0;
+    final effectiveTotal = effectiveSubTotal + effectiveDeliveryCost;
+
+    print(
+        'OrderDetails - subTotal: $effectiveSubTotal, total: $effectiveTotal');
 
     return Container(
       width: 335.w,

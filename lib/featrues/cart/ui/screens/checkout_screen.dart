@@ -4,6 +4,7 @@ import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:woodiex/core/widgets/custom_snakbar.dart';
 import 'package:woodiex/core/widgets/app_text_button.dart';
 import 'package:woodiex/core/widgets/backble_top_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,26 +23,29 @@ class CheckoutScreen extends ConsumerStatefulWidget {
 }
 
 class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
-  double? cartTotal;
-  final double deliveryCost = 10.0; // Fixed delivery cost
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    if (args != null && args.containsKey('total')) {
-      cartTotal = args['total'] as double;
-    }
-  }
+  final double deliveryCost = 10.0;
+  double? _cartTotal;
 
   @override
   void initState() {
     super.initState();
-    // Fetch shipping addresses when screen loads
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(shippingAddressNotifierProvider.notifier).getShippingAddress();
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Get the arguments once and store them
+    if (_cartTotal == null) {
+      final args =
+          ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      _cartTotal = args?['total'] as double? ?? 0.0;
+      print(
+          'CheckoutScreen didChangeDependencies - Received cartTotal: $_cartTotal');
+    }
   }
 
   @override
@@ -49,15 +53,16 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     final orderState = ref.watch(orderNotifierProvider);
     final shippingAddressState = ref.watch(shippingAddressNotifierProvider);
 
-    // Calculate totals
-    final subTotal = cartTotal ?? 0.0;
+    // Use the stored cart total
+    final cartTotal = _cartTotal ?? 0.0;
+    final subTotal = cartTotal;
     final finalTotal = subTotal + deliveryCost;
 
-    // Get selected shipping address
+    print(
+        'CheckoutScreen build - cartTotal: $cartTotal, subTotal: $subTotal, finalTotal: $finalTotal');
+
     final selectedAddress = shippingAddressState.maybeWhen(
       getShippingAddressSuccess: (data) {
-        // Return the first address or a default one
-        // You might want to add logic to select the "default" address
         return data.data?.isNotEmpty == true ? data.data!.first : null;
       },
       orElse: () => null,
@@ -73,7 +78,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
               children: [
                 BackableTopBar(screenTitle: 'Checkout'),
                 verticalSpace(15),
-                // Pass the selected address to the shipping address widget
                 ShippingAddressForCheckout(selectedAddress: selectedAddress),
                 verticalSpace(15),
                 InfoCard(
@@ -81,7 +85,6 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                   iconPath: 'assets/svgs/visa_card.svg',
                   cardText: '**** **** **** 3947',
                   onEditTap: () {
-                    // Navigate to payment methods screen
                     context.pushNamed(Routes.paymentMethods);
                   },
                 ),
@@ -90,9 +93,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                   title: 'Delivery method',
                   iconPath: 'assets/svgs/dhl.svg',
                   cardText: 'Fast (2-3days)',
-                  onEditTap: () {
-                    // You can add delivery method selection logic here
-                  },
+                  onEditTap: () {},
                 ),
                 verticalSpace(30),
                 OrderDetails(
@@ -107,7 +108,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                       : 'SUBMIT ORDER',
                   textStyle: Fonts.nunitoSans18SemiBoldWhite,
                   onPressed: orderState is OrderLoading
-                      ? null // Disable button during loading
+                      ? null
                       : () async {
                           final notifier =
                               ref.read(orderNotifierProvider.notifier);
@@ -120,11 +121,9 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                               context.pushNamed(Routes.checkoutSuccess);
                             },
                             error: (error) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Error: ${error.message}'),
-                                  backgroundColor: Colors.red,
-                                ),
+                              CustomSnackBar.showError(
+                                context,
+                                'Error: ${error.message}',
                               );
                             },
                           );

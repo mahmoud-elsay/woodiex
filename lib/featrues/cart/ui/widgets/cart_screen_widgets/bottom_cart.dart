@@ -13,6 +13,8 @@ class BottomCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('BottomCart build - total: $total');
+
     return Column(
       children: [
         Row(
@@ -32,11 +34,15 @@ class BottomCart extends StatelessWidget {
         AppTextButton(
           buttonText: 'Checkout',
           textStyle: Fonts.nunitoSans20SemiBoldWhite,
-          onPressed: onCheckout ??
-              () {
-                context.pushNamed(Routes.checkoutScreen,
-                    arguments: {'total': total});
-              },
+          onPressed: total > 0
+              ? (onCheckout ??
+                  () {
+                    print(
+                        'BottomCart default onPressed - navigating with total: $total');
+                    context.pushNamed(Routes.checkoutScreen,
+                        arguments: {'total': total});
+                  })
+              : null,
         ),
       ],
     );

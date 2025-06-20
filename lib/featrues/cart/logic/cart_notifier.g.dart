@@ -6,7 +6,7 @@ part of 'cart_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addCartNotifierHash() => r'd6b30123c6e44cf07735016bb4e83a19aa73aa6b';
+String _$addCartNotifierHash() => r'a3fa8ad74db7a0697d150c783c110a8f9087687f';
 
 /// See also [AddCartNotifier].
 @ProviderFor(AddCartNotifier)
@@ -22,7 +22,7 @@ final addCartNotifierProvider =
 );
 
 typedef _$AddCartNotifier = AutoDisposeNotifier<AddCartState>;
-String _$getCartNotifierHash() => r'68317ab5581a60ed52054687f8f805865a1ee824';
+String _$getCartNotifierHash() => r'7755ee806566c9620779e5ba7268d181930717a0';
 
 /// See also [GetCartNotifier].
 @ProviderFor(GetCartNotifier)
