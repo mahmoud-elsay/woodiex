@@ -21,4 +21,5 @@ class ApiConstants {
   static const String getReviews = "Reviews/{productId}/reviews";
   static const String getMyReviews = "Reviews/my-reviews";
   static const String postOrder = "Order";
+  static const String getOrders = "Order/user";
 }
