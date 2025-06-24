@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "816882805153",
+    "project_id": "woodiex-app-distribution",
+    "storage_bucket": "woodiex-app-distribution.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816882805153:android:f8a41c3e932849bfa883e0",
+        "android_client_info": {
+          "package_name": "com.example.woodiex.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi1RhJum2mXr_Qxw998b95IPKERTLeHXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

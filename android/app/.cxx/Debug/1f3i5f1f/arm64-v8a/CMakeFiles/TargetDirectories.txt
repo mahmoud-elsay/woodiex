@@ -1,0 +1,2 @@
+C:/Users/elsay/Desktop/New folder/woodiex/android/app/.cxx/Debug/1f3i5f1f/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/elsay/Desktop/New folder/woodiex/android/app/.cxx/Debug/1f3i5f1f/arm64-v8a/CMakeFiles/rebuild_cache.dir

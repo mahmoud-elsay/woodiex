@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 1.0.5+1
 
 environment:
   sdk: ^3.5.3
@@ -37,31 +37,23 @@ dependencies:
   cupertino_icons: ^1.0.2
   #A build system for Dart code generation and modular compilation
   build_runner: ^2.4.7
-  # State management
-  flutter_bloc: ^8.1.3
-  # Code generator (mainly used with cubit & retrofit)
-  freezed: ^2.4.5
-  freezed_annotation: ^2.4.1
-  # for dependency injection
-  get_it: ^8.0.0
+
   # Automatically generate code for converting to and from JSON by annotating Dart classes
   json_serializable: ^6.7.1
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
   # Networking
   dio: ^5.3.3
   retrofit: ^4.0.3
   retrofit_generator: ^9.1.2
   pretty_dio_logger: ^1.3.1
-  # localization
-  intl: ^0.19.0
-  easy_localization: ^3.0.3
+
   # for splash screen
   flutter_native_splash: ^2.3.5
   # An SVG rendering and widget library for Flutter, which allows painting 
   flutter_svg: ^2.0.9
   # for adapting screen and font size.
   flutter_screenutil: ^5.9.0
-  firebase_core: ^3.6.0
+  firebase_core: ^3.13.0
   # Flutter library to load and cache network images.
   cached_network_image: ^3.3.1
   # reading and writing simple key-value pairs
@@ -72,6 +64,16 @@ dependencies:
   #Render After Effects animations
   lottie: ^3.1.2
   google_fonts: ^6.2.1
+  carousel_slider: ^5.0.0
+  foundation: ^0.0.5
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  flutter_secure_storage: ^9.2.2
+  country_state_city: ^0.1.6
+  dropdown_search: ^5.0.1
+  image_picker: ^1.1.2
+  intl: ^0.20.2
+  flutter_offline: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +84,17 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^2.6.5
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.5
+  
+
+
+# Add dependency overrides if needed
+dependency_overrides:
+  analyzer_plugin: ^0.13.1
+  analyzer: ^7.4.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
