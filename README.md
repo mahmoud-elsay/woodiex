@@ -5,33 +5,36 @@ A modern Flutter-based furniture e-commerce application built with clean archite
 ## 📱 Screenshots
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/4e442118-64bc-463d-b7dd-5b913243cbde" width="200" alt="Onboarding"/>
-  <img src="https://github.com/user-attachments/assets/dd933c8b-794d-4402-bba1-754908870a69" width="200" alt="Login"/>
-  <img src="https://github.com/user-attachments/assets/6c6cb443-6b10-42fa-bb76-e7b8ccb62ece" width="200" alt="Home"/>
-  <img src="https://github.com/user-attachments/assets/44eb6696-592a-41cd-b08e-0d19dfccab71" width="200" alt="Product Details"/>
+  <img src="https://github.com/user-attachments/assets/468b5a96-2e86-4b04-89d2-625c674cd935" width="250" alt="Onboarding New"/>
+  <img src="https://github.com/user-attachments/assets/8c8a1c92-687e-454f-b09a-57765a31c1c3" width="250" alt="Sign Up"/>
+  <img src="https://github.com/user-attachments/assets/532cb018-6b4f-4ff9-a198-bb229ea63f1e" width="250" alt="Login New"/>
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/dfd54d54-7ae7-410e-8ea7-5fc8569127b2" width="200" alt="Cart"/>
-  <img src="https://github.com/user-attachments/assets/d1c8b491-17d3-40c0-a607-efd23df71296" width="200" alt="Checkout"/>
-  <img src="https://github.com/user-attachments/assets/e91fa303-c24c-454d-be17-7ccc06bfa4ab" width="200" alt="Profile"/>
-  <img src="https://github.com/user-attachments/assets/b9c3cbfe-3f71-41a3-aa7f-371d78a7c43d" width="200" alt="Orders"/>
+  <img src="https://github.com/user-attachments/assets/4e442118-64bc-463d-b7dd-5b913243cbde" width="180" alt="Onboarding"/>
+  <img src="https://github.com/user-attachments/assets/dd933c8b-794d-4402-bba1-754908870a69" width="180" alt="Login"/>
+  <img src="https://github.com/user-attachments/assets/6c6cb443-6b10-42fa-bb76-e7b8ccb62ece" width="180" alt="Home"/>
+  <img src="https://github.com/user-attachments/assets/44eb6696-592a-41cd-b08e-0d19dfccab71" width="180" alt="Product Details"/>
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/09945ed8-7706-41eb-afb9-687ba26bc62d" width="200" alt="Reviews"/>
-  <img src="https://github.com/user-attachments/assets/09d9d0c0-2c7e-419d-b6e7-6e252ec9ec3d" width="200" alt="Shipping Address"/>
-  <img src="https://github.com/user-attachments/assets/b39f7fcc-c1a2-40ac-8036-fa3b45191369" width="200" alt="Notifications"/>
-  <img src="https://github.com/user-attachments/assets/5fc65c68-3a80-4847-86d0-c4f86c19494b" width="200" alt="Settings"/>
+  <img src="https://github.com/user-attachments/assets/dfd54d54-7ae7-410e-8ea7-5fc8569127b2" width="180" alt="Cart"/>
+  <img src="https://github.com/user-attachments/assets/d1c8b491-17d3-40c0-a607-efd23df71296" width="180" alt="Checkout"/>
+  <img src="https://github.com/user-attachments/assets/e91fa303-c24c-454d-be17-7ccc06bfa4ab" width="180" alt="Profile"/>
+  <img src="https://github.com/user-attachments/assets/b9c3cbfe-3f71-41a3-aa7f-371d78a7c43d" width="180" alt="Orders"/>
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/51a601dd-987b-4110-9f5b-4142c69c9a15" width="200" alt="Wishlist"/>
-  <img src="https://github.com/user-attachments/assets/d65091bd-b51e-410f-a929-b62e44fec74f" width="200" alt="Payment"/>
-  <img src="https://git![Boarding (1)](https://github.com/user-attachments/assets/468b5a96-2e86-4b04-89d2-625c674cd935)
-<img width="375" alt="Sign up" src="https://github.com/user-attachments/assets/8c8a1c92-687e-454f-b09a-57765a31c1c3" />
-<img width="375" alt="Log in (1)" src="https://github.com/user-attachments/assets/532cb018-6b4f-4ff9-a198-bb229ea63f1e" />
-hub.com/user-attachments/assets/47fc28d7-9ee9-426a-8ad9-b9bcf898ad2e" width="200" alt="Success"/>
+  <img src="https://github.com/user-attachments/assets/09945ed8-7706-41eb-afb9-687ba26bc62d" width="180" alt="Reviews"/>
+  <img src="https://github.com/user-attachments/assets/09d9d0c0-2c7e-419d-b6e7-6e252ec9ec3d" width="180" alt="Shipping Address"/>
+  <img src="https://github.com/user-attachments/assets/b39f7fcc-c1a2-40ac-8036-fa3b45191369" width="180" alt="Notifications"/>
+  <img src="https://github.com/user-attachments/assets/5fc65c68-3a80-4847-86d0-c4f86c19494b" width="180" alt="Settings"/>
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/51a601dd-987b-4110-9f5b-4142c69c9a15" width="180" alt="Wishlist"/>
+  <img src="https://github.com/user-attachments/assets/d65091bd-b51e-410f-a929-b62e44fec74f" width="180" alt="Payment"/>
+  <img src="https://github.com/user-attachments/assets/47fc28d7-9ee9-426a-8ad9-b9bcf898ad2e" width="180" alt="Success"/>
 </div>
 
 ## 🚀 Features
@@ -52,7 +55,6 @@ hub.com/user-attachments/assets/47fc28d7-9ee9-426a-8ad9-b9bcf898ad2e" width="200
 ## 🏗️ Architecture
 
 The app follows **Clean Architecture** principles with a feature-based modular structure:
-![Editor _ Mermaid Chart-2025-06-24-161323](https://github.com/user-attachments/assets/435f81c0-d4b3-4d89-870f-4de4b8b70713)
 
 ```
 lib/
