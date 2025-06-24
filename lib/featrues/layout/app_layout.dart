@@ -32,80 +32,83 @@ class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: selectedIndex,
-        children:
-            screens, // Screens are kept alive, preventing re-initialization
-      ),
-      bottomNavigationBar: Container(
-        height: 90.h,
-        decoration: BoxDecoration(
-          color: ColorsManager.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24.r),
-            topRight: Radius.circular(24.r),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 3,
-              blurRadius: 8,
-              offset: const Offset(0, -3),
-            ),
-          ],
+      body: SafeArea(
+        child: IndexedStack(
+          index: selectedIndex,
+          children: screens, // Screens are kept alive
         ),
-        child: BottomNavigationBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: selectedIndex,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          selectedItemColor: ColorsManager.mainBlack,
-          unselectedItemColor: Colors.grey,
-          onTap: onItemTapped,
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/svgs/homesvg.svg',
-                colorFilter: ColorFilter.mode(
-                  selectedIndex == 0 ? ColorsManager.mainBlack : Colors.grey,
-                  BlendMode.srcIn,
-                ),
-              ),
-              label: 'Home',
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          height: 90.h, // Fixed height, adjusted by SafeArea
+          decoration: BoxDecoration(
+            color: ColorsManager.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.r),
+              topRight: Radius.circular(24.r),
             ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/svgs/whishlist.svg',
-                colorFilter: ColorFilter.mode(
-                  selectedIndex == 1 ? ColorsManager.mainBlack : Colors.grey,
-                  BlendMode.srcIn,
-                ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, -3),
               ),
-              label: 'wishlist',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/svgs/notifications.svg',
-                colorFilter: ColorFilter.mode(
-                  selectedIndex == 2 ? ColorsManager.mainBlack : Colors.grey,
-                  BlendMode.srcIn,
+            ],
+          ),
+          child: BottomNavigationBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: selectedIndex,
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            selectedItemColor: ColorsManager.mainBlack,
+            unselectedItemColor: Colors.grey,
+            onTap: onItemTapped,
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/svgs/homesvg.svg',
+                  colorFilter: ColorFilter.mode(
+                    selectedIndex == 0 ? ColorsManager.mainBlack : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
                 ),
+                label: 'Home',
               ),
-              label: 'notifications',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/svgs/profile.svg',
-                colorFilter: ColorFilter.mode(
-                  selectedIndex == 3 ? ColorsManager.mainBlack : Colors.grey,
-                  BlendMode.srcIn,
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/svgs/whishlist.svg',
+                  colorFilter: ColorFilter.mode(
+                    selectedIndex == 1 ? ColorsManager.mainBlack : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
                 ),
+                label: 'Wishlist',
               ),
-              label: 'profile',
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/svgs/notifications.svg',
+                  colorFilter: ColorFilter.mode(
+                    selectedIndex == 2 ? ColorsManager.mainBlack : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                label: 'Notifications',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/svgs/profile.svg',
+                  colorFilter: ColorFilter.mode(
+                    selectedIndex == 3 ? ColorsManager.mainBlack : Colors.grey,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );

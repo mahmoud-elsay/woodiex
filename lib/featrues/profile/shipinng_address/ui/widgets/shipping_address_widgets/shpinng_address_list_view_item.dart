@@ -8,8 +8,17 @@ import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shippi
 
 class ShpinngAddressListViewItem extends StatefulWidget {
   final AddressData? address;
+  final bool isSelected;
+  final VoidCallback? onSelectionChanged;
+  final VoidCallback? onEdit;
 
-  const ShpinngAddressListViewItem({super.key, this.address});
+  const ShpinngAddressListViewItem({
+    super.key,
+    this.address,
+    this.isSelected = false,
+    this.onSelectionChanged,
+    this.onEdit,
+  });
 
   @override
   State<ShpinngAddressListViewItem> createState() =>
@@ -18,16 +27,22 @@ class ShpinngAddressListViewItem extends StatefulWidget {
 
 class _ShpinngAddressListViewItemState
     extends State<ShpinngAddressListViewItem> {
-  bool _isChecked = false;
   bool _isEditing = false;
   final TextEditingController _addressController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _addressController.text = widget.address?.fullName != null
-        ? '${widget.address?.fullName}, ${widget.address?.city}, ${widget.address?.country}'
-        : 'Elmansora, Elmeena';
+    _updateAddressText();
+  }
+
+  void _updateAddressText() {
+    if (widget.address != null) {
+      _addressController.text =
+          '${widget.address!.city ?? ''}, ${widget.address!.country ?? ''}';
+    } else {
+      _addressController.text = 'Elmansora, Elmeena';
+    }
   }
 
   @override
@@ -40,11 +55,11 @@ class _ShpinngAddressListViewItemState
               activeColor: ColorsManager.mainBlack,
               checkColor: ColorsManager.white,
               onChanged: (bool? value) {
-                setState(() {
-                  _isChecked = value ?? false;
-                });
+                if (widget.onSelectionChanged != null) {
+                  widget.onSelectionChanged!();
+                }
               },
-              value: _isChecked,
+              value: widget.isSelected,
             ),
             Text(
               'Use as the shipping address',
@@ -54,7 +69,7 @@ class _ShpinngAddressListViewItemState
         ),
         verticalSpace(5),
         Container(
-          height: 127.h,
+          height: 140.h, // Increased height to accommodate phone number
           width: 335.w,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -71,19 +86,25 @@ class _ShpinngAddressListViewItemState
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Text(
-                      widget.address?.fullName ?? 'mostfa naf3',
-                      style: Fonts.nunitoSans18BoldMainBlack,
+                    Expanded(
+                      child: Text(
+                        widget.address?.fullName ?? 'mostfa naf3',
+                        style: Fonts.nunitoSans18BoldMainBlack,
+                      ),
                     ),
-                    horizontalSpace(170),
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          _isEditing = !_isEditing;
-                        });
+                        if (widget.onEdit != null) {
+                          widget.onEdit!();
+                        } else {
+                          setState(() {
+                            _isEditing = !_isEditing;
+                          });
+                        }
                         debugPrint('Edit icon clicked');
                       },
                       child: SvgPicture.asset('assets/svgs/edit_icon.svg'),
@@ -95,6 +116,7 @@ class _ShpinngAddressListViewItemState
                   color: Colors.grey.shade200,
                   height: 0.3.h,
                 ),
+                verticalSpace(5),
                 _isEditing
                     ? TextField(
                         controller: _addressController,
@@ -130,17 +152,27 @@ class _ShpinngAddressListViewItemState
                           });
                         },
                       )
-                    : Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          _addressController.text,
-                          style: Fonts.nunitoSans14RegularSecondaryGrey,
-                        ),
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _addressController.text,
+                            style: Fonts.nunitoSans14RegularSecondaryGrey,
+                          ),
+                          if (widget.address?.zipCode != null) ...[
+                            verticalSpace(5),
+                            Text(
+                              'Phone: ${widget.address!.zipCode}',
+                              style: Fonts.nunitoSans14RegularSecondaryGrey,
+                            ),
+                          ],
+                        ],
                       ),
               ],
             ),
           ),
         ),
+        verticalSpace(15), // Add space between items
       ],
     );
   }

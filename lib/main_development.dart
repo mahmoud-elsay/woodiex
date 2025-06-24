@@ -43,6 +43,7 @@ class App extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           builder: (context, child) => AppConnectivity(child: child!),
+          debugShowCheckedModeBanner: false, // Ensure debug banner is off
           home: Woodiex(
             appRouter: AppRouter(),
             initialRoute: initialRoute,

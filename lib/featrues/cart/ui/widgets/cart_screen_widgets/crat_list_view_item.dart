@@ -20,15 +20,18 @@ class CartListViewItem extends ConsumerStatefulWidget {
 class _CartListViewItemState extends ConsumerState<CartListViewItem> {
   late int quantity = widget.item.quantity;
 
-  void _increaseQuantity() {
+  void _increaseQuantity() async {
+    final notifier = ref.read(getCartNotifierProvider.notifier);
+    await notifier.updateQuantity(widget.item.productId, quantity + 1);
     setState(() {
       quantity++;
-      // Optionally, update the cart via notifier (not implemented here)
     });
   }
 
-  void _decreaseQuantity() {
+  void _decreaseQuantity() async {
     if (quantity > 1) {
+      final notifier = ref.read(getCartNotifierProvider.notifier);
+      await notifier.updateQuantity(widget.item.productId, quantity - 1);
       setState(() {
         quantity--;
       });
@@ -38,7 +41,6 @@ class _CartListViewItemState extends ConsumerState<CartListViewItem> {
   void _removeItem() async {
     final notifier = ref.read(getCartNotifierProvider.notifier);
     await notifier.deleteCartItem(widget.item.productId);
-    // Show feedback (e.g., snackbar) - optional, based on UI preference
     CustomSnackBar.showSuccess(
       context,
       'Item removed from cart',

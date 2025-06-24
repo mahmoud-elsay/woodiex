@@ -1,12 +1,17 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:woodiex/core/routing/routes.dart';
 import 'package:woodiex/core/theming/colors.dart';
 import 'package:woodiex/core/theming/styles.dart';
 import 'package:woodiex/core/helpers/spacing.dart';
+import 'package:woodiex/core/helpers/extension.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:woodiex/featrues/profile/shipinng_address/data/models/get_shipping_address_response_model.dart';
 
 class ShippingAddressForCheckout extends StatefulWidget {
-  const ShippingAddressForCheckout({super.key});
+  final AddressData? selectedAddress;
+
+  const ShippingAddressForCheckout({super.key, this.selectedAddress});
 
   @override
   State<ShippingAddressForCheckout> createState() =>
@@ -21,7 +26,24 @@ class _ShippingAddressForCheckoutState
   @override
   void initState() {
     super.initState();
-    _addressController.text = 'Elmansora, Elmeena';
+    _updateAddressText();
+  }
+
+  @override
+  void didUpdateWidget(ShippingAddressForCheckout oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedAddress != widget.selectedAddress) {
+      _updateAddressText();
+    }
+  }
+
+  void _updateAddressText() {
+    if (widget.selectedAddress != null) {
+      _addressController.text =
+          '${widget.selectedAddress!.city ?? ''}, ${widget.selectedAddress!.country ?? ''}';
+    } else {
+      _addressController.text = 'No address selected';
+    }
   }
 
   @override
@@ -37,10 +59,8 @@ class _ShippingAddressForCheckoutState
             Spacer(),
             GestureDetector(
               onTap: () {
-                setState(() {
-                  _isEditing = !_isEditing;
-                });
-                debugPrint('Edit icon clicked');
+                // Navigate to shipping address screen to select/edit address
+                context.pushNamed(Routes.shippingAddreesScreen);
               },
               child: SvgPicture.asset('assets/svgs/edit_icon.svg'),
             ),
@@ -68,7 +88,7 @@ class _ShippingAddressForCheckoutState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'mostfa naf3',
+                  widget.selectedAddress?.fullName ?? 'No name',
                   style: Fonts.nunitoSans18BoldMainBlack,
                 ),
                 verticalSpace(7),
@@ -76,48 +96,45 @@ class _ShippingAddressForCheckoutState
                   color: Colors.grey.shade200,
                   height: 0.3.h,
                 ),
-                _isEditing
-                    ? TextField(
-                        controller: _addressController,
-                        style: Fonts.nunitoSans14RegularSecondaryGrey,
-                        textAlign: TextAlign.left,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.r),
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.r),
-                            borderSide: BorderSide(
-                              color: ColorsManager.mainBlack,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.r),
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.h,
-                            horizontal: 10.w,
-                          ),
-                        ),
-                        onSubmitted: (value) {
-                          setState(() {
-                            _isEditing = false;
-                          });
-                        },
-                      )
-                    : Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          _addressController.text,
-                          style: Fonts.nunitoSans14RegularSecondaryGrey,
+                verticalSpace(10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    _addressController.text,
+                    style: Fonts.nunitoSans14RegularSecondaryGrey,
+                  ),
+                ),
+                if (widget.selectedAddress?.zipCode != null) ...[
+                  verticalSpace(5),
+                  Text(
+                    'Phone: ${widget.selectedAddress!.zipCode}',
+                    style: Fonts.nunitoSans14RegularSecondaryGrey,
+                  ),
+                ],
+                if (widget.selectedAddress == null) ...[
+                  verticalSpace(10),
+                  GestureDetector(
+                    onTap: () {
+                      context.pushNamed(Routes.shippingAddreesScreen);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 8.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorsManager.mainBlack,
+                        borderRadius: BorderRadius.circular(5.r),
+                      ),
+                      child: Text(
+                        'Select Address',
+                        style: Fonts.nunitoSans14RegularSecondaryGrey.copyWith(
+                          color: Colors.white,
                         ),
                       ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

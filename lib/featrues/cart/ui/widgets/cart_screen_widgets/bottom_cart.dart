@@ -7,11 +7,14 @@ import 'package:woodiex/core/widgets/app_text_button.dart';
 
 class BottomCart extends StatelessWidget {
   final double total;
+  final VoidCallback? onCheckout;
 
-  const BottomCart({super.key, required this.total});
+  const BottomCart({super.key, required this.total, this.onCheckout});
 
   @override
   Widget build(BuildContext context) {
+    print('BottomCart build - total: $total');
+
     return Column(
       children: [
         Row(
@@ -31,9 +34,15 @@ class BottomCart extends StatelessWidget {
         AppTextButton(
           buttonText: 'Checkout',
           textStyle: Fonts.nunitoSans20SemiBoldWhite,
-          onPressed: () {
-            context.pushNamed(Routes.checkoutScreen);
-          },
+          onPressed: total > 0
+              ? (onCheckout ??
+                  () {
+                    print(
+                        'BottomCart default onPressed - navigating with total: $total');
+                    context.pushNamed(Routes.checkoutScreen,
+                        arguments: {'total': total});
+                  })
+              : null,
         ),
       ],
     );

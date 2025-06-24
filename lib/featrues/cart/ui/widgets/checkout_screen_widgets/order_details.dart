@@ -4,12 +4,27 @@ import 'package:woodiex/core/helpers/spacing.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderDetails extends StatelessWidget {
-  const OrderDetails({super.key});
+  final double? total;
+  final double? subTotal;
+  final double? deliveryCost;
+
+  const OrderDetails({
+    super.key,
+    this.total,
+    this.subTotal,
+    this.deliveryCost,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final effectiveSubTotal = subTotal ?? 0.0;
+    final effectiveDeliveryCost = deliveryCost ?? 10.0;
+    final effectiveTotal = effectiveSubTotal + effectiveDeliveryCost;
+
+    print(
+        'OrderDetails - subTotal: $effectiveSubTotal, total: $effectiveTotal');
+
     return Container(
-      height: 135.h,
       width: 335.w,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -26,46 +41,47 @@ class OrderDetails extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Text(
-                  'Order :',
+                  'Subtotal :',
                   style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
-                  '\$90',
+                  '\$${effectiveSubTotal.toStringAsFixed(2)}',
                   style: Fonts.nunitoSans18SemiBoldMainBlack,
-                )
+                ),
               ],
             ),
             verticalSpace(10),
             Row(
               children: [
                 Text(
-                  'Delivery: :',
+                  'Delivery: ',
                   style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 Spacer(),
                 Text(
-                  '\$10',
+                  '\$${effectiveDeliveryCost.toStringAsFixed(2)}',
                   style: Fonts.nunitoSans18SemiBoldMainBlack,
-                )
+                ),
               ],
             ),
             verticalSpace(10),
             Row(
               children: [
                 Text(
-                  'Order :',
+                  'Total :',
                   style: Fonts.nunitoSans18RegularSecondaryGrey,
                 ),
                 Spacer(),
                 Text(
-                  '\$100',
+                  '\$${effectiveTotal.toStringAsFixed(2)}',
                   style: Fonts.nunitoSans18SemiBoldMainBlack,
-                )
+                ),
               ],
             ),
             verticalSpace(10),
