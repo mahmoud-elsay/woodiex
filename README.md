@@ -28,7 +28,10 @@ A modern Flutter-based furniture e-commerce application built with clean archite
 <div align="center">
   <img src="https://github.com/user-attachments/assets/51a601dd-987b-4110-9f5b-4142c69c9a15" width="200" alt="Wishlist"/>
   <img src="https://github.com/user-attachments/assets/d65091bd-b51e-410f-a929-b62e44fec74f" width="200" alt="Payment"/>
-  <img src="https://github.com/user-attachments/assets/47fc28d7-9ee9-426a-8ad9-b9bcf898ad2e" width="200" alt="Success"/>
+  <img src="https://git![Boarding (1)](https://github.com/user-attachments/assets/468b5a96-2e86-4b04-89d2-625c674cd935)
+<img width="375" alt="Sign up" src="https://github.com/user-attachments/assets/8c8a1c92-687e-454f-b09a-57765a31c1c3" />
+<img width="375" alt="Log in (1)" src="https://github.com/user-attachments/assets/532cb018-6b4f-4ff9-a198-bb229ea63f1e" />
+hub.com/user-attachments/assets/47fc28d7-9ee9-426a-8ad9-b9bcf898ad2e" width="200" alt="Success"/>
 </div>
 
 ## 🚀 Features
@@ -49,6 +52,7 @@ A modern Flutter-based furniture e-commerce application built with clean archite
 ## 🏗️ Architecture
 
 The app follows **Clean Architecture** principles with a feature-based modular structure:
+![Editor _ Mermaid Chart-2025-06-24-161323](https://github.com/user-attachments/assets/435f81c0-d4b3-4d89-870f-4de4b8b70713)
 
 ```
 lib/
