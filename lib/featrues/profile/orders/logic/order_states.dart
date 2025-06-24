@@ -1,4 +1,5 @@
 import 'package:woodiex/core/network/api_error_model.dart';
+import 'package:woodiex/featrues/profile/orders/data/models/get_order_response_model.dart';
 import 'package:woodiex/featrues/profile/orders/data/models/post_order_response_model.dart';
 
 sealed class OrderState {
@@ -6,15 +7,17 @@ sealed class OrderState {
 
   T when<T>({
     required T Function() initial,
-    required T Function(PostOrderResponseModel data) loading,
-    required T Function(PostOrderResponseModel data) success,
-    required T Function(ApiErrorModel errorModel) error,
+    required T Function(dynamic data) loading, // Generic data for flexibility
+    required T Function(PostOrderResponseModel data) postSuccess,
+    required T Function(GetOrderResponseModel data) getSuccess,
+    required T Function(ApiErrorModel error) error,
   }) {
     return switch (this) {
       OrderInitial _ => initial(),
       OrderLoading(data: final data) => loading(data),
-      OrderSuccess(data: final data) => success(data),
-      OrderError(error: final errorModel) => error(errorModel),
+      OrderPostSuccess(data: final data) => postSuccess(data),
+      OrderGetSuccess(data: final data) => getSuccess(data),
+      OrderError(error: final err) => error(err),
     };
   }
 }
@@ -24,7 +27,7 @@ class OrderInitial extends OrderState {
 }
 
 class OrderLoading extends OrderState {
-  final PostOrderResponseModel data;
+  final dynamic data; // Can be PostOrderResponseModel or GetOrderResponseModel
 
   const OrderLoading(this.data);
 
@@ -39,15 +42,31 @@ class OrderLoading extends OrderState {
   int get hashCode => data.hashCode;
 }
 
-class OrderSuccess extends OrderState {
+class OrderPostSuccess extends OrderState {
   final PostOrderResponseModel data;
 
-  const OrderSuccess(this.data);
+  const OrderPostSuccess(this.data);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is OrderSuccess &&
+      other is OrderPostSuccess &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+
+  @override
+  int get hashCode => data.hashCode;
+}
+
+class OrderGetSuccess extends OrderState {
+  final GetOrderResponseModel data;
+
+  const OrderGetSuccess(this.data);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderGetSuccess &&
           runtimeType == other.runtimeType &&
           data == other.data;
 

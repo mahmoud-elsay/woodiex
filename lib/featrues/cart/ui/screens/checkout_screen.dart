@@ -33,26 +33,33 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(shippingAddressNotifierProvider.notifier).getShippingAddress();
       // Retrieve arguments
-      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      final args =
+          ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
       print('CheckoutScreen initState - Raw arguments: $args');
       if (args != null && args.containsKey('total')) {
         _cartTotal = (args['total'] as num?)?.toDouble() ?? 0.0;
-        print('CheckoutScreen initState - Retrieved cartTotal from arguments: $_cartTotal');
+        print(
+            'CheckoutScreen initState - Retrieved cartTotal from arguments: $_cartTotal');
       } else {
-        print('CheckoutScreen initState - No valid arguments or total provided, checking getCartNotifierProvider');
+        print(
+            'CheckoutScreen initState - No valid arguments or total provided, checking getCartNotifierProvider');
         // Fallback to getCartNotifierProvider
         final cartState = ref.read(getCartNotifierProvider);
         cartState.when(
           success: (data) {
             _cartTotal = data.data.total;
-            print('CheckoutScreen initState - Retrieved cartTotal from getCartNotifierProvider: $_cartTotal');
+            print(
+                'CheckoutScreen initState - Retrieved cartTotal from getCartNotifierProvider: $_cartTotal');
           },
           loading: (data) {
             _cartTotal = data?.data.total ?? 0.0;
-            print('CheckoutScreen initState - Retrieved cartTotal from loading state: $_cartTotal');
+            print(
+                'CheckoutScreen initState - Retrieved cartTotal from loading state: $_cartTotal');
           },
-          initial: () => print('CheckoutScreen initState - Cart state is initial, using default: $_cartTotal'),
-          error: (error) => print('CheckoutScreen initState - Cart state error: ${error.message}, using default: $_cartTotal'),
+          initial: () => print(
+              'CheckoutScreen initState - Cart state is initial, using default: $_cartTotal'),
+          error: (error) => print(
+              'CheckoutScreen initState - Cart state error: ${error.message}, using default: $_cartTotal'),
         );
       }
     });
@@ -124,31 +131,76 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                 ),
                 verticalSpace(50),
                 AppTextButton(
-                  buttonText: orderState is OrderLoading
-                      ? 'PROCESSING...'
-                      : 'SUBMIT ORDER',
+                  buttonText: orderState.when(
+                    initial: () => 'SUBMIT ORDER',
+                    loading: (data) => 'PROCESSING...',
+                    postSuccess: (data) =>
+                        'PROCESSING...', // Disable after success
+                    getSuccess: (data) => 'SUBMIT ORDER',
+                    error: (error) => 'SUBMIT ORDER',
+                  ),
                   textStyle: Fonts.nunitoSans18SemiBoldWhite,
-                  onPressed: orderState is OrderLoading
-                      ? null
-                      : () async {
-                          final notifier =
-                              ref.read(orderNotifierProvider.notifier);
-                          await notifier.postOrder();
-                          final updatedState = ref.read(orderNotifierProvider);
-                          updatedState.when(
-                            initial: () {},
-                            loading: (data) {},
-                            success: (data) {
-                              context.pushNamed(Routes.checkoutSuccess);
-                            },
-                            error: (error) {
-                              CustomSnackBar.showError(
-                                context,
-                                'Error: ${error.message}',
-                              );
-                            },
+                  onPressed: orderState.when(
+                    initial: () => () async {
+                      final notifier = ref.read(orderNotifierProvider.notifier);
+                      await notifier.postOrder();
+                      final updatedState = ref.read(orderNotifierProvider);
+                      updatedState.when(
+                        initial: () {},
+                        loading: (data) {},
+                        postSuccess: (data) {
+                          context.pushNamed(Routes.checkoutSuccess);
+                        },
+                        getSuccess: (data) {},
+                        error: (error) {
+                          CustomSnackBar.showError(
+                            context,
+                            'Error: ${error.message}',
                           );
                         },
+                      );
+                    },
+                    loading: (data) => null,
+                    postSuccess: (data) => null, // Disable after success
+                    getSuccess: (data) => () async {
+                      final notifier = ref.read(orderNotifierProvider.notifier);
+                      await notifier.postOrder();
+                      final updatedState = ref.read(orderNotifierProvider);
+                      updatedState.when(
+                        initial: () {},
+                        loading: (data) {},
+                        postSuccess: (data) {
+                          context.pushNamed(Routes.checkoutSuccess);
+                        },
+                        getSuccess: (data) {},
+                        error: (error) {
+                          CustomSnackBar.showError(
+                            context,
+                            'Error: ${error.message}',
+                          );
+                        },
+                      );
+                    },
+                    error: (error) => () async {
+                      final notifier = ref.read(orderNotifierProvider.notifier);
+                      await notifier.postOrder();
+                      final updatedState = ref.read(orderNotifierProvider);
+                      updatedState.when(
+                        initial: () {},
+                        loading: (data) {},
+                        postSuccess: (data) {
+                          context.pushNamed(Routes.checkoutSuccess);
+                        },
+                        getSuccess: (data) {},
+                        error: (error) {
+                          CustomSnackBar.showError(
+                            context,
+                            'Error: ${error.message}',
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
