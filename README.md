@@ -54,7 +54,8 @@ A modern Flutter-based furniture e-commerce application built with clean archite
 
 ## 🏗️ Architecture
 
-The app follows **Clean Architecture** principles with a feature-based modular structure:
+The app follows **Clean Architecture** principles with a feature-based modular structure:  
+<img src="https://github.com/user-attachments/assets/151c8067-ad56-4569-93c8-1b813fb4a24b" alt="Architecture Diagram" width="100%"/>
 
 ```
 lib/
